@@ -130,13 +130,7 @@ export default function HeroSection() {
                 Comenzar ahora
                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
               </a>
-              <a
-                href="#demo"
-                className="inline-flex h-12 items-center gap-2 rounded-2xl border border-slate-200 bg-white/80 px-7 text-[13px] font-medium text-slate-700 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur-sm transition-all hover:border-cyan-200 hover:bg-white hover:shadow-[0_16px_40px_rgba(15,23,42,0.10)] active:scale-[0.98]"
-              >
-                <svg className="h-4 w-4 text-cyan-600" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                Ver demo
-              </a>
+              
             </motion.div>
 
             {/* Feature Pills */}
