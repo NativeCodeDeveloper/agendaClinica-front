@@ -3,39 +3,39 @@ import { Check, X, Target, AlertCircle } from 'lucide-react';
 export default function LeadFilterSection() {
   const yesItems = [
     {
-      title: 'Atiendes pacientes a diario',
-      desc: 'Tienes un flujo constante de pacientes y necesitas orden para no depender de WhatsApp y planillas.',
+      title: 'Atiendes pacientes con citas regulares',
+      desc: 'Tienes flujo constante y necesitas orden para dejar de depender del WhatsApp y los cuadernos.',
     },
     {
       title: 'Hoy llevas registros manuales',
-      desc: 'Anotas en cuadernos, Excel o notas sueltas, y eso te hace perder tiempo y cometer errores.',
+      desc: 'Usas cuadernos, Excel o notas sueltas. Eso consume tiempo y genera errores que se acumulan.',
     },
     {
-      title: 'Quieres centralizar todo en un solo lugar',
-      desc: 'Agenda, pagos y fichas clínicas conectadas para trabajar más rápido y con menos fricción.',
+      title: 'Quieres todo en un solo lugar',
+      desc: 'Agenda, pagos y fichas clínicas conectadas. Sin ir de una app a otra ni perder información.',
     },
     {
-      title: 'Buscas algo serio y escalable',
-      desc: 'Una solución profesional que aguante crecimiento y te dé visibilidad del negocio.',
+      title: 'Buscas escalar tu consulta o centro',
+      desc: 'Una herramienta profesional que aguante el crecimiento y te dé visibilidad real del negocio.',
     },
   ];
 
   const noItems = [
     {
-      title: 'Solo lo necesitas "por si acaso"',
-      desc: 'Si aún no tienes agenda activa o pacientes recurrentes, quizá conviene partir con algo más simple.',
+      title: 'Recién empiezas, sin agenda activa',
+      desc: 'Si aún no tienes pacientes recurrentes, quizás conviene empezar con algo más básico primero.',
     },
     {
-      title: 'Prefieres seguir con herramientas separadas',
-      desc: 'Si te acomoda manejar agenda y pagos por canales distintos, este sistema no es prioridad todavía.',
+      title: 'Prefieres herramientas separadas',
+      desc: 'Si te acomoda manejar agenda y pagos por canales distintos, este sistema es más de lo que necesitas ahora.',
     },
     {
-      title: 'Buscas una plantilla genérica',
-      desc: 'Si lo que quieres es una solución estándar sin ajustes, hay opciones más básicas que pueden servirte.',
+      title: 'Buscas algo genérico sin personalización',
+      desc: 'Agenda Clínica se configura a tu operación. Si quieres algo estándar sin ajustes, hay opciones más simples.',
     },
     {
       title: 'Tu negocio no trabaja con citas',
-      desc: 'Este producto está pensado para servicios con agenda (clínicas, centros y profesionales).',
+      desc: 'Este sistema está pensado para servicios por agendamiento: clínicas, consultorios y centros de salud.',
     },
   ];
 
@@ -62,16 +62,15 @@ export default function LeadFilterSection() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-            ¿Este sistema es{' '}
+            Honestidad{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-indigo-600">
-              para ti?
+              primero.
             </span>
           </h2>
 
           <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
-            Queremos que tengas{' '}
-            <span className="font-semibold text-slate-900">claridad desde el inicio</span>.
-            Si calzas con estos puntos, vas a sacarle mucho provecho.
+            No vendemos para todos.{' '}
+            <span className="font-semibold text-slate-900">Queremos que tomes la mejor decisión para tu centro.</span>
           </p>
         </div>
 
@@ -113,10 +112,10 @@ export default function LeadFilterSection() {
                                   group-hover:text-transparent group-hover:bg-clip-text
                                   group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-green-600
                                   transition-all duration-300">
-                      Ideal si...
+                      Es para ti si...
                     </h3>
                     <p className="text-base text-slate-600 leading-relaxed">
-                      Quieres ordenar agenda, pagos y fichas sin enredos.
+                      Quieres ordenar tu agenda, tus cobros y tus fichas de una vez.
                     </p>
                   </div>
                 </div>
@@ -200,7 +199,7 @@ export default function LeadFilterSection() {
                                   group-hover:text-transparent group-hover:bg-clip-text
                                   group-hover:bg-gradient-to-r group-hover:from-rose-600 group-hover:to-red-600
                                   transition-all duration-300">
-                      Quizá no es necesario aún si...
+                      Quizá no es para ti si...
                     </h3>
                     <p className="text-base text-slate-600 leading-relaxed">
                       No pasa nada: a veces conviene ir paso a paso.
@@ -255,8 +254,8 @@ export default function LeadFilterSection() {
         <div className="mt-16 text-center max-w-2xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 border border-slate-200 shadow-sm">
             <p className="text-slate-700 leading-relaxed">
-              <span className="font-semibold text-slate-900">¿Tienes dudas?</span>{' '}
-              Agenda una reunión de 15 minutos para evaluar si este sistema calza con tu operación.
+              <span className="font-semibold text-slate-900">¿No estás seguro?</span>{' '}
+              Conversemos 15 minutos. Sin compromiso, sin presión. Solo para ver si calza con tu operación.
             </p>
           </div>
         </div>

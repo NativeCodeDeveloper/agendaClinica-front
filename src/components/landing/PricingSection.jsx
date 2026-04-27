@@ -4,12 +4,12 @@ export default function PricingSection() {
     const plans = [
         {
             name: "Inicio",
-            subtitle: "Para profesionales independientes",
+            subtitle: "Para consultas unipersonales",
             features: [
-                "Agenda Online",
-                "Recordatorios WhatsApp",
-                "1 Usuario",
-                "Soporte por Email"
+                "Agenda online 24/7",
+                "Recordatorios automáticos",
+                "1 profesional",
+                "Soporte por email"
             ],
             highlight: false
         },
@@ -18,22 +18,22 @@ export default function PricingSection() {
             subtitle: "Para centros en crecimiento",
             features: [
                 "Todo lo de Inicio",
-                "Pagos Online",
-                "Ficha Clínica Digital",
-                "Hasta 3 Usuarios",
-                "Soporte Prioritario"
+                "Pagos online integrados",
+                "Ficha clínica digital",
+                "Hasta 3 profesionales",
+                "Soporte prioritario"
             ],
             highlight: true
         },
         {
             name: "Clínica",
-            subtitle: "Gestión avanzada y control total",
+            subtitle: "Control total, sin límites",
             features: [
                 "Todo lo de Pro",
-                "Múltiples Sucursales",
-                "Reportes Avanzados",
-                "Usuarios Ilimitados",
-                "Soporte Dedicado"
+                "Múltiples sucursales",
+                "Reportes de gestión",
+                "Profesionales ilimitados",
+                "Soporte dedicado"
             ],
             highlight: false
         }
@@ -42,9 +42,9 @@ export default function PricingSection() {
     return (
         <section className="py-24 bg-slate-50">
             <div className="container mx-auto px-4 text-center">
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Planes Orientativos</h2>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">Planes que escalan contigo</h2>
                 <p className="text-slate-600 mb-16">
-                    Cotización final se ajusta según cantidad de profesionales y módulos activos.
+                    El precio final se ajusta según tu equipo y módulos activos. Sin sorpresas ni letra chica.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -75,7 +75,7 @@ export default function PricingSection() {
                                     ? 'bg-gradient-to-r from-cyan-600 to-indigo-700 hover:from-cyan-500 hover:to-indigo-600 text-white shadow-lg shadow-cyan-500/20'
                                     : 'bg-slate-100 hover:bg-slate-200 text-slate-900'
                                 }`}>
-                                Cotizar este plan
+                                Quiero este plan
                             </button>
                         </div>
                     ))}

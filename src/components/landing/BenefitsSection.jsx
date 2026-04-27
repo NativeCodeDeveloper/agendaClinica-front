@@ -4,26 +4,26 @@ export default function BenefitsSection() {
     const benefits = [
         {
             icon: <Bell className="w-7 h-7" />,
-            title: "Recordatorios Automáticos",
-            description: "Avisos automáticos por correo previo a la atención.",
+            title: "Menos no-show, más ingresos",
+            description: "El 40% de las ausencias son por olvido. Los recordatorios automáticos los reducen antes de que sean un problema.",
             gradient: "from-cyan-500 to-cyan-600"
         },
         {
             icon: <CreditCard className="w-7 h-7" />,
-            title: "Pagos Automáticos",
-            description: "Asegura la cita con pagos previos. Control total de caja diaria.",
+            title: "Cobra antes de la cita",
+            description: "Elimina las citas no pagadas. Tus pacientes abonan al momento de agendar y tú tienes el control de caja en tiempo real.",
             gradient: "from-indigo-500 to-indigo-600"
         },
         {
             icon: <FileText className="w-7 h-7" />,
-            title: "Ficha Clínica Digital",
-            description: "Historial, avances y evolución en un solo lugar seguro.",
+            title: "Historial siempre a mano",
+            description: "Accede al historial completo de cada paciente desde cualquier dispositivo. Sin papeles, sin caos, sin información perdida.",
             gradient: "from-cyan-600 to-indigo-600"
         },
         {
             icon: <Users className="w-7 h-7" />,
-            title: "Multi-Profesional",
-            description: "Gestiona calendarios individuales para cada especialista o box.",
+            title: "Un sistema para todo tu equipo",
+            description: "Cada profesional con su propia agenda, horarios y servicios. Perfecto para centros con múltiples especialistas.",
             gradient: "from-indigo-500 to-cyan-600"
         },
     ];
@@ -46,20 +46,20 @@ export default function BenefitsSection() {
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-100 to-indigo-100 rounded-full mb-6">
                         <div className="w-2 h-2 bg-cyan-600 rounded-full animate-pulse" />
                         <span className="text-sm font-semibold text-cyan-900 tracking-wide uppercase">
-                            Plataforma Todo-en-Uno
+                            Lo que cambia desde el día uno
                         </span>
                     </div>
 
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-                        Todo lo que necesitas para{' '}
+                        Deja de apagar incendios.{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-indigo-600">
-                            profesionalizar tu clínica
+                            Empieza a gestionar.
                         </span>
                     </h2>
 
                     <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
-                        Deja de usar Excel y cuadernos. Unifica toda la gestión administrativa y clínica
-                        en una plataforma <span className="font-semibold text-slate-900">moderna y fácil de usar</span>.
+                        Tu atención merece más que un cuaderno y un WhatsApp colapsado.{' '}
+                        <span className="font-semibold text-slate-900">Agenda Clínica centraliza todo en un sistema claro, elegante y que funciona.</span>
                     </p>
                 </div>
 
@@ -137,7 +137,7 @@ export default function BenefitsSection() {
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-indigo-500 border-2 border-slate-900" />
                         </div>
                         <span className="text-white font-semibold">
-                            Únete a clínicas que ya transformaron su gestión
+                            Clínicas y consultorios que ya dejaron el caos atrás
                         </span>
                         <svg className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -22,10 +22,10 @@ export default function ContactSection() {
                     {/* Text & WhatsApp */}
                     <div className="flex flex-col items-center max-w-2xl mx-auto">
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                            Habla con la agencia por WhatsApp
+                            ¿Listo para ordenar tu clínica?
                         </h2>
                         <p className="text-lg text-slate-200/90 mb-8 leading-relaxed">
-                            Cuéntanos tu tipo de centro y cuántos profesionales atienden. Te respondemos con un plan claro para automatizar agenda, pagos y fichas.
+                            Cuéntanos tu tipo de centro y cuántos profesionales atienden. En menos de 24 horas tendrás una propuesta clara, sin compromiso y sin letra chica.
                         </p>
 
                         <div className="flex flex-col items-center gap-3">
@@ -39,22 +39,22 @@ export default function ContactSection() {
                               <MessageCircle className="w-6 h-6" />
                             </span>
                             <span className="text-lg md:text-xl">Hablar por WhatsApp</span>
-                            <span className="hidden sm:inline text-sm font-semibold text-white/80 group-hover:text-white/90">— Quiero automatizar mi centro</span>
+                            <span className="hidden sm:inline text-sm font-semibold text-white/80 group-hover:text-white/90">— Quiero ver cómo funciona</span>
                           </a>
 
                             <br />
                           <div className="flex flex-wrap gap-3 text-sm text-white/75">
                             <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
                               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                              Respuesta en horario hábil
+                              Sin compromiso
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
                               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                              Sin spam
+                              Respuesta en menos de 24 hrs
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
                               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                              Diagnóstico rápido
+                              Diagnóstico gratuito
                             </span>
                           </div>
                         </div>

@@ -18,84 +18,84 @@ export default function ModulesSection() {
     {
       icon: <CalendarDays className="w-6 h-6" />,
       title: 'Agenda y calendario',
-      desc: 'Tus pacientes agendan online en segundos y tú ves todo en tiempo real. Define horarios, duración por servicio y disponibilidad sin caos.',
+      desc: 'Tus pacientes agendan online en cualquier momento. Tú ves tu día, semana o mes en tiempo real. Sin llamadas, sin confusiones.',
       gradient: 'from-cyan-500 via-cyan-600 to-indigo-600',
       glowColor: 'group-hover:shadow-cyan-500/25'
     },
     {
       icon: <UserCog className="w-6 h-6" />,
-      title: 'Agendas por Profesionales',
-      desc: 'Cada profesional tiene sus propias agendas independientes con horarios, servicios y disponibilidad personalizados según su especialidad.',
+      title: 'Agendas por profesional',
+      desc: 'Cada especialista tiene su propia agenda, horarios y servicios. Ideal para centros con más de un profesional.',
       gradient: 'from-indigo-500 via-indigo-600 to-cyan-600',
       glowColor: 'group-hover:shadow-indigo-500/25'
     },
     {
       icon: <Users className="w-6 h-6" />,
       title: 'Gestión de pacientes',
-      desc: 'Cada paciente queda registrado automáticamente con su historial de datos y atención. Centraliza contactos, notas y preferencias en un solo lugar.',
+      desc: 'Historial completo de cada paciente: datos, atenciones, pagos y notas. Todo en un perfil único, accesible en segundos.',
       gradient: 'from-cyan-500 via-teal-500 to-indigo-600',
       glowColor: 'group-hover:shadow-cyan-500/25'
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: 'Bloqueo de Horarios',
-      desc: 'Bloquea horarios específicos según profesional para vacaciones, reuniones o tiempo personal sin afectar otras agendas del centro.',
+      title: 'Bloqueo de horarios',
+      desc: 'Bloquea días o franjas por profesional para vacaciones, reuniones o imprevistos. Sin desorden en las demás agendas.',
       gradient: 'from-slate-500 via-slate-600 to-indigo-600',
       glowColor: 'group-hover:shadow-slate-500/25'
     },
     {
       icon: <CreditCard className="w-6 h-6" />,
       title: 'Pagos automatizados',
-      desc: 'Cobra por adelantado o en cuotas y reduce las ausencias. Integra pagos online (por ejemplo, Mercado Pago) y mantén el control de cada transacción.',
+      desc: 'Cobra antes de la cita y reduce los no-show. Mercado Pago integrado para que tus pacientes paguen sin fricción.',
       gradient: 'from-indigo-500 via-indigo-600 to-cyan-600',
       glowColor: 'group-hover:shadow-indigo-500/25'
     },
     {
       icon: <FileSpreadsheet className="w-6 h-6" />,
-      title: 'Presupuestos Dinámicos',
-      desc: 'Genera presupuestos por tratamiento de forma automática con desglose de servicios, valores y planes de pago personalizados.',
+      title: 'Presupuestos dinámicos',
+      desc: 'Genera presupuestos por tratamiento en segundos. Con detalle de servicios, valores y cuotas. Sin Excel, sin errores.',
       gradient: 'from-cyan-600 via-teal-600 to-cyan-500',
       glowColor: 'group-hover:shadow-cyan-600/25'
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
       title: 'Recordatorios automáticos',
-      desc: 'Envía recordatorios por correo para disminuir citas canceladas por olvidos. Horas antes se enviarán recordatorios automáticos a tus pacientes.',
+      desc: 'Recordatorios por correo antes de cada cita. Menos olvidos, menos ausencias, más puntualidad sin que levantes el teléfono.',
       gradient: 'from-indigo-500 via-indigo-600 to-cyan-600',
       glowColor: 'group-hover:shadow-indigo-500/25'
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      title: 'Correos de Seguimiento',
-      desc: 'Sistema automatizado de correos de seguimiento post-atención para mejorar la experiencia del paciente y fidelización.',
+      title: 'Correos de seguimiento',
+      desc: 'Emails automáticos post-atención para mantener el contacto, fidelizar y mejorar la experiencia de tus pacientes.',
       gradient: 'from-cyan-500 via-cyan-600 to-indigo-600',
       glowColor: 'group-hover:shadow-cyan-500/25'
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
       title: 'Administración de agenda',
-      desc: 'Bloquea días completos, crea pausas, reprograma citas y agrega reservas manuales cuando sea necesario, sin perder el orden.',
+      desc: 'Reagenda, bloquea días completos o agrega reservas manuales sin perder el orden de tu operación.',
       gradient: 'from-indigo-500 via-cyan-600 to-cyan-500',
       glowColor: 'group-hover:shadow-indigo-500/25'
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: 'Resguardo de Datos Clínicos',
-      desc: 'Protección avanzada de datos sensibles con encriptación y cumplimiento de normativas de privacidad para información médica.',
+      title: 'Resguardo de datos clínicos',
+      desc: 'Encriptación avanzada y respaldos diarios para proteger la información médica sensible de tus pacientes.',
       gradient: 'from-slate-500 via-indigo-600 to-cyan-600',
       glowColor: 'group-hover:shadow-slate-500/25'
     },
     {
       icon: <Lock className="w-6 h-6" />,
-      title: 'Control de Accesos',
-      desc: 'Define roles y permisos por usuario. Controla quién puede ver, editar o eliminar información según su cargo en la clínica.',
+      title: 'Control de accesos',
+      desc: 'Define quién puede ver qué. Roles por cargo para que cada persona acceda solo a lo que necesita.',
       gradient: 'from-slate-500 via-slate-600 to-indigo-600',
       glowColor: 'group-hover:shadow-slate-500/25'
     },
     {
       icon: <BarChart className="w-6 h-6" />,
       title: 'Historial y reportes',
-      desc: 'Visualiza compras y agendamientos online con trazabilidad completa de pagos, servicios y fechas para tomar mejores decisiones.',
+      desc: 'Visualiza ingresos, citas y pagos pendientes con reportes claros. Decisiones basadas en datos, no en intuición.',
       gradient: 'from-cyan-500 via-indigo-500 to-indigo-600',
       glowColor: 'group-hover:shadow-cyan-500/25'
     },
@@ -131,10 +131,8 @@ export default function ModulesSection() {
           </h2>
 
           <p className="text-xl sm:text-2xl text-slate-400 leading-relaxed font-light max-w-3xl mx-auto">
-            Una suite completa de herramientas diseñada para{' '}
-            <span className="text-slate-200 font-medium">ordenar tu operación</span>,
-            mejorar la experiencia del paciente y{' '}
-            <span className="text-slate-200 font-medium">escalar tu clínica</span>.
+            Cada módulo diseñado para resolver un problema real de tu operación diaria.{' '}
+            <span className="text-slate-200 font-medium">Todo conectado, todo en un solo lugar.</span>
           </p>
         </div>
 

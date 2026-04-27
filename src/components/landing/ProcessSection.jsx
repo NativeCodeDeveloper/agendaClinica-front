@@ -5,28 +5,28 @@ export default function ProcessSection() {
         {
             number: "01",
             title: "Diagnóstico",
-            desc: "Reunión de 15 min para entender tu situación y evaluar si podemos ayudarte.",
+            desc: "Conversamos 15 minutos para entender tu operación y diseñar la configuración ideal para tu centro.",
             gradient: "from-cyan-500 to-cyan-600",
             icon: <Search className="w-8 h-8 text-white" />
         },
         {
             number: "02",
             title: "Configuración",
-            desc: "Cargamos tus servicios, profesionales y horarios. Dejamos todo listo.",
+            desc: "Cargamos tus servicios, profesionales, horarios y tarifas. Tú no mueves un dedo.",
             gradient: "from-indigo-500 to-indigo-600",
             icon: <Settings className="w-8 h-8 text-white" />
         },
         {
             number: "03",
             title: "Capacitación",
-            desc: "Entrenamos a tu equipo (recepción y especialistas) para usar el sistema.",
+            desc: "Tu equipo aprende a operar el sistema en una sesión. Recepción y profesionales, listos desde el primer día.",
             gradient: "from-cyan-600 to-indigo-600",
             icon: <GraduationCap className="w-8 h-8 text-white" />
         },
         {
             number: "04",
-            title: "Implementación",
-            desc: "Empiezas a operar con soporte continuo y agenda automatizada.",
+            title: "En marcha",
+            desc: "Empiezas a recibir reservas online, cobros automáticos y recordatorios. Sin intervención manual.",
             gradient: "from-indigo-500 to-cyan-600",
             icon: <Rocket className="w-8 h-8 text-white" />
         }
@@ -50,7 +50,7 @@ export default function ProcessSection() {
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-100 to-indigo-100 rounded-full mb-6">
                         <CheckCircle2 className="w-4 h-4 text-cyan-600" />
                         <span className="text-sm font-semibold text-cyan-900 tracking-wide uppercase">
-                            Proceso Guiado
+                            Operativo en menos de una semana
                         </span>
                     </div>
 
@@ -62,8 +62,8 @@ export default function ProcessSection() {
                     </h2>
 
                     <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
-                        No te entregamos un software vacío.{' '}
-                        <span className="font-semibold text-slate-900">Te acompañamos en todo el proceso</span>.
+                        Sin instalaciones, sin complicaciones.{' '}
+                        <span className="font-semibold text-slate-900">Te configuramos todo y te acompañamos hasta que operes sin fricción.</span>
                     </p>
                 </div>
 
@@ -171,7 +171,7 @@ export default function ProcessSection() {
                             </div>
 
                             <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
-                                Acompañamiento completo desde el primer día hasta que tu clínica esté 100% operativa con el sistema.
+                                No estás solo. Te acompañamos desde el primer día hasta que tu clínica esté 100% automatizada y funcionando.
                             </p>
 
                             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">

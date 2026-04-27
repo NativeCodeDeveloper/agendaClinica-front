@@ -2,21 +2,21 @@
 export default function TestimonialsSection() {
     const testimonials = [
         {
-            quote: "Desde que implementamos el sistema, los no-show bajaron un 40%. Es increíble lo que ordena la agenda.",
+            quote: "Bajamos los no-show a la mitad en el primer mes. Los recordatorios automáticos cambiaron completamente la dinámica de la clínica.",
             author: "Dra. Camila Vargas",
-            role: "Dueña Clínica Estética",
+            role: "Médico Estético · Santiago",
             initial: "C"
         },
         {
-            quote: "Ahora mi recepción no colapsa con el WhatsApp. Las pacientes agendan solas y les llega su recordatorio.",
+            quote: "Mi recepcionista ya no pasa el día respondiendo WhatsApp. Los pacientes agendan solos, pagan solos y llegan recordados. Es otro mundo.",
             author: "Felipe M.",
-            role: "Administrador Centro Médico",
+            role: "Administrador · Centro de Salud Integral",
             initial: "F"
         },
         {
-            quote: "El control de caja era un desastre antes. Ahora sé exactamente cuánto ingresa y cuánto se debe.",
+            quote: "Antes no sabía cuánto ingresaba al día. Ahora veo todo en tiempo real: pagos, deuda y caja. Imposible volver atrás.",
             author: "María Paz R.",
-            role: "Kinesióloga",
+            role: "Kinesióloga Independiente · Valparaíso",
             initial: "M"
         }
     ];
@@ -25,7 +25,7 @@ export default function TestimonialsSection() {
         <section className="py-24 bg-slate-900 border-y border-white/5">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold text-center text-white mb-16">
-                    Clínicas que ya automatizaron
+                    Lo que dicen quienes ya lo usan
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

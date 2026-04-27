@@ -7,24 +7,24 @@ export default function FAQSection() {
 
     const faqs = [
         {
-            q: "¿Funciona para estética y salud?",
-            a: "Sí, el sistema es 100% adaptable tanto para centros de estética como para consultas médicas de diversas especialidades."
+            q: "¿Sirve para mi tipo de consulta o centro?",
+            a: "Sí. Agenda Clínica está diseñado para médicos, dentistas, kinesiólogos, psicólogos, nutricionistas y centros de estética o salud. Si atiendes con citas, esto es para ti."
         },
         {
-            q: "¿Se puede pagar con MercadoPago/Stripe?",
-            a: "Correcto. Integramos pasarelas de pago locales e internacionales para que recibas abonos o pagos completos de forma automática."
+            q: "¿Cómo cobran mis pacientes?",
+            a: "Integramos Mercado Pago y otras pasarelas para que tus pacientes paguen al momento de agendar. Tú decides si cobras el total o un abono para asegurar la cita."
         },
         {
-            q: "¿Cuánto demora la implementación?",
-            a: "Depende del tamaño de tu clínica. En promedio, tardamos entre 3 a 7 días hábiles en dejar todo configurado y a tu equipo capacitado."
+            q: "¿Cuánto tiempo tarda en estar operativo?",
+            a: "Entre 3 y 7 días hábiles. Nuestro equipo configura todo por ti y capacita a tu equipo. Solo tienes que aparecer el primer día."
         },
         {
-            q: "¿Mis datos quedan seguros?",
-            a: "Absolutamente. Usamos servidores encriptados y copias de seguridad diarias para garantizar la confidencialidad y seguridad de tu información."
+            q: "¿Qué pasa con los datos de mis pacientes?",
+            a: "Toda la información está encriptada y respaldada diariamente en servidores seguros. Cumplimos los estándares de privacidad para datos clínicos sensibles."
         },
         {
-            q: "¿Se puede migrar desde Excel/Google Calendar?",
-            a: "Sí, nuestro equipo te ayuda a importar tu base de datos de pacientes actual para que no pierdas ninguna ficha ni historial."
+            q: "¿Puedo migrar mis datos actuales?",
+            a: "Sí. Te ayudamos a importar tu base de pacientes, fichas e historial de atención desde Excel, Google Calendar o cualquier sistema que estés usando hoy. No pierdes nada."
         }
     ];
 
@@ -32,7 +32,7 @@ export default function FAQSection() {
         <section className="py-24 bg-white">
             <div className="container mx-auto px-4 max-w-3xl">
                 <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
-                    Preguntas Frecuentes
+                    Todo lo que necesitas saber
                 </h2>
 
                 <div className="space-y-4">

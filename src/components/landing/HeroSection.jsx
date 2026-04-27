@@ -16,16 +16,16 @@ const fadeUp = {
 };
 
 const features = [
-  { icon: "calendar", text: "Agendamiento inteligente" },
-  { icon: "file", text: "Fichas clinicas digitales" },
-  { icon: "credit", text: "Pagos automatizados" },
-  { icon: "doc", text: "Presupuestos al instante" },
+  { icon: "calendar", text: "Agenda online 24/7" },
+  { icon: "file", text: "Fichas clínicas digitales" },
+  { icon: "credit", text: "Cobros anticipados" },
+  { icon: "doc", text: "Recordatorios automáticos" },
 ];
 
 const stats = [
   { value: "99.9%", label: "Disponibilidad", sub: "Uptime garantizado" },
-  { value: "3x", label: "Mas eficiencia", sub: "En gestion clinica" },
-  { value: "24/7", label: "Soporte activo", sub: "Siempre disponible" },
+  { value: "-40%", label: "Menos no-show", sub: "Con recordatorios" },
+  { value: "24/7", label: "Agenda abierta", sub: "Tus pacientes agendan solos" },
 ];
 
 const icons = {
@@ -66,8 +66,8 @@ export default function HeroSection() {
             className="mb-6 flex items-center justify-between"
           >
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-indigo-600 shadow-[0_14px_35px_rgba(14,165,233,0.28)]">
-                <span className="text-[10px] font-black leading-none text-white">AC</span>
+              <div className="flex h-12 w-12 items-center justify-center">
+                <img src="/logacsolo.png" alt="AgendaClinica logo" className="h-16 w-16 object-contain" />
               </div>
               <div>
                 <p className={michroma.className + " text-[13px] text-slate-900"}>AgendaClinica</p>
@@ -80,7 +80,7 @@ export default function HeroSection() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
               </span>
-              <span className="text-[11px] text-slate-500">Cloud Clinical Platform</span>
+              <span className="text-[11px] text-slate-500">Sistema activo · Listo para usar</span>
             </div>
           </motion.div>
 
@@ -99,7 +99,7 @@ export default function HeroSection() {
                 AgendaClinica
               </span>
               <span className="block mt-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-400 sm:text-[12px]" style={{ fontFamily: 'var(--font-inter), var(--font-montserrat), sans-serif' }}>
-                Healthcare Information System
+                Gestión clínica, simplificada.
               </span>
             </motion.h1>
 
@@ -112,7 +112,7 @@ export default function HeroSection() {
               className="mt-8 max-w-2xl text-[17px] leading-8 text-slate-600 font-semibold sm:text-[19px] sm:leading-9"
               style={{ fontFamily: 'var(--font-inter), sans-serif', letterSpacing: '0.01em' }}
             >
-              Automatiza agendamientos, fichas clinicas, pagos y presupuestos en una sola plataforma.
+              Tu agenda organizada, tus pacientes avisados y tus cobros al día.<br className="hidden sm:block" /> Todo automático, desde el primer día.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -127,7 +127,7 @@ export default function HeroSection() {
                 href="#contacto"
                 className="group inline-flex h-12 items-center gap-2.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-indigo-700 px-8 text-[13px] font-semibold text-white shadow-[0_18px_40px_rgba(14,165,233,0.30)] transition-all hover:from-cyan-500 hover:to-indigo-600 hover:shadow-[0_22px_50px_rgba(14,165,233,0.38)] active:scale-[0.98]"
               >
-                Comenzar ahora
+                Quiero verlo en acción
                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
               </a>
               
