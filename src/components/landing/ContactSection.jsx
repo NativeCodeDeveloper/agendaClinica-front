@@ -1,72 +1,135 @@
 "use client";
-import { MessageCircle } from 'lucide-react';
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { MessageCircle, Mail, Shield, Clock, CheckCircle2 } from "lucide-react";
+
+const ease = [0.22, 1, 0.36, 1];
+
+const WA_LINK =
+  "https://wa.me/56966091038?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20hora%20para%20que%20me%20muestren%20la%20plataforma%20de%20Agenda%20Cl%C3%ADnica.";
+const MAIL_LINK =
+  "mailto:ingenieria.software@nativecode.cl?subject=Consulta%20Agenda%20Cl%C3%ADnica&body=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%2C%20estoy%20interesado%20en%20una%20reuni%C3%B3n%20con%20ustedes.";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.65, ease },
+  }),
+};
+
+const guarantees = [
+  { icon: CheckCircle2, text: "Sin compromiso" },
+  { icon: Clock, text: "Respuesta en menos de 24 hrs" },
+  { icon: Shield, text: "Diagnóstico gratuito" },
+];
 
 export default function ContactSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert("Gracias por tu interés. Te contactaremos pronto.");
-    };
+  return (
+    <section
+      id="contacto"
+      className="relative py-28 bg-blue-900 overflow-hidden"
+    >
+      {/* Fondo decorativo */}
+      <div className="absolute inset-0 bg-linear-to-br from-blue-950 via-blue-900 to-blue-950 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-950/20 rounded-full blur-3xl pointer-events-none" />
 
-    return (
-        <section id="contacto" className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+      <div ref={ref} className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        {/* Badge */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={0}
+        >
+          <span className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-900/50 text-blue-200 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-300 animate-pulse" />
+            Hablemos
+          </span>
+        </motion.div>
+
+        {/* Heading */}
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={0.1}
+          className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          ¿Listo para ordenar
+          <br />
+          <span className="text-blue-200">tu clínica?</span>
+        </motion.h2>
+
+        {/* Subtitle */}
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={0.2}
+          className="mt-5 text-lg text-blue-200 leading-relaxed max-w-xl mx-auto"
+        >
+          Cuéntanos tu tipo de centro y cuántos profesionales atienden. En menos de 24 horas
+          tendrás una propuesta clara, sin compromiso y sin letra chica.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={0.3}
+          className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          <motion.a
+            href={WA_LINK}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2, ease }}
+            className="inline-flex items-center gap-2.5 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-green-900/30 text-[15px]"
+          >
+            <MessageCircle className="h-5 w-5" strokeWidth={2} />
+            Contacto por WhatsApp
+          </motion.a>
+
+          <motion.a
+            href={MAIL_LINK}
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2, ease }}
+            className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-2xl border border-white/20 text-[15px] backdrop-blur-sm transition-colors duration-200"
+          >
+            <Mail className="h-5 w-5 text-blue-200" strokeWidth={2} />
+            Contacto por Correo
+          </motion.a>
+        </motion.div>
+
+        {/* Guarantees */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          custom={0.4}
+          className="mt-8 flex flex-wrap items-center justify-center gap-5"
+        >
+          {guarantees.map(({ icon: Icon, text }) => (
+            <div key={text} className="flex items-center gap-1.5 text-blue-300 text-xs">
+              <Icon className="h-3.5 w-3.5 text-blue-300" strokeWidth={2} />
+              <span>{text}</span>
             </div>
-
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="flex flex-col items-center text-center gap-12">
-
-                    {/* Text & WhatsApp */}
-                    <div className="flex flex-col items-center max-w-2xl mx-auto">
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                            ¿Listo para ordenar tu clínica?
-                        </h2>
-                        <p className="text-lg text-slate-200/90 mb-8 leading-relaxed">
-                            Cuéntanos tu tipo de centro y cuántos profesionales atienden. En menos de 24 horas tendrás una propuesta clara, sin compromiso y sin letra chica.
-                        </p>
-
-                        <div className="flex flex-col items-center gap-3">
-                          <a
-                            href="https://wa.me/56966091038?text=Hola,%20quiero%20automatizar%20mi%20centro.%20Somos%20__%20profesionales%20y%20necesitamos%20agenda,%20pagos%20y%20fichas."
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl font-extrabold tracking-tight text-white bg-gradient-to-r from-emerald-500 to-emerald-400 shadow-lg shadow-emerald-500/20 ring-1 ring-white/10 hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-                          >
-                            <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 ring-1 ring-white/15">
-                              <MessageCircle className="w-6 h-6" />
-                            </span>
-                            <span className="text-lg md:text-xl">Hablar por WhatsApp</span>
-                            <span className="hidden sm:inline text-sm font-semibold text-white/80 group-hover:text-white/90">— Quiero ver cómo funciona</span>
-                          </a>
-
-                            <br />
-                          <div className="flex flex-wrap gap-3 text-sm text-white/75">
-                            <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
-                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                              Sin compromiso
-                            </span>
-                            <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
-                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                              Respuesta en menos de 24 hrs
-                            </span>
-                            <span className="inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
-                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                              Diagnóstico gratuito
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="hidden lg:flex flex-col items-center">
-                            <div className="flex gap-4 opacity-50 grayscale">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    );
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 }

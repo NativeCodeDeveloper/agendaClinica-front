@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   CalendarDays,
   Users,
@@ -11,212 +15,207 @@ import {
   Mail,
   Shield,
   Lock,
-} from 'lucide-react';
+} from "lucide-react";
 
-export default function ModulesSection() {
-  const modules = [
-    {
-      icon: <CalendarDays className="w-6 h-6" />,
-      title: 'Agenda y calendario',
-      desc: 'Tus pacientes agendan online en cualquier momento. Tú ves tu día, semana o mes en tiempo real. Sin llamadas, sin confusiones.',
-      gradient: 'from-cyan-500 via-cyan-600 to-indigo-600',
-      glowColor: 'group-hover:shadow-cyan-500/25'
-    },
-    {
-      icon: <UserCog className="w-6 h-6" />,
-      title: 'Agendas por profesional',
-      desc: 'Cada especialista tiene su propia agenda, horarios y servicios. Ideal para centros con más de un profesional.',
-      gradient: 'from-indigo-500 via-indigo-600 to-cyan-600',
-      glowColor: 'group-hover:shadow-indigo-500/25'
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: 'Gestión de pacientes',
-      desc: 'Historial completo de cada paciente: datos, atenciones, pagos y notas. Todo en un perfil único, accesible en segundos.',
-      gradient: 'from-cyan-500 via-teal-500 to-indigo-600',
-      glowColor: 'group-hover:shadow-cyan-500/25'
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: 'Bloqueo de horarios',
-      desc: 'Bloquea días o franjas por profesional para vacaciones, reuniones o imprevistos. Sin desorden en las demás agendas.',
-      gradient: 'from-slate-500 via-slate-600 to-indigo-600',
-      glowColor: 'group-hover:shadow-slate-500/25'
-    },
-    {
-      icon: <CreditCard className="w-6 h-6" />,
-      title: 'Pagos automatizados',
-      desc: 'Cobra antes de la cita y reduce los no-show. Mercado Pago integrado para que tus pacientes paguen sin fricción.',
-      gradient: 'from-indigo-500 via-indigo-600 to-cyan-600',
-      glowColor: 'group-hover:shadow-indigo-500/25'
-    },
-    {
-      icon: <FileSpreadsheet className="w-6 h-6" />,
-      title: 'Presupuestos dinámicos',
-      desc: 'Genera presupuestos por tratamiento en segundos. Con detalle de servicios, valores y cuotas. Sin Excel, sin errores.',
-      gradient: 'from-cyan-600 via-teal-600 to-cyan-500',
-      glowColor: 'group-hover:shadow-cyan-600/25'
-    },
-    {
-      icon: <MessageSquare className="w-6 h-6" />,
-      title: 'Recordatorios automáticos',
-      desc: 'Recordatorios por correo antes de cada cita. Menos olvidos, menos ausencias, más puntualidad sin que levantes el teléfono.',
-      gradient: 'from-indigo-500 via-indigo-600 to-cyan-600',
-      glowColor: 'group-hover:shadow-indigo-500/25'
-    },
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: 'Correos de seguimiento',
-      desc: 'Emails automáticos post-atención para mantener el contacto, fidelizar y mejorar la experiencia de tus pacientes.',
-      gradient: 'from-cyan-500 via-cyan-600 to-indigo-600',
-      glowColor: 'group-hover:shadow-cyan-500/25'
-    },
-    {
-      icon: <Briefcase className="w-6 h-6" />,
-      title: 'Administración de agenda',
-      desc: 'Reagenda, bloquea días completos o agrega reservas manuales sin perder el orden de tu operación.',
-      gradient: 'from-indigo-500 via-cyan-600 to-cyan-500',
-      glowColor: 'group-hover:shadow-indigo-500/25'
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: 'Resguardo de datos clínicos',
-      desc: 'Encriptación avanzada y respaldos diarios para proteger la información médica sensible de tus pacientes.',
-      gradient: 'from-slate-500 via-indigo-600 to-cyan-600',
-      glowColor: 'group-hover:shadow-slate-500/25'
-    },
-    {
-      icon: <Lock className="w-6 h-6" />,
-      title: 'Control de accesos',
-      desc: 'Define quién puede ver qué. Roles por cargo para que cada persona acceda solo a lo que necesita.',
-      gradient: 'from-slate-500 via-slate-600 to-indigo-600',
-      glowColor: 'group-hover:shadow-slate-500/25'
-    },
-    {
-      icon: <BarChart className="w-6 h-6" />,
-      title: 'Historial y reportes',
-      desc: 'Visualiza ingresos, citas y pagos pendientes con reportes claros. Decisiones basadas en datos, no en intuición.',
-      gradient: 'from-cyan-500 via-indigo-500 to-indigo-600',
-      glowColor: 'group-hover:shadow-cyan-500/25'
-    },
-  ];
+const ease = [0.22, 1, 0.36, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.55, ease },
+  }),
+};
+
+const modules = [
+  {
+    icon: CalendarDays,
+    title: "Agenda y calendario",
+    desc: "Tus pacientes agendan online en cualquier momento. Tú ves tu día, semana o mes en tiempo real.",
+  },
+  {
+    icon: UserCog,
+    title: "Agendas por profesional",
+    desc: "Cada especialista tiene su propia agenda, horarios y servicios. Ideal para centros con más de un profesional.",
+  },
+  {
+    icon: Users,
+    title: "Gestión de pacientes",
+    desc: "Historial completo de cada paciente: datos, atenciones, pagos y notas. Todo en un perfil único.",
+  },
+  {
+    icon: Clock,
+    title: "Bloqueo de horarios",
+    desc: "Bloquea días o franjas por profesional para vacaciones, reuniones o imprevistos.",
+  },
+  {
+    icon: CreditCard,
+    title: "Pagos automatizados",
+    desc: "Cobra antes de la cita y reduce los no-show. Mercado Pago integrado para pagos sin fricción.",
+  },
+  {
+    icon: FileSpreadsheet,
+    title: "Presupuestos dinámicos",
+    desc: "Genera presupuestos por tratamiento en segundos. Con detalle de servicios, valores y cuotas.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Recordatorios automáticos",
+    desc: "Recordatorios por correo antes de cada cita. Menos olvidos, menos ausencias, más puntualidad.",
+  },
+  {
+    icon: Mail,
+    title: "Correos de seguimiento",
+    desc: "Emails automáticos post-atención para mantener el contacto y fidelizar a tus pacientes.",
+  },
+  {
+    icon: Briefcase,
+    title: "Administración de agenda",
+    desc: "Reagenda, bloquea días completos o agrega reservas manuales sin perder el orden.",
+  },
+  {
+    icon: Shield,
+    title: "Resguardo de datos clínicos",
+    desc: "Encriptación avanzada y respaldos diarios para proteger la información médica de tus pacientes.",
+  },
+  {
+    icon: Lock,
+    title: "Control de accesos",
+    desc: "Define quién puede ver qué. Roles por cargo para que cada persona acceda solo a lo que necesita.",
+  },
+  {
+    icon: BarChart,
+    title: "Historial y reportes",
+    desc: "Visualiza ingresos, citas y pagos pendientes con reportes claros. Decisiones basadas en datos.",
+  },
+];
+
+// Primeros 3 módulos = featured (cards grandes)
+// Restantes = lista compacta
+const featuredModules = modules.slice(0, 3);
+const restModules = modules.slice(3);
+
+function FeaturedCard({ mod, index }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const Icon = mod.icon;
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-3xl" />
+    <motion.div
+      ref={ref}
+      variants={fadeUp}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      custom={index * 0.1}
+      className="group"
+    >
+      <motion.div
+        whileHover={{ scale: 1.015, y: -4 }}
+        transition={{ duration: 0.22, ease }}
+        className="h-full bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 hover:border-blue-100 transition-all duration-300"
+      >
+        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-900 mb-6">
+          <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
+        </div>
+        <h3 className="text-[17px] font-bold text-slate-900 mb-3 leading-snug">{mod.title}</h3>
+        <p className="text-[14px] text-slate-500 leading-relaxed">{mod.desc}</p>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function CompactRow({ mod, index }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-30px" });
+  const Icon = mod.icon;
+
+  return (
+    <motion.li
+      ref={ref}
+      variants={fadeUp}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      custom={index * 0.05}
+      className="flex items-start gap-3 py-3.5 border-b border-slate-100 last:border-0 group"
+    >
+      <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-100 transition-colors">
+        <Icon className="w-3.5 h-3.5 text-blue-900" strokeWidth={2} />
       </div>
+      <div>
+        <p className="text-[14px] font-semibold text-slate-800 leading-snug">{mod.title}</p>
+        <p className="text-[12px] text-slate-400 mt-0.5 leading-relaxed">{mod.desc}</p>
+      </div>
+    </motion.li>
+  );
+}
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+export default function ModulesSection() {
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
+  const footerRef = useRef(null);
+  const footerInView = useInView(footerRef, { once: true, margin: "-40px" });
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-500/20 backdrop-blur-sm mb-6">
-            <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-indigo-400 rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 tracking-wide uppercase">
-              Funcionalidades Completas
-            </span>
-          </div>
+  return (
+    <section className="relative py-28 bg-slate-50 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-white">Módulos del </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-indigo-400">
-              sistema
-            </span>
-          </h2>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <p className="text-xl sm:text-2xl text-slate-400 leading-relaxed font-light max-w-3xl mx-auto">
-            Cada módulo diseñado para resolver un problema real de tu operación diaria.{' '}
-            <span className="text-slate-200 font-medium">Todo conectado, todo en un solo lugar.</span>
-          </p>
+        {/* Header — alineado a la izquierda, no centrado */}
+        <div ref={headerRef} className="mb-14 max-w-2xl">
+          <motion.p
+            variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0}
+            className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-900 mb-4"
+          >
+            Funcionalidades
+          </motion.p>
+          <motion.h2
+            variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
+            className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight"
+            style={{ letterSpacing: "-0.025em" }}
+          >
+            Todo lo que necesitas,<br />
+            <span className="text-blue-900">en un solo lugar.</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}
+            className="mt-4 text-lg text-slate-400 leading-relaxed"
+          >
+            Cada módulo conectado. Sin apps extras, sin integraciones manuales.
+          </motion.p>
         </div>
 
-        {/* Modules Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
-          {modules.map((mod, idx) => (
-            <div
-              key={idx}
-              className="group relative"
-            >
-              {/* Glow Effect on Hover */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${mod.gradient} rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500`} />
-
-              {/* Card */}
-              <div className="relative h-full bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8
-                            border border-slate-700/50
-                            shadow-xl shadow-black/20
-                            transition-all duration-500 ease-out
-                            hover:border-slate-600/50
-                            hover:-translate-y-2
-                            overflow-hidden">
-
-                {/* Shine Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Floating Orb */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon Container */}
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${mod.gradient}
-                                shadow-lg ${mod.glowColor}
-                                mb-6
-                                transform transition-all duration-500
-                                group-hover:scale-110 group-hover:rotate-3`}>
-                    <div className="text-white">
-                      {mod.icon}
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-white mb-4
-                                group-hover:text-transparent group-hover:bg-clip-text
-                                group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-indigo-300
-                                transition-all duration-300">
-                    {mod.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-base text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
-                    {mod.desc}
-                  </p>
-                </div>
-
-                {/* Bottom Accent Line */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${mod.gradient}
-                               transform scale-x-0 group-hover:scale-x-100
-                               transition-transform duration-500 origin-left rounded-b-3xl`} />
-              </div>
-            </div>
+        {/* Featured: 3 cards grandes */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
+          {featuredModules.map((mod, idx) => (
+            <FeaturedCard key={mod.title} mod={mod} index={idx} />
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-20 text-center">
-          <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full
-                        bg-gradient-to-r from-slate-800/50 to-slate-900/50
-                        border border-slate-700/50
-                        backdrop-blur-sm
-                        group cursor-pointer
-                        hover:border-cyan-500/50
-                        transition-all duration-300">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-slate-300 text-sm font-medium">
-                Sistema en constante evolución
-              </span>
-            </div>
-            <span className="text-slate-500 text-xs">
-              • Actualizaciones incluidas
-            </span>
+        {/* Rest: lista compacta en 3 columnas */}
+        <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm px-6 py-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+            {[restModules.slice(0, 3), restModules.slice(3, 6), restModules.slice(6)].map((col, ci) => (
+              <ul key={ci} className={ci > 0 ? "sm:pl-6" : ""}>
+                {col.map((mod, i) => (
+                  <CompactRow key={mod.title} mod={mod} index={ci * 3 + i} />
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
+
+        {/* Footer note */}
+        <motion.div
+          ref={footerRef}
+          variants={fadeUp} initial="hidden" animate={footerInView ? "visible" : "hidden"} custom={0}
+          className="mt-10 flex items-center gap-2 text-sm text-slate-400"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          Sistema en constante evolución · Actualizaciones incluidas sin costo adicional
+        </motion.div>
       </div>
     </section>
   );

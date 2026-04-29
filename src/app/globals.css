@@ -118,6 +118,42 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ── Aurora ───────────────────────────────────────────────────────── */
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-bg::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background-image: repeating-linear-gradient(
+    105deg,
+    rgba(30, 58, 138, 0.12) 0%,
+    rgba(99, 102, 241, 0.10) 15%,
+    rgba(147, 197, 253, 0.14) 25%,
+    rgba(165, 180, 252, 0.10) 35%,
+    rgba(59, 130, 246, 0.12) 50%,
+    rgba(30, 58, 138, 0.08) 65%,
+    rgba(196, 181, 253, 0.10) 80%,
+    rgba(30, 58, 138, 0.12) 100%
+  );
+  background-size: 400% 400%;
+  filter: blur(32px);
+  animation: aurora 18s ease infinite;
+  mask-image: radial-gradient(ellipse 80% 60% at 80% 10%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 80% 10%, black 20%, transparent 75%);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -134,8 +170,10 @@
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: "Avenir Next", "Gotham", var(--font-lato), sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-inter), "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -144,10 +182,10 @@
   h4,
   h5,
   h6 {
-    font-family: "Avenir Next", "Gotham", var(--font-montserrat), sans-serif;
-    letter-spacing: 0.01em;
-    line-height: 1.08;
-    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.06;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   img,

@@ -1,264 +1,186 @@
-import { Check, X, Target, AlertCircle } from 'lucide-react';
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
+const ease = [0.22, 1, 0.36, 1];
+
+const fade = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.08, duration: 0.55, ease },
+  }),
+};
+
+const yesItems = [
+  {
+    title: "Atiendes pacientes con citas regulares",
+    desc: "Tienes flujo constante y necesitas orden para dejar el caos del WhatsApp y los cuadernos.",
+  },
+  {
+    title: "Hoy llevas registros manuales",
+    desc: "Usas Excel o notas sueltas. Eso consume tiempo y genera errores que se acumulan.",
+  },
+  {
+    title: "Quieres todo en un solo lugar",
+    desc: "Agenda, pagos y fichas clínicas conectadas. Sin ir de una app a otra.",
+  },
+  {
+    title: "Buscas escalar tu consulta o centro",
+    desc: "Una herramienta profesional que aguante el crecimiento y te dé visibilidad real.",
+  },
+];
+
+const noItems = [
+  {
+    title: "Recién empiezas, sin agenda activa",
+    desc: "Si aún no tienes pacientes recurrentes, quizás conviene empezar con algo más básico.",
+  },
+  {
+    title: "Prefieres herramientas separadas",
+    desc: "Si te acomoda manejar agenda y pagos por canales distintos, este sistema es más de lo que necesitas ahora.",
+  },
+  {
+    title: "Buscas algo genérico sin ajustes",
+    desc: "Agenda Clínica se configura a tu operación. Si quieres algo estándar, hay opciones más simples.",
+  },
+  {
+    title: "Tu negocio no trabaja con citas",
+    desc: "Este sistema está pensado para clínicas, consultorios y centros de salud con agendamiento.",
+  },
+];
+
+function Item({ title, desc, variant, index }) {
+  const isYes = variant === "yes";
+  return (
+    <motion.li
+      variants={fade}
+      initial="hidden"
+      animate="visible"
+      custom={index * 0.07}
+      className="flex gap-4 py-5 border-b border-slate-100 last:border-0"
+    >
+      <span className={`mt-0.5 text-[13px] font-bold shrink-0 w-4 ${isYes ? "text-blue-900" : "text-slate-300"}`}>
+        {isYes ? "✓" : "—"}
+      </span>
+      <div>
+        <p className={`text-[15px] font-semibold leading-snug ${isYes ? "text-slate-900" : "text-slate-400"}`}>
+          {title}
+        </p>
+        <p className="mt-1 text-sm text-slate-400 leading-relaxed">{desc}</p>
+      </div>
+    </motion.li>
+  );
+}
 
 export default function LeadFilterSection() {
-  const yesItems = [
-    {
-      title: 'Atiendes pacientes con citas regulares',
-      desc: 'Tienes flujo constante y necesitas orden para dejar de depender del WhatsApp y los cuadernos.',
-    },
-    {
-      title: 'Hoy llevas registros manuales',
-      desc: 'Usas cuadernos, Excel o notas sueltas. Eso consume tiempo y genera errores que se acumulan.',
-    },
-    {
-      title: 'Quieres todo en un solo lugar',
-      desc: 'Agenda, pagos y fichas clínicas conectadas. Sin ir de una app a otra ni perder información.',
-    },
-    {
-      title: 'Buscas escalar tu consulta o centro',
-      desc: 'Una herramienta profesional que aguante el crecimiento y te dé visibilidad real del negocio.',
-    },
-  ];
-
-  const noItems = [
-    {
-      title: 'Recién empiezas, sin agenda activa',
-      desc: 'Si aún no tienes pacientes recurrentes, quizás conviene empezar con algo más básico primero.',
-    },
-    {
-      title: 'Prefieres herramientas separadas',
-      desc: 'Si te acomoda manejar agenda y pagos por canales distintos, este sistema es más de lo que necesitas ahora.',
-    },
-    {
-      title: 'Buscas algo genérico sin personalización',
-      desc: 'Agenda Clínica se configura a tu operación. Si quieres algo estándar sin ajustes, hay opciones más simples.',
-    },
-    {
-      title: 'Tu negocio no trabaja con citas',
-      desc: 'Este sistema está pensado para servicios por agendamiento: clínicas, consultorios y centros de salud.',
-    },
-  ];
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
+  const bodyRef = useRef(null);
+  const bodyInView = useInView(bodyRef, { once: true, margin: "-60px" });
+  const ctaRef = useRef(null);
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-40px" });
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-200/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-rose-200/15 rounded-full blur-3xl" />
-      </div>
+    <section className="relative py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-emerald-100/20 to-transparent rounded-full blur-2xl" />
-      <div className="absolute bottom-20 left-10 w-72 h-72 bg-gradient-to-br from-rose-100/20 to-transparent rounded-full blur-2xl" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-20 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-slate-100 to-slate-50 rounded-full mb-6 border border-slate-200">
-            <Target className="w-4 h-4 text-slate-600" />
-            <span className="text-sm font-semibold text-slate-700 tracking-wide uppercase">
-              Claridad desde el inicio
-            </span>
+        <div ref={headerRef} className="mb-16">
+          <motion.p
+            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0}
+            className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-900 mb-4"
+          >
+            Claridad desde el inicio
+          </motion.p>
+          <motion.h2
+            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.04] max-w-xl"
+            style={{ letterSpacing: "-0.03em" }}
+          >
+            Honestidad<br />
+            <span className="text-blue-900">primero.</span>
+          </motion.h2>
+          <motion.p
+            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}
+            className="mt-5 text-lg text-slate-400 max-w-lg leading-relaxed"
+          >
+            No vendemos para todos. Queremos que tomes la mejor decisión para tu centro.
+          </motion.p>
+        </div>
+
+        {/* Dos columnas */}
+        <div ref={bodyRef} className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16">
+
+          {/* Columna SÍ */}
+          <div>
+            <motion.div
+              variants={fade} initial="hidden" animate={bodyInView ? "visible" : "hidden"} custom={0}
+              className="flex items-center gap-3 mb-2"
+            >
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                Es para ti si
+              </p>
+            </motion.div>
+            <motion.div
+              variants={fade} initial="hidden" animate={bodyInView ? "visible" : "hidden"} custom={0.05}
+              className="h-px bg-slate-900 mb-0"
+            />
+            <ul>
+              {yesItems.map((item, i) => (
+                <Item key={item.title} title={item.title} desc={item.desc} variant="yes" index={i + 1} />
+              ))}
+            </ul>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-            Honestidad{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-indigo-600">
-              primero.
-            </span>
-          </h2>
+          {/* Divisor móvil */}
+          <div className="lg:hidden h-px bg-slate-100 my-10" />
 
-          <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
-            No vendemos para todos.{' '}
-            <span className="font-semibold text-slate-900">Queremos que tomes la mejor decisión para tu centro.</span>
+          {/* Columna NO */}
+          <div>
+            <motion.div
+              variants={fade} initial="hidden" animate={bodyInView ? "visible" : "hidden"} custom={0.3}
+              className="flex items-center gap-3 mb-2"
+            >
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                No es para ti si
+              </p>
+            </motion.div>
+            <motion.div
+              variants={fade} initial="hidden" animate={bodyInView ? "visible" : "hidden"} custom={0.35}
+              className="h-px bg-slate-200 mb-0"
+            />
+            <ul>
+              {noItems.map((item, i) => (
+                <Item key={item.title} title={item.title} desc={item.desc} variant="no" index={i + 1} />
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Nota final */}
+        <motion.div
+          ref={ctaRef}
+          variants={fade} initial="hidden" animate={ctaInView ? "visible" : "hidden"} custom={0}
+          className="mt-14 pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        >
+          <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
+            <span className="font-semibold text-slate-700">¿No estás seguro?</span>{" "}
+            Conversemos 15 minutos sin compromiso. Solo para ver si calza con tu operación.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-          {/* YES Column */}
-          <div className="group relative">
-            {/* Glow Effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-green-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
-
-            {/* Card */}
-            <div className="relative h-full bg-white rounded-3xl
-                          shadow-xl shadow-slate-200/50
-                          border border-slate-200/50
-                          transition-all duration-500 ease-out
-                          hover:shadow-2xl hover:shadow-emerald-200/30
-                          hover:-translate-y-1
-                          hover:border-emerald-300/50
-                          overflow-hidden">
-
-              {/* Top Accent Bar */}
-              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 via-emerald-500 to-green-500" />
-
-              {/* Floating Orb */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-emerald-200/30 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Content */}
-              <div className="relative z-10 p-8 sm:p-10">
-                {/* Header */}
-                <div className="flex items-start gap-4 mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600
-                                shadow-lg shadow-emerald-500/25
-                                flex items-center justify-center flex-shrink-0
-                                transform transition-all duration-500
-                                group-hover:scale-110 group-hover:rotate-3">
-                    <Check className="w-7 h-7 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2
-                                  group-hover:text-transparent group-hover:bg-clip-text
-                                  group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-green-600
-                                  transition-all duration-300">
-                      Es para ti si...
-                    </h3>
-                    <p className="text-base text-slate-600 leading-relaxed">
-                      Quieres ordenar tu agenda, tus cobros y tus fichas de una vez.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Items List */}
-                <ul className="space-y-4">
-                  {yesItems.map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="group/item relative overflow-hidden rounded-2xl
-                               border border-emerald-100/60
-                               bg-gradient-to-br from-emerald-50/40 to-green-50/30
-                               p-5
-                               transition-all duration-300
-                               hover:border-emerald-300/60
-                               hover:shadow-lg hover:shadow-emerald-100/50
-                               hover:-translate-x-1"
-                    >
-                      {/* Shine Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
-
-                      <div className="flex gap-4 relative z-10">
-                        <span className="mt-0.5 w-9 h-9 rounded-xl bg-white
-                                       shadow-sm
-                                       flex items-center justify-center flex-shrink-0
-                                       transition-all duration-300
-                                       group-hover/item:scale-110 group-hover/item:shadow-md">
-                          <Check className="w-5 h-5 text-emerald-600" strokeWidth={2.5} />
-                        </span>
-                        <div className="flex-1">
-                          <p className="font-bold text-slate-900 mb-1 text-base">{item.title}</p>
-                          <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-green-500
-                           transform scale-x-0 group-hover:scale-x-100
-                           transition-transform duration-500 origin-left" />
-            </div>
-          </div>
-
-          {/* NO Column */}
-          <div className="group relative">
-            {/* Glow Effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500 to-red-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
-
-            {/* Card */}
-            <div className="relative h-full bg-white rounded-3xl
-                          shadow-xl shadow-slate-200/50
-                          border border-slate-200/50
-                          transition-all duration-500 ease-out
-                          hover:shadow-2xl hover:shadow-rose-200/30
-                          hover:-translate-y-1
-                          hover:border-rose-300/50
-                          overflow-hidden">
-
-              {/* Top Accent Bar */}
-              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-rose-400 via-rose-500 to-red-500" />
-
-              {/* Floating Orb */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-rose-200/30 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Content */}
-              <div className="relative z-10 p-8 sm:p-10">
-                {/* Header */}
-                <div className="flex items-start gap-4 mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-red-600
-                                shadow-lg shadow-rose-500/25
-                                flex items-center justify-center flex-shrink-0
-                                transform transition-all duration-500
-                                group-hover:scale-110 group-hover:rotate-3">
-                    <AlertCircle className="w-7 h-7 text-white" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2
-                                  group-hover:text-transparent group-hover:bg-clip-text
-                                  group-hover:bg-gradient-to-r group-hover:from-rose-600 group-hover:to-red-600
-                                  transition-all duration-300">
-                      Quizá no es para ti si...
-                    </h3>
-                    <p className="text-base text-slate-600 leading-relaxed">
-                      No pasa nada: a veces conviene ir paso a paso.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Items List */}
-                <ul className="space-y-4">
-                  {noItems.map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="group/item relative overflow-hidden rounded-2xl
-                               border border-rose-100/60
-                               bg-gradient-to-br from-rose-50/40 to-red-50/30
-                               p-5
-                               transition-all duration-300
-                               hover:border-rose-300/60
-                               hover:shadow-lg hover:shadow-rose-100/50
-                               hover:-translate-x-1"
-                    >
-                      {/* Shine Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
-
-                      <div className="flex gap-4 relative z-10">
-                        <span className="mt-0.5 w-9 h-9 rounded-xl bg-white
-                                       shadow-sm
-                                       flex items-center justify-center flex-shrink-0
-                                       transition-all duration-300
-                                       group-hover/item:scale-110 group-hover/item:shadow-md">
-                          <X className="w-5 h-5 text-rose-600" strokeWidth={2.5} />
-                        </span>
-                        <div className="flex-1">
-                          <p className="font-bold text-slate-900 mb-1 text-base">{item.title}</p>
-                          <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Bottom Accent Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-400 to-red-500
-                           transform scale-x-0 group-hover:scale-x-100
-                           transition-transform duration-500 origin-left" />
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center max-w-2xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-            <p className="text-slate-700 leading-relaxed">
-              <span className="font-semibold text-slate-900">¿No estás seguro?</span>{' '}
-              Conversemos 15 minutos. Sin compromiso, sin presión. Solo para ver si calza con tu operación.
-            </p>
-          </div>
-        </div>
+          <a
+            href="https://wa.me/56966091038?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20hora%20para%20que%20me%20muestren%20la%20plataforma%20de%20Agenda%20Cl%C3%ADnica."
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-blue-900 font-semibold text-sm border-b border-blue-900/30 hover:border-blue-900 transition-colors pb-0.5 shrink-0"
+          >
+            Hablar con nosotros →
+          </a>
+        </motion.div>
       </div>
     </section>
   );
