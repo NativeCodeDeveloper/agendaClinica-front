@@ -46,7 +46,7 @@ const clientLogos = [
   { src: "/logos/avalielogo1.png", alt: "Centro avelié" },
   { src: "/logos/catarsis.png", alt: "Catarsis" },
   { src: "/logos/somedlogo.png", alt: "Somed" },
-  { src: "/logos/Saludb.png", alt: "Salud Bartelsmann" },
+  { src: "/logos/saludb.png", alt: "Salud Bartelsmann" },
   { src: "/logos/metabo.png", alt: "MetaboCare" },
   { src: "/logos/logors.png", alt: "Rsystem" },
   { src: "/logos/drrenzo.png", alt: "Dr. Renzo tais" },

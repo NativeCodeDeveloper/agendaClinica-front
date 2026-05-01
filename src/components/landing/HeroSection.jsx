@@ -20,7 +20,7 @@ const fade = {
 
 const stats = [
   { value: "99.9%", label: "Disponibilidad" },
-  { value: "−40%", label: "Menos no-show" },
+  { value: "−40%", label: "Menos inasistencias" },
   { value: "24/7", label: "Agenda abierta" },
 ];
 
@@ -51,7 +51,7 @@ export default function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <span className="text-[11px] font-medium text-slate-500">Sistema activo · Listo para usar</span>
+            <span className="text-[11px] font-medium text-slate-500">Sistema activo · AC</span>
           </div>
         </motion.header>
 
@@ -67,9 +67,9 @@ export default function HeroSection() {
               className="mt-6 text-[2.8rem] sm:text-[3.6rem] lg:text-[4.4rem] font-bold leading-[1.04] text-slate-900"
               style={{ letterSpacing: "-0.03em" }}
             >
-              Agenda clínica<br />
-              plataforma para<br />
-              <span className="text-blue-900">profesionales.</span>
+              Agenda clínica,<br />
+              la gestión profesional de tu consulta<br />
+              <span className="text-blue-900">en tus manos.</span>
             </motion.h1>
 
             <motion.p
