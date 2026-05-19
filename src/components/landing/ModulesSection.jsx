@@ -32,62 +32,62 @@ const modules = [
   {
     icon: CalendarDays,
     title: "Agenda y calendario",
-    desc: "Tus pacientes agendan online en cualquier momento. Tú ves tu día, semana o mes en tiempo real.",
+    desc: "Pacientes agendan online y tu equipo ve disponibilidad, cambios y ocupación en tiempo real.",
   },
   {
     icon: UserCog,
     title: "Agendas por profesional",
-    desc: "Cada especialista tiene su propia agenda, horarios y servicios. Ideal para centros con más de un profesional.",
+    desc: "Horarios, servicios y reglas por especialista para evitar dobles reservas y confusión interna.",
   },
   {
     icon: Users,
     title: "Gestión de pacientes",
-    desc: "Historial completo de cada paciente: datos, atenciones, pagos y notas. Todo en un perfil único.",
+    desc: "Datos, atenciones, pagos, notas y documentos reunidos en un perfil fácil de revisar.",
   },
   {
     icon: Clock,
     title: "Bloqueo de horarios",
-    desc: "Bloquea días o franjas por profesional para vacaciones, reuniones o imprevistos.",
+    desc: "Cierra días o franjas por profesional para reuniones, vacaciones o urgencias sin romper el calendario.",
   },
   {
     icon: CreditCard,
     title: "Pagos automatizados",
-    desc: "Cobra antes de la cita y reduce los no-show. Mercado Pago integrado para pagos sin fricción.",
+    desc: "Cobra antes de la atención o solicita abonos para reducir ausencias y ordenar caja.",
   },
   {
     icon: FileSpreadsheet,
     title: "Presupuestos dinámicos",
-    desc: "Genera presupuestos por tratamiento en segundos. Con detalle de servicios, valores y cuotas.",
+    desc: "Crea presupuestos claros por tratamiento, con servicios, valores y cuotas listas para compartir.",
   },
   {
     icon: MessageSquare,
     title: "Recordatorios automáticos",
-    desc: "Recordatorios por correo antes de cada cita. Menos olvidos, menos ausencias, más puntualidad.",
+    desc: "Mensajes antes de cada cita para que el paciente llegue recordado y el equipo no persiga confirmaciones.",
   },
   {
     icon: Mail,
     title: "Correos de seguimiento",
-    desc: "Emails automáticos post-atención para mantener el contacto y fidelizar a tus pacientes.",
+    desc: "Seguimiento post-atención para mantener continuidad sin depender de tareas manuales.",
   },
   {
     icon: Briefcase,
     title: "Administración de agenda",
-    desc: "Reagenda, bloquea días completos o agrega reservas manuales sin perder el orden.",
+    desc: "Reagenda, bloquea y agrega reservas manuales manteniendo una vista limpia para todo el equipo.",
   },
   {
     icon: Shield,
     title: "Resguardo de datos clínicos",
-    desc: "Encriptación avanzada y respaldos diarios para proteger la información médica de tus pacientes.",
+    desc: "Cifrado, respaldos y buenas prácticas para proteger información sensible de pacientes.",
   },
   {
     icon: Lock,
     title: "Control de accesos",
-    desc: "Define quién puede ver qué. Roles por cargo para que cada persona acceda solo a lo que necesita.",
+    desc: "Roles por cargo para que cada persona vea solo lo necesario para su trabajo.",
   },
   {
     icon: BarChart,
     title: "Historial y reportes",
-    desc: "Visualiza ingresos, citas y pagos pendientes con reportes claros. Decisiones basadas en datos.",
+    desc: "Ingresos, citas y pagos pendientes en reportes simples para decidir con más claridad.",
   },
 ];
 
@@ -163,7 +163,6 @@ export default function ModulesSection() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header — alineado a la izquierda, no centrado */}
         <div ref={headerRef} className="mb-14 max-w-2xl">
           <motion.p
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0}
@@ -176,14 +175,14 @@ export default function ModulesSection() {
             className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.025em" }}
           >
-            Todo lo que necesitas,<br />
-            <span className="text-blue-900">en un solo lugar.</span>
+            La operación completa,<br />
+            <span className="text-blue-900">con menos esfuerzo.</span>
           </motion.h2>
           <motion.p
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}
             className="mt-4 text-lg text-slate-400 leading-relaxed"
           >
-            Cada módulo conectado. Sin apps extras, sin integraciones manuales.
+            Agenda, pacientes, pagos, fichas y seguimiento conectados para que tu consulta funcione sin depender de memoria, chats o planillas.
           </motion.p>
         </div>
 
@@ -214,7 +213,7 @@ export default function ModulesSection() {
           className="mt-10 flex items-center gap-2 text-sm text-slate-400"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          Sistema en constante evolución · Actualizaciones incluidas sin costo adicional
+          Actualizaciones incluidas y mejoras continuas para acompañar el crecimiento de tu consulta.
         </motion.div>
       </div>
     </section>

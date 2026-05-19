@@ -22,30 +22,30 @@ const fadeUp = {
 const benefits = [
   {
     icon: Bell,
-    title: "Reduce inasistencias",
+    title: "Menos pacientes ausentes",
     description:
-      "Los recordatorios automáticos ayudan a disminuir ausencias y mantienen tu agenda funcionando.",
+      "Recordatorios automáticos antes de cada cita para proteger tus horas y evitar espacios perdidos.",
     style: "bg-blue-50 text-blue-900 border-blue-100",
   },
   {
     icon: CreditCard,
-    title: "Pagos más ordenados",
+    title: "Pagos con más control",
     description:
-      "Recibe abonos o pagos al reservar y mejora el control financiero desde el inicio.",
+      "Solicita abonos o pagos al reservar y llega a cada atención con el compromiso confirmado.",
     style: "bg-blue-50 text-blue-900 border-blue-100",
   },
   {
     icon: FileText,
-    title: "Historial disponible",
+    title: "Contexto clínico a mano",
     description:
-      "Accede a la información de cada paciente desde cualquier lugar, sin papeles ni desorden.",
+      "Revisa datos, notas y antecedentes sin buscar entre papeles, chats o planillas sueltas.",
     style: "bg-indigo-50 text-indigo-700 border-indigo-100",
   },
   {
     icon: Users,
-    title: "Ideal para equipos",
+    title: "Equipos coordinados",
     description:
-      "Cada profesional administra horarios, servicios y disponibilidad sin cruces.",
+      "Cada profesional trabaja con su agenda, servicios y disponibilidad sin cruces internos.",
     style: "bg-cyan-50 text-cyan-700 border-cyan-100",
   },
 ];
@@ -92,9 +92,9 @@ function BenefitsBottom() {
   const visible = useInView(ref, { once: true });
 
   const items = [
-    "Ahorra tiempo administrativo",
-    "Mejora tu imagen profesional",
-    "Centraliza tus pacientes",
+    "Libera tiempo administrativo",
+    "Mejora la experiencia del paciente",
+    "Centraliza la operación diaria",
   ];
 
   return (
@@ -132,7 +132,7 @@ export default function BenefitsSection() {
             className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-900"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-blue-800" />
-            Lo que cambia desde el día uno
+            Orden visible desde el primer día
           </motion.span>
 
           <motion.h2
@@ -142,9 +142,9 @@ export default function BenefitsSection() {
             custom={1}
             className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            Deja el desorden atrás y{" "}
+            Menos coordinación manual,{" "}
             <span className="text-blue-950">
-              gestiona tu consulta con claridad.
+              más foco en atender.
             </span>
           </motion.h2>
 
@@ -155,9 +155,9 @@ export default function BenefitsSection() {
             custom={2}
             className="mt-5 text-lg leading-8 text-slate-600"
           >
-            Tu atención merece más que WhatsApp y planillas. Agenda Clínica
-            centraliza reservas, pacientes y operación diaria en una sola
-            plataforma.
+            Agenda Clínica reemplaza el ida y vuelta de mensajes, planillas y
+            recordatorios manuales por un flujo claro para pacientes,
+            recepción y profesionales.
           </motion.p>
         </div>
 

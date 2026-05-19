@@ -21,9 +21,9 @@ const fadeUp = {
 };
 
 const guarantees = [
-  { icon: CheckCircle2, text: "Sin compromiso" },
+  { icon: CheckCircle2, text: "Demo sin compromiso" },
   { icon: Clock, text: "Respuesta en menos de 24 hrs" },
-  { icon: Shield, text: "Diagnóstico gratuito" },
+  { icon: Shield, text: "Orientación según tu operación" },
 ];
 
 export default function ContactSection() {
@@ -51,7 +51,7 @@ export default function ContactSection() {
         >
           <span className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-900/50 text-blue-200 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-300 animate-pulse" />
-            Hablemos
+            Agenda una conversación
           </span>
         </motion.div>
 
@@ -64,9 +64,9 @@ export default function ContactSection() {
           className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight"
           style={{ letterSpacing: "-0.02em" }}
         >
-          ¿Listo para ordenar
+          Ordenemos tu agenda
           <br />
-          <span className="text-blue-200">tu clínica?</span>
+          <span className="text-blue-200">sin agregar más carga.</span>
         </motion.h2>
 
         {/* Subtitle */}
@@ -77,8 +77,7 @@ export default function ContactSection() {
           custom={0.2}
           className="mt-5 text-lg text-blue-200 leading-relaxed max-w-xl mx-auto"
         >
-          Cuéntanos tu tipo de centro y cuántos profesionales atienden. En menos de 24 horas
-          tendrás una propuesta clara, sin compromiso y sin letra chica.
+          Cuéntanos cómo atiendes hoy: cantidad de profesionales, tipo de agenda y principales dolores. Te mostraremos si Agenda Clínica calza con tu operación.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -99,7 +98,7 @@ export default function ContactSection() {
             className="inline-flex items-center gap-2.5 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-green-900/30 text-[15px]"
           >
             <MessageCircle className="h-5 w-5" strokeWidth={2} />
-            Contacto por WhatsApp
+            Agendar por WhatsApp
           </motion.a>
 
           <motion.a
@@ -110,7 +109,7 @@ export default function ContactSection() {
             className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-2xl border border-white/20 text-[15px] backdrop-blur-sm transition-colors duration-200"
           >
             <Mail className="h-5 w-5 text-blue-200" strokeWidth={2} />
-            Contacto por Correo
+            Escribir por correo
           </motion.a>
         </motion.div>
 

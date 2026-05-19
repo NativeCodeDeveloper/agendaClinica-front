@@ -25,47 +25,57 @@ const fade = {
 };
 
 const heroCards = [
-  { icon: CalendarCheck2, title: "Agenda", subtitle: "Inteligente" },
-  { icon: Users, title: "Pacientes", subtitle: "Organizados" },
-  { icon: BarChart3, title: "Reportes y", subtitle: "Estadisticas" },
+  { icon: CalendarCheck2, title: "+ Reservas", subtitle: "- mensajes" },
+  { icon: Users, title: "Pacientes", subtitle: "ordenados" },
+  { icon: BarChart3, title: "Control", subtitle: "del dia" },
 ];
 
 const features = [
   {
     icon: CalendarCheck2,
-    title: "Agenda inteligente",
-    description: "Gestiona citas, recordatorios y disponibilidad en segundos.",
+    title: "Agenda sin complicaciones",
+    description: "Disponibilidad clara, reservas online y cambios visibles para todo el equipo.",
   },
   {
     icon: Users,
-    title: "Historia clinica digital",
-    description: "Accede a la informacion de tus pacientes de forma segura y rapida.",
+    title: "Pacientes en orden",
+    description: "Fichas, historial y datos importantes reunidos antes de cada atención.",
   },
   {
     icon: BarChart3,
-    title: "Reportes y estadisticas",
-    description: "Analiza tu practica y toma decisiones basadas en datos.",
+    title: "Menos tareas manuales",
+    description: "Recordatorios, pagos y seguimiento trabajando mientras atiendes.",
   },
   {
     icon: Shield,
-    title: "Seguridad total",
-    description: "Protegemos la informacion de tus pacientes con altos estandares.",
+    title: "Confianza clínica",
+    description: "Información sensible protegida, respaldada y disponible solo para quien corresponde.",
   },
 ];
 
 export default function HeroSection() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-[#fbfdff]">
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.14),_transparent_30%),radial-gradient(circle_at_75%_35%,_rgba(99,102,241,0.14),_transparent_25%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.10),_transparent_25%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(135deg,rgba(239,246,255,0.92),rgba(255,255,255,0.65)_48%,rgba(248,250,252,0.96))]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-[radial-gradient(120%_100%_at_50%_100%,rgba(59,130,246,0.10),transparent_60%)] pointer-events-none" />
-      <div className="absolute -left-24 top-32 h-72 w-72 rounded-full bg-cyan-100/50 blur-3xl pointer-events-none" />
-      <div className="absolute -right-16 top-16 h-80 w-80 rounded-full bg-indigo-100/50 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 pt-[92px] sm:px-6 sm:pt-[104px] lg:px-8 lg:pt-[112px]">
-        <div className="grid min-h-[calc(100vh-116px)] items-center gap-12 pb-10 pt-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4 lg:pb-0">
+        <div className="grid min-h-[calc(100vh-116px)] items-center gap-10 pb-10 pt-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4 lg:pb-0">
           <div className="max-w-xl">
-            <motion.div variants={fade} initial="hidden" animate="visible" custom={0.6}>
-              <img src="/logacsolo.png" alt="AC" className="h-44 w-44 object-contain sm:h-56 sm:w-56 lg:h-64 lg:w-64" />
+            <motion.div
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              custom={0.6}
+              className="flex justify-start"
+            >
+              <img
+                src="/logoac5.png"
+                alt="Agenda Clínica"
+                width={1431}
+                height={467}
+                className="h-auto w-[230px] object-contain sm:w-[300px] lg:w-[360px]"
+              />
             </motion.div>
 
             <motion.h1
@@ -73,12 +83,12 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={1}
-              className="mt-6 text-[2.8rem] font-semibold leading-[0.98] tracking-[-0.05em] text-[#163579] sm:text-[4rem] lg:text-[4.6rem]"
+              className="mt-5 text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.045em] text-[#11255a] sm:text-[4rem] lg:text-[4.8rem]"
             >
-              Organiza tu practica,
+              Tu agenda clínica,
               <br />
-              <span className="bg-linear-to-r from-sky-500 via-blue-600 to-violet-600 bg-clip-text text-transparent">
-                transforma vidas
+              <span className="bg-linear-to-r from-sky-500 via-blue-700 to-slate-950 bg-clip-text text-transparent">
+                sin desorden.
               </span>
             </motion.h1>
 
@@ -95,10 +105,10 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={1.6}
-              className="mt-8 max-w-lg text-lg leading-9 text-slate-600 sm:text-[1.75rem]"
+              className="mt-7 max-w-xl text-lg leading-8 text-slate-600 sm:text-[1.75rem]"
               style={{ fontSize: "clamp(1.05rem, 1.8vw, 1.15rem)" }}
             >
-              Agenda Clinica es la herramienta integral para profesionales de la salud que desean optimizar su tiempo y brindar la mejor atencion.
+              Reservas online, recordatorios, pagos, fichas e historial de pacientes en un solo lugar. Menos mensajes perdidos, menos horas vacías y más control antes de atender.
             </motion.p>
 
             <motion.div
@@ -112,23 +122,32 @@ export default function HeroSection() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-[22px] bg-linear-to-r from-sky-500 to-violet-600 px-7 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white shadow-[0_18px_45px_rgba(59,130,246,0.24)] transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#102a73] px-7 py-4 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(37,99,235,0.22)] transition-transform hover:-translate-y-0.5"
               >
-                Comienza ahora
+                Agendar una demo
                 <ArrowRight className="h-5 w-5" strokeWidth={2.2} />
               </a>
               <a
                 href="https://demo.angendaclinica.space"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-3 rounded-[22px] border-2 border-blue-500 bg-white px-7 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-blue-600 shadow-sm transition-colors hover:bg-blue-50"
+                className="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-7 py-4 text-sm font-semibold text-[#102a73] shadow-sm transition-colors hover:bg-blue-50"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-blue-500">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-200 bg-blue-50">
                   <Play className="ml-0.5 h-3.5 w-3.5 fill-current" strokeWidth={2.2} />
                 </span>
-                Ver demo
+                Ver plataforma
               </a>
             </motion.div>
+            <motion.p
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              custom={2.2}
+              className="mt-4 text-sm leading-6 text-slate-500"
+            >
+              Configuración guiada, capacitación incluida y soporte continuo para partir sin complicaciones.
+            </motion.p>
           </div>
 
           <motion.div
@@ -136,7 +155,7 @@ export default function HeroSection() {
             initial="hidden"
             animate="visible"
             custom={1.2}
-            className="relative mx-auto flex w-full max-w-[740px] justify-center"
+            className="relative mx-auto hidden w-full max-w-[740px] justify-center lg:flex"
           >
             <div className="relative h-[520px] w-[520px] sm:h-[620px] sm:w-[620px]">
               <div className="absolute inset-0 rounded-full bg-linear-to-br from-sky-400 via-blue-500 to-violet-600 p-5 shadow-[0_40px_80px_rgba(59,130,246,0.18)]">

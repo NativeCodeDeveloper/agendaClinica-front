@@ -26,26 +26,26 @@ const fadeUp = {
 const steps = [
   {
     number: "01",
-    title: "Diagnóstico",
-    desc: "Conversamos 15 minutos para entender tu operación y diseñar la configuración ideal para tu centro.",
+    title: "Mapeo de tu operación",
+    desc: "Entendemos cómo reservas, confirmas, cobras y atiendes hoy para configurar el flujo correcto.",
     icon: Search,
   },
   {
     number: "02",
-    title: "Configuración",
-    desc: "Cargamos tus servicios, profesionales, horarios y tarifas. Tú no mueves un dedo.",
+    title: "Configuración guiada",
+    desc: "Cargamos servicios, profesionales, horarios, tarifas y reglas para que partas con una base ordenada.",
     icon: Settings,
   },
   {
     number: "03",
-    title: "Capacitación",
-    desc: "Tu equipo aprende a operar el sistema en una sesión. Recepción y profesionales, listos desde el primer día.",
+    title: "Capacitación del equipo",
+    desc: "Recepción y profesionales aprenden el flujo real: reservar, reagendar, revisar fichas y dar seguimiento.",
     icon: GraduationCap,
   },
   {
     number: "04",
-    title: "En marcha",
-    desc: "Empiezas a recibir reservas online, cobros automáticos y recordatorios. Sin intervención manual.",
+    title: "Operación en vivo",
+    desc: "Empiezas a recibir reservas online, pagos y recordatorios con acompañamiento durante la puesta en marcha.",
     icon: Rocket,
   },
 ];
@@ -85,10 +85,10 @@ function ProcessCarousel() {
     <div className="mb-14">
       <div className="mb-6 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
-          Conoce el futuro
+          Plataforma en acción
         </p>
         <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
-          El motor de tu consulta
+          Mira cómo se ordena una jornada clínica
         </h3>
       </div>
 
@@ -226,7 +226,7 @@ export default function ProcessSection() {
           >
             <span className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-900 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full">
               <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} />
-              Operativo en menos tiempo del que imaginas
+              Implementación acompañada
             </span>
           </motion.div>
 
@@ -238,8 +238,8 @@ export default function ProcessSection() {
             className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            ¿Cómo{" "}
-            <span className="text-blue-900">empezamos?</span>
+            De agenda dispersa a operación{" "}
+            <span className="text-blue-900">controlada.</span>
           </motion.h2>
 
           <motion.p
@@ -249,9 +249,9 @@ export default function ProcessSection() {
             custom={0.2}
             className="mt-5 text-lg text-slate-500 leading-relaxed"
           >
-            Sin instalaciones, sin complicaciones.{" "}
+            Sin instalaciones ni procesos eternos.{" "}
             <span className="font-semibold text-slate-700">
-              Te configuramos todo y te acompañamos hasta que operes sin problemas.
+              Te ayudamos a dejar listo el sistema para que el cambio se sienta ordenado, no pesado.
             </span>
           </motion.p>
         </div>
@@ -276,12 +276,11 @@ export default function ProcessSection() {
             <div className="flex items-center justify-center gap-2 mb-3">
               <CheckCircle2 className="w-5 h-5 text-emerald-500" strokeWidth={2} />
               <span className="font-semibold text-slate-900 text-[15px]">
-                Implementación garantizada
+                Acompañamiento real de implementación
               </span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed mb-5">
-              No estás solo, te acompañamos desde el primer día hasta que tu clínica
-              esté 100% automatizada y funcionando.
+              Te guiamos desde la configuración hasta el primer uso real, con soporte para resolver dudas del equipo.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-slate-500">
               {["Soporte continuo", "Sin costos ocultos", "Capacitación incluida"].map(

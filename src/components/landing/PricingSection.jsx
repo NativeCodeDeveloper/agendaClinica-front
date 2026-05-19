@@ -30,15 +30,15 @@ const plans = [
     subtitle: "Para consultas unipersonales",
     price: "$14.990 mensual",
     features: [
-      "Agenda online con recordatorios automaticos por WhatsApp y correo",
-      "Pagina web de agendamiento para pacientes",
-      "Confirmacion y cancelacion de citas desde WhatsApp y correo",
-      "Fichas clinicas totalmente personalizables",
+      "Agenda online con recordatorios automáticos por WhatsApp y correo",
+      "Página web de agendamiento para pacientes",
+      "Confirmación y cancelación de citas desde WhatsApp y correo",
+      "Fichas clínicas totalmente personalizables",
       "Historial completo de pacientes",
-      "Emision de recetas, ordenes de examen y presupuestos con el logo de su consulta",
-      "Gestion organizada de pacientes y citas",
+      "Emisión de recetas, órdenes de examen y presupuestos con el logo de tu consulta",
+      "Gestión organizada de pacientes y citas",
       "Acceso desde computador o celular",
-      "Odontogramas (en caso de odontologia)",
+      "Odontogramas para clínicas dentales",
     ],
     highlight: false,
   },
@@ -49,14 +49,14 @@ const plans = [
     annualPrice: "$295.500 anual",
     features: [
       "Pasarela de pago integrada",
-      "Ingreso de convenios y medios de pago",
-      "Envio activo de recordatorios",
-      "Adjuntar imagenes en fichas clinicas",
+      "Registro de convenios y medios de pago",
+      "Envío activo de recordatorios",
+      "Imágenes adjuntas en fichas clínicas",
       "Adjuntar documentos PDF y consentimientos informados",
       "Hasta 3 personalizaciones en la plataforma web",
-      "1 sucursal maxima",
+      "1 sucursal máxima",
       "Hasta 10 usuarios",
-      "Atencion y acompañamiento preferente",
+      "Atención y acompañamiento preferente",
     ],
     highlight: true,
   },
@@ -66,12 +66,12 @@ const plans = [
     price: "$69.990 mensual",
     annualPrice: "$599.990 anual",
     features: [
-      "Pagina personalizada",
+      "Página personalizada",
       "Portal de pacientes",
       "Seguimiento activo",
       "Intranet de pacientes multitask",
-      "Solicitud de examenes",
-      "Emision de recetas",
+      "Solicitud de exámenes",
+      "Emisión de recetas",
       "Recetas de lentes",
       "Odontogramas",
       "Presupuestos",
@@ -84,12 +84,12 @@ const plans = [
 ];
 
 const professionalSlides = [
-  { title: "Tecnologo medico", subtitle: "Oftalmologia", image: "/profesionales/2.png" },
+  { title: "Tecnólogo médico", subtitle: "Oftalmología", image: "/profesionales/2.png" },
   { title: "Matrona", subtitle: "Salud integral femenina", image: "/profesionales/3.png" },
-  { title: "Odontologos", subtitle: "Clinica dental", image: "/profesionales/4.png" },
-  { title: "Kinesiologos", subtitle: "Rehabilitacion y movimiento", image: "/profesionales/5.png" },
-  { title: "Terapeuta ocupacional", subtitle: "Intervencion funcional", image: "/profesionales/6.png" },
-  { title: "Psicologia", subtitle: "Atencion emocional", image: "/profesionales/7.png" },
+  { title: "Odontólogos", subtitle: "Clínica dental", image: "/profesionales/4.png" },
+  { title: "Kinesiólogos", subtitle: "Rehabilitación y movimiento", image: "/profesionales/5.png" },
+  { title: "Terapeuta ocupacional", subtitle: "Intervención funcional", image: "/profesionales/6.png" },
+  { title: "Psicología", subtitle: "Atención emocional", image: "/profesionales/7.png" },
   { title: "Nutricionistas", subtitle: "Plan alimentario", image: "/profesionales/8.png" },
   { title: "Podologia clinica", subtitle: "Cuidado especializado", image: "/profesionales/9.png" },
 ];
@@ -216,10 +216,10 @@ function ProfessionalCarousel() {
           Profesionales
         </p>
         <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
-          Agenda Clinica se adapta a distintas especialidades
+          Una agenda flexible para distintas especialidades
         </h3>
         <p className="mt-3 text-sm leading-7 text-slate-500 sm:text-base">
-          Desde atencion individual hasta equipos especializados. La imagen de medico general `1.png` no esta en `public/profesionales`.
+          Desde atención individual hasta centros con equipos especializados. Cada flujo puede adaptarse a servicios, duración de citas y necesidades clínicas distintas.
         </p>
       </div>
 
@@ -256,7 +256,7 @@ function ProfessionalCarousel() {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-slate-500">
-            Desplazamiento continuo por especialidades, entrando por un lado y saliendo por el otro.
+            Diseñado para consultas que necesitan orden, continuidad y una experiencia simple para sus pacientes.
           </p>
         </div>
       </div>
@@ -296,8 +296,8 @@ export default function PricingSection() {
             className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Planes que{" "}
-            <span className="text-blue-900">escalan contigo</span>
+            Planes claros para{" "}
+            <span className="text-blue-900">operar con orden</span>
           </motion.h2>
 
           <motion.p
@@ -307,8 +307,8 @@ export default function PricingSection() {
             custom={0.2}
             className="mt-5 text-lg text-slate-500 leading-relaxed"
           >
-            El precio final se ajusta según tu equipo y módulos activos.{" "}
-            <span className="font-semibold text-slate-700">Sin sorpresas ni letra chica.</span>
+            Elige según el tamaño de tu consulta, la cantidad de usuarios y el nivel de automatización que necesitas.{" "}
+            <span className="font-semibold text-slate-700">Te ayudamos a escoger sin presión.</span>
           </motion.p>
         </div>
 
@@ -341,8 +341,8 @@ function PricingContact() {
       className="mt-12 text-center"
     >
       <p className="text-slate-500 text-sm mb-5">
-        ¿Tienes dudas sobre qué plan es para ti?{" "}
-        <span className="text-slate-700 font-medium">Conversemos sin compromiso.</span>
+        ¿No sabes qué plan calza con tu consulta?{" "}
+        <span className="text-slate-700 font-medium">Lo revisamos contigo en una conversación breve.</span>
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a

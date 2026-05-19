@@ -18,23 +18,23 @@ const fadeUp = {
 const faqs = [
   {
     q: "¿Sirve para mi tipo de consulta o centro?",
-    a: "Sí. Agenda Clínica está diseñado para médicos, dentistas, kinesiólogos, psicólogos, nutricionistas y centros de estética o salud. Si atiendes con citas, esto es para ti.",
+    a: "Sí. Agenda Clínica está diseñado para profesionales y centros de salud que trabajan con reservas: medicina, odontología, kinesiología, psicología, nutrición, estética y otras especialidades.",
   },
   {
     q: "¿Cómo cobran mis pacientes?",
-    a: "Integramos Mercado Pago y otras pasarelas para que tus pacientes paguen al momento de agendar. Tú decides si cobras el total o un abono para asegurar la cita.",
+    a: "Puedes integrar pagos para que tus pacientes paguen al momento de reservar. Tú defines si cobras el total, un abono o solo usas la reserva como confirmación.",
   },
   {
     q: "¿Cuánto tiempo tarda en estar operativo?",
-    a: "Entre 7 y 14 días hábiles. Nuestro equipo configura todo por ti y capacita a tu equipo. Solo tienes que aparecer el primer día.",
+    a: "Depende del tamaño de tu operación, pero el proceso es acompañado: configuramos servicios, profesionales, horarios y capacitamos a tu equipo para que partan con claridad.",
   },
   {
     q: "¿Qué pasa con los datos de mis pacientes?",
-    a: "Toda la información está encriptada y respaldada diariamente en servidores seguros. Cumplimos los estándares de privacidad para datos clínicos sensibles.",
+    a: "La información se resguarda con cifrado, respaldos y control de accesos. Cada usuario puede tener permisos según su rol dentro del centro.",
   },
   {
     q: "¿Puedo migrar mis datos actuales?",
-    a: "Sí. Te ayudamos a importar tu base de pacientes, fichas e historial de atención desde Excel, Google Calendar o cualquier sistema que estés usando hoy. No pierdes nada.",
+    a: "Sí. Podemos ayudarte a ordenar e importar bases de pacientes o información existente desde planillas u otros sistemas, según el estado de tus datos actuales.",
   },
 ];
 
@@ -111,7 +111,7 @@ export default function FAQSection() {
           >
             <span className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-900 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-700" />
-              FAQ
+              Preguntas frecuentes
             </span>
           </motion.div>
 
@@ -123,8 +123,8 @@ export default function FAQSection() {
             className="mt-5 text-3xl sm:text-4xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Todo lo que necesitas{" "}
-            <span className="text-blue-900">saber</span>
+            Respuestas claras antes de{" "}
+            <span className="text-blue-900">agendar una demo</span>
           </motion.h2>
         </div>
 

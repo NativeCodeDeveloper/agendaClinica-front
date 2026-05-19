@@ -7,8 +7,8 @@ const WA_LINK =
 
 const navItems = [
   ["Inicio", "#inicio"],
-  ["Funciones", "#funciones"],
   ["Beneficios", "#beneficios"],
+  ["Funciones", "#funciones"],
   ["Precios", "#precios"],
   ["Contacto", "#contacto"],
 ];
@@ -33,10 +33,12 @@ export default function LandingNavbar() {
         }`}
       >
         <div className="flex items-center justify-between gap-4">
-          <div className="min-w-0">
-            <p className="text-[1.02rem] font-semibold tracking-[-0.04em] text-[#1a2348] sm:text-[1.3rem] lg:text-[1.65rem]">
-              AgendaClinica
-            </p>
+          <div className="flex min-w-0 items-center">
+            <img
+              src="/logacsolo.png"
+              alt="Agenda Clínica"
+              className="h-9 w-9 object-contain sm:h-11 sm:w-11 lg:h-12 lg:w-12"
+            />
           </div>
 
           <nav className="hidden items-center gap-6 lg:flex">
@@ -57,7 +59,7 @@ export default function LandingNavbar() {
             rel="noreferrer"
             className="shrink-0 rounded-full bg-[#1d2148] px-3.5 py-2 text-[10px] font-semibold text-white shadow-lg shadow-slate-900/10 transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-[11px] lg:px-7 lg:py-3 lg:text-sm"
           >
-            Iniciar sesion
+            Agendar demo
           </a>
         </div>
 

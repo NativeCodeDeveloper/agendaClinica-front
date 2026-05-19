@@ -18,21 +18,21 @@ const fadeUp = {
 const testimonials = [
   {
     quote:
-      "Bajamos los no-show a la mitad en el primer mes. Los recordatorios automáticos cambiaron completamente la dinámica de la clínica.",
+      "Bajamos los no-show a la mitad en el primer mes. Los recordatorios automáticos ordenaron completamente la dinámica de la clínica.",
     author: "Dra. Camila Vargas",
     role: "Médico Estético · Santiago",
     initial: "C",
   },
   {
     quote:
-      "Mi recepcionista ya no pasa el día respondiendo WhatsApp. Los pacientes agendan solos, pagan solos y llegan recordados.",
+      "Recepción dejó de pasar el día respondiendo WhatsApp. Los pacientes agendan, pagan y llegan con la cita recordada.",
     author: "Felipe M.",
     role: "Administrador · Centro de Salud Integral",
     initial: "F",
   },
   {
     quote:
-      "Tardaba mucho ingresando mis citas a un cuaderno, luego a un excel y del excel al calendario, ahora tengo todo en un solo lugar. Es maravilloso",
+      "Antes pasaba citas del cuaderno a Excel y luego al calendario. Ahora tengo todo en un solo lugar y atiendo con mucha más tranquilidad.",
     author: "María Paz R.",
     role: "Kinesióloga · Valparaíso",
     initial: "M",
@@ -115,20 +115,20 @@ function ClientLogos() {
       {/* Bloque de confianza */}
       <div className="text-center mb-10">
         <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-700 mb-3">
-          Confían en nosotros
+          Clínicas y profesionales reales
         </p>
 
         <h3
           className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Profesionales y clínicas que ya{" "}
-          <span className="text-blue-900">trabajan con nosotros</span>
+          Equipos de salud que ya{" "}
+          <span className="text-blue-900">ordenaron su agenda</span>
         </h3>
 
         <p className="mt-3 text-slate-400 text-sm max-w-md mx-auto leading-relaxed">
-          Desde consultas independientes hasta centros con múltiples especialistas.
-          Todos eligieron ordenar su operación con Agenda Clínica.
+          Consultas independientes, centros médicos, clínicas dentales y equipos
+          que necesitaban menos caos operativo y más claridad diaria.
         </p>
 
         <div className="mt-6 flex items-center justify-center gap-2">
@@ -165,7 +165,7 @@ export default function TestimonialsSection() {
           >
             <span className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-900 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-700" />
-              Testimonios
+              Prueba social
             </span>
           </motion.div>
 
@@ -177,8 +177,8 @@ export default function TestimonialsSection() {
             className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Lo que dicen quienes{" "}
-            <span className="text-blue-900">ya lo usan</span>
+            Cuando la agenda se ordena,{" "}
+            <span className="text-blue-900">el equipo lo nota</span>
           </motion.h2>
         </div>
 
