@@ -149,8 +149,9 @@ export default function TestimonialsSection() {
   const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative py-28 bg-white/50 overflow-hidden">
+    <section className="relative py-28 bg-slate-50 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 

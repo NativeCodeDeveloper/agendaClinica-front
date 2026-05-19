@@ -1,47 +1,25 @@
 import HeroSection from "@/components/landing/HeroSection";
+import LandingNavbar from "@/components/landing/LandingNavbar";
 import BenefitsSection from "@/components/landing/BenefitsSection";
 import ProcessSection from "@/components/landing/ProcessSection";
 import ModulesSection from "@/components/landing/ModulesSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
-import LeadFilterSection from "@/components/landing/LeadFilterSection";
 import PricingSection from "@/components/landing/PricingSection";
 import FAQSection from "@/components/landing/FAQSection";
 import ContactSection from "@/components/landing/ContactSection";
 import StickyMobileCTA from "@/components/landing/StickyMobileCTA";
-import { ParticleWave } from "@/components/ui/particle-wave";
 
 export default function Home() {
   return (
-    <>
-      {/* Canvas fijo de fondo — visible en secciones transparentes */}
-      <ParticleWave />
-
-      <main className="relative min-h-screen" style={{ zIndex: 1 }}>
-        {/* HERO — transparente, partículas visibles al 100% */}
+      <main className="relative min-h-screen">
+        <LandingNavbar />
         <HeroSection />
-
-        {/* BENEFITS — sólido, cubre partículas */}
         <BenefitsSection />
-
-        {/* PROCESS — transparente, partículas visibles */}
         <ProcessSection />
-
-        {/* MODULES — sólido, cubre partículas */}
         <ModulesSection />
-
-        {/* TESTIMONIALS — transparente, partículas visibles */}
         <TestimonialsSection />
-
-        {/* LEAD FILTER — sólido, cubre partículas */}
-        <LeadFilterSection />
-
-        {/* PRICING — transparente, partículas visibles */}
         <PricingSection />
-
-        {/* FAQ — sólido, cubre partículas */}
         <FAQSection />
-
-        {/* CONTACT — navy sólido, cubre partículas */}
         <ContactSection />
 
         <StickyMobileCTA />
@@ -73,6 +51,5 @@ export default function Home() {
           </div>
         </footer>
       </main>
-    </>
   );
 }

@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Bell, CreditCard, FileText, Users } from "lucide-react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -121,8 +120,9 @@ export default function BenefitsSection() {
   const visible = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative bg-slate-50 py-28 overflow-hidden">
-      <AuroraBackground showRadialGradient />
+    <section id="beneficios" className="relative bg-slate-50 py-28 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-white to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent pointer-events-none" />
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="mx-auto mb-16 max-w-3xl text-center">
           <motion.span

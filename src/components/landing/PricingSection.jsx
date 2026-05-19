@@ -2,8 +2,11 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { CheckCircle2, MessageCircle, Mail } from "lucide-react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import {
+  CheckCircle2,
+  MessageCircle,
+  Mail,
+} from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -23,40 +26,72 @@ const fadeUp = {
 
 const plans = [
   {
-    name: "Inicio",
+    name: "Plan independiente",
     subtitle: "Para consultas unipersonales",
+    price: "$14.990 mensual",
     features: [
-      "Agenda online 24/7",
-      "Recordatorios automáticos",
-      "1 profesional",
-      "Soporte por email",
+      "Agenda online con recordatorios automaticos por WhatsApp y correo",
+      "Pagina web de agendamiento para pacientes",
+      "Confirmacion y cancelacion de citas desde WhatsApp y correo",
+      "Fichas clinicas totalmente personalizables",
+      "Historial completo de pacientes",
+      "Emision de recetas, ordenes de examen y presupuestos con el logo de su consulta",
+      "Gestion organizada de pacientes y citas",
+      "Acceso desde computador o celular",
+      "Odontogramas (en caso de odontologia)",
     ],
     highlight: false,
   },
   {
-    name: "Pro",
+    name: "Multiple hasta 10 usuarios",
     subtitle: "Para centros en crecimiento",
+    price: "$39.990 mensual",
+    annualPrice: "$295.500 anual",
     features: [
-      "Todo lo de Inicio",
-      "Pagos online integrados",
-      "Ficha clínica digital",
-      "Hasta 3 profesionales",
-      "Soporte prioritario",
+      "Pasarela de pago integrada",
+      "Ingreso de convenios y medios de pago",
+      "Envio activo de recordatorios",
+      "Adjuntar imagenes en fichas clinicas",
+      "Adjuntar documentos PDF y consentimientos informados",
+      "Hasta 3 personalizaciones en la plataforma web",
+      "1 sucursal maxima",
+      "Hasta 10 usuarios",
+      "Atencion y acompañamiento preferente",
     ],
     highlight: true,
   },
   {
-    name: "Clínica",
-    subtitle: "Control total, sin límites",
+    name: "Plan Advantage",
+    subtitle: "Dirigido a centros de salud multisucursal",
+    price: "$69.990 mensual",
+    annualPrice: "$599.990 anual",
     features: [
-      "Todo lo de Pro",
-      "Múltiples sucursales",
-      "Reportes de gestión",
-      "Profesionales ilimitados",
-      "Soporte dedicado",
+      "Pagina personalizada",
+      "Portal de pacientes",
+      "Seguimiento activo",
+      "Intranet de pacientes multitask",
+      "Solicitud de examenes",
+      "Emision de recetas",
+      "Recetas de lentes",
+      "Odontogramas",
+      "Presupuestos",
+      "Recordatorios por WhatsApp personalizados",
+      "Correos personalizados de recordatorio",
+      "Hasta 50 usuarios",
     ],
     highlight: false,
   },
+];
+
+const professionalSlides = [
+  { title: "Tecnologo medico", subtitle: "Oftalmologia", image: "/profesionales/2.png" },
+  { title: "Matrona", subtitle: "Salud integral femenina", image: "/profesionales/3.png" },
+  { title: "Odontologos", subtitle: "Clinica dental", image: "/profesionales/4.png" },
+  { title: "Kinesiologos", subtitle: "Rehabilitacion y movimiento", image: "/profesionales/5.png" },
+  { title: "Terapeuta ocupacional", subtitle: "Intervencion funcional", image: "/profesionales/6.png" },
+  { title: "Psicologia", subtitle: "Atencion emocional", image: "/profesionales/7.png" },
+  { title: "Nutricionistas", subtitle: "Plan alimentario", image: "/profesionales/8.png" },
+  { title: "Podologia clinica", subtitle: "Cuidado especializado", image: "/profesionales/9.png" },
 ];
 
 function PlanCard({ plan, index }) {
@@ -70,11 +105,11 @@ function PlanCard({ plan, index }) {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index * 0.12}
-      className={`relative ${plan.highlight ? "z-10" : ""}`}
+      className={`relative h-full ${plan.highlight ? "z-10" : ""}`}
     >
       {plan.highlight && (
         <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
-          <span className="inline-block bg-blue-900 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full shadow-lg">
+          <span className="inline-block rounded-full bg-blue-900 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
             Más popular
           </span>
         </div>
@@ -83,24 +118,61 @@ function PlanCard({ plan, index }) {
       <motion.div
         whileHover={{ scale: 1.02, y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className={`h-full rounded-2xl p-7 flex flex-col transition-shadow duration-300 ${
+        className={`relative flex h-full flex-col overflow-hidden rounded-[28px] border transition-all duration-300 ${
           plan.highlight
-            ? "bg-blue-900 border border-blue-800 shadow-2xl shadow-blue-900/20"
-            : "bg-white border border-slate-200/80 shadow-sm hover:shadow-lg hover:shadow-slate-200/50"
+            ? "border-blue-800 bg-linear-to-b from-blue-950 via-blue-900 to-blue-900 shadow-2xl shadow-blue-900/20"
+            : "border-slate-200/80 bg-white shadow-sm hover:border-blue-100 hover:shadow-xl hover:shadow-slate-200/50"
         }`}
       >
-        <div className="mb-6">
-          <h3
-            className={`text-xl font-bold mb-1 ${plan.highlight ? "text-white" : "text-slate-900"}`}
-          >
-            {plan.name}
-          </h3>
-          <p className={`text-sm ${plan.highlight ? "text-blue-200" : "text-slate-400"}`}>
-            {plan.subtitle}
-          </p>
+        <div className={`absolute inset-x-0 top-0 h-32 ${plan.highlight ? "bg-white/5" : "bg-linear-to-b from-blue-50/80 to-transparent"} pointer-events-none`} />
+
+        <div className={`relative border-b px-7 pb-6 pt-7 ${plan.highlight ? "border-white/10" : "border-slate-100"}`}>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <span
+                className={`inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] ${
+                  plan.highlight
+                    ? "bg-white/10 text-blue-100"
+                    : "border border-blue-100 bg-blue-50 text-blue-900"
+                }`}
+              >
+                {plan.highlight ? "Escalable" : "Plan"}
+              </span>
+              <h3
+                className={`mt-4 text-xl font-bold leading-tight ${plan.highlight ? "text-white" : "text-slate-900"}`}
+              >
+                {plan.name}
+              </h3>
+              <p className={`mt-2 text-sm leading-6 ${plan.highlight ? "text-blue-200" : "text-slate-500"}`}>
+                {plan.subtitle}
+              </p>
+            </div>
+          </div>
+
+          {plan.price && (
+            <div className="mt-6">
+              <p className={`text-3xl font-bold tracking-tight ${plan.highlight ? "text-white" : "text-blue-950"}`}>
+                {plan.price}
+              </p>
+              {plan.annualPrice ? (
+                <p className={`mt-1 text-sm font-medium ${plan.highlight ? "text-blue-200" : "text-slate-500"}`}>
+                  {plan.annualPrice}
+                </p>
+              ) : (
+                <p className={`mt-1 text-sm ${plan.highlight ? "text-blue-300" : "text-slate-400"}`}>
+                  Facturacion mensual
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
-        <ul className="space-y-3 mb-8 flex-1">
+        <div className="flex flex-1 flex-col px-7 pb-7 pt-6">
+          <p className={`mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] ${plan.highlight ? "text-blue-200" : "text-slate-400"}`}>
+            Incluye
+          </p>
+
+          <ul className="flex-1 space-y-3">
           {plan.features.map((feat) => (
             <li key={feat} className="flex items-start gap-2.5">
               <CheckCircle2
@@ -114,22 +186,81 @@ function PlanCard({ plan, index }) {
               </span>
             </li>
           ))}
-        </ul>
+          </ul>
 
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noreferrer"
-          className={`w-full py-3 rounded-xl font-semibold text-sm text-center transition-colors duration-200 ${
-            plan.highlight
-              ? "bg-white text-blue-900 hover:bg-blue-50"
-              : "bg-blue-50 text-blue-900 hover:bg-blue-100 border border-blue-100"
-          }`}
-        >
-          Quiero este plan
-        </a>
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noreferrer"
+            className={`mt-8 w-full rounded-2xl py-3.5 text-center text-sm font-semibold transition-colors duration-200 ${
+              plan.highlight
+                ? "bg-white text-blue-900 hover:bg-blue-50"
+                : "border border-blue-100 bg-blue-50 text-blue-900 hover:bg-blue-100"
+            }`}
+          >
+            Quiero este plan
+          </a>
+        </div>
       </motion.div>
     </motion.div>
+  );
+}
+
+function ProfessionalCarousel() {
+  const marqueeSlides = [...professionalSlides, ...professionalSlides];
+
+  return (
+    <div className="mx-auto mt-10 max-w-5xl">
+      <div className="mb-7 text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
+          Profesionales
+        </p>
+        <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+          Agenda Clinica se adapta a distintas especialidades
+        </h3>
+        <p className="mt-3 text-sm leading-7 text-slate-500 sm:text-base">
+          Desde atencion individual hasta equipos especializados. La imagen de medico general `1.png` no esta en `public/profesionales`.
+        </p>
+      </div>
+
+      <div className="rounded-[36px] bg-slate-50/70 p-4 sm:p-5">
+        <div className="overflow-hidden">
+          <motion.div
+            className="flex gap-4"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+          >
+            {marqueeSlides.map((slide, index) => (
+              <div
+                key={`${slide.image}-${index}`}
+                className="group relative min-h-[540px] w-[85vw] max-w-[380px] shrink-0 overflow-hidden rounded-[28px] bg-slate-200 text-left shadow-[0_20px_50px_rgba(15,23,42,0.16)]"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                  <h4 className="text-[2rem] font-bold tracking-[-0.03em] text-white sm:text-[2.2rem]">
+                    {slide.title}
+                  </h4>
+                  <p className="mt-2 text-[1.05rem] text-white/90 sm:text-[1.15rem]">
+                    {slide.subtitle}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm text-slate-500">
+            Desplazamiento continuo por especialidades, entrando por un lado y saliendo por el otro.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -138,8 +269,9 @@ export default function PricingSection() {
   const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative py-28 bg-white/50 overflow-hidden">
-      <AuroraBackground showRadialGradient />
+    <section id="precios" className="relative py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -181,11 +313,13 @@ export default function PricingSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start max-w-4xl mx-auto">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-fr">
           {plans.map((plan, idx) => (
             <PlanCard key={plan.name} plan={plan} index={idx} />
           ))}
         </div>
+
+        <ProfessionalCarousel />
 
         {/* Contact note */}
         <PricingContact />

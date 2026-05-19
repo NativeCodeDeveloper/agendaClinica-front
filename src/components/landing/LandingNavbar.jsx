@@ -1,0 +1,84 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const WA_LINK =
+  "https://wa.me/56966091038?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20hora%20para%20que%20me%20muestren%20la%20plataforma%20de%20Agenda%20Cl%C3%ADnica.";
+
+const navItems = [
+  ["Inicio", "#inicio"],
+  ["Funciones", "#funciones"],
+  ["Beneficios", "#beneficios"],
+  ["Precios", "#precios"],
+  ["Contacto", "#contacto"],
+];
+
+export default function LandingNavbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header className="fixed left-1/2 top-3 z-[300] w-[calc(100%-1.5rem)] max-w-7xl -translate-x-1/2 px-2 transition-all duration-300 lg:top-5">
+      <div
+        className={`rounded-[2rem] border px-4 py-3 transition-all duration-300 ${
+          isScrolled
+            ? "border-white/30 bg-white/58 shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl"
+            : "border-slate-200/80 bg-white/92 shadow-[0_16px_34px_rgba(15,23,42,0.10)] backdrop-blur-md"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-[1.3rem] font-semibold tracking-[-0.04em] text-[#1a2348] sm:text-[1.65rem]">
+              AgendaClinica
+            </p>
+          </div>
+
+          <nav className="hidden items-center gap-6 lg:flex">
+            {navItems.map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                className="text-sm font-medium text-[#24315f] transition-colors hover:text-blue-600"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 rounded-full bg-[#1d2148] px-5 py-2.5 text-[11px] font-semibold text-white shadow-lg shadow-slate-900/10 transition-transform hover:-translate-y-0.5 sm:px-7 sm:py-3 sm:text-sm"
+          >
+            Iniciar sesion
+          </a>
+        </div>
+
+        <nav className="mt-4 overflow-x-auto pb-1 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex min-w-max items-center gap-3">
+            {navItems.map(([label, href], index) => (
+              <a
+                key={label}
+                href={href}
+                className={`rounded-full px-4 py-2 text-[11px] font-medium ${
+                  index === 0
+                    ? "bg-blue-50 text-blue-600 ring-1 ring-blue-100"
+                    : "bg-white/70 text-[#24315f] ring-1 ring-slate-200/80"
+                }`}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+}

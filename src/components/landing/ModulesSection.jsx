@@ -157,7 +157,7 @@ export default function ModulesSection() {
   const footerInView = useInView(footerRef, { once: true, margin: "-40px" });
 
   return (
-    <section className="relative py-28 bg-slate-50 overflow-hidden">
+    <section id="funciones" className="relative py-28 bg-slate-50 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
 

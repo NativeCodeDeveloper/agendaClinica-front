@@ -1,9 +1,16 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Search, Settings, GraduationCap, Rocket, CheckCircle2 } from "lucide-react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import {
+  Search,
+  Settings,
+  GraduationCap,
+  Rocket,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -42,6 +49,105 @@ const steps = [
     icon: Rocket,
   },
 ];
+
+const carouselImages = [
+  "/carrusel/IMG_0153.jpg",
+  "/carrusel/IMG_0154.jpg",
+  "/carrusel/IMG_0150%202.jpg",
+  "/carrusel/IMG_0164.jpg",
+  "/carrusel/IMG_0165.jpg",
+  "/carrusel/IMG_0167.jpg",
+  "/carrusel/IMG_0163.jpg",
+  "/carrusel/IMG_0161.PNG",
+  "/carrusel/IMG_0160.PNG",
+];
+
+function ProcessCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 3200);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  return (
+    <div className="mb-14">
+      <div className="mb-6 text-center">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
+          Conoce el futuro
+        </p>
+        <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+          El motor de tu consulta
+        </h3>
+      </div>
+
+      <div className="relative overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-3 shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+        <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-sky-50/70 to-transparent pointer-events-none" />
+
+        <div className="relative aspect-[16/8.8] overflow-hidden rounded-[24px] bg-slate-100">
+          {carouselImages.map((src, index) => (
+            <img
+              key={src}
+              src={src}
+              alt={`Vista Agenda Clinica ${index + 1}`}
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
+                index === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]"
+              }`}
+            />
+          ))}
+
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950/18 via-transparent to-white/10 pointer-events-none" />
+
+          <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
+            <div className="ml-auto hidden items-center gap-2 sm:flex">
+              <button
+                type="button"
+                onClick={goToPrevious}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/88 text-slate-700 shadow-sm backdrop-blur transition-colors hover:bg-white"
+                aria-label="Imagen anterior"
+              >
+                <ChevronLeft className="h-5 w-5" strokeWidth={2.2} />
+              </button>
+              <button
+                type="button"
+                onClick={goToNext}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/88 text-slate-700 shadow-sm backdrop-blur transition-colors hover:bg-white"
+                aria-label="Imagen siguiente"
+              >
+                <ChevronRight className="h-5 w-5" strokeWidth={2.2} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5 flex items-center justify-center gap-2">
+          {carouselImages.map((src, index) => (
+            <button
+              key={src}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              className={`h-2.5 rounded-full transition-all ${
+                index === currentIndex ? "w-8 bg-blue-700" : "w-2.5 bg-slate-300 hover:bg-slate-400"
+              }`}
+              aria-label={`Ir a imagen ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function StepCard({ step, index }) {
   const ref = useRef(null);
@@ -104,9 +210,11 @@ export default function ProcessSection() {
   const ctaInView = useInView(ctaRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative py-28 bg-white/50 overflow-hidden">
-      <AuroraBackground showRadialGradient />
+    <section className="relative py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ProcessCarousel />
 
         {/* Header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
