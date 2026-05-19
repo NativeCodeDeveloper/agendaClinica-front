@@ -51,15 +51,19 @@ const steps = [
 ];
 
 const carouselImages = [
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.33.09.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.33.31.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.33.55.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.34.12.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.35.27.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.35.46.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.36.40.png",
+  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.38.08.png",
   "/carrusel/IMG_0153.jpg",
   "/carrusel/IMG_0154.jpg",
   "/carrusel/IMG_0150%202.jpg",
   "/carrusel/IMG_0164.jpg",
-  "/carrusel/IMG_0165.jpg",
   "/carrusel/IMG_0167.jpg",
-  "/carrusel/IMG_0163.jpg",
-  "/carrusel/IMG_0161.PNG",
-  "/carrusel/IMG_0160.PNG",
 ];
 
 function ProcessCarousel() {

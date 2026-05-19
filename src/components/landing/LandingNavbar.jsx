@@ -33,12 +33,15 @@ export default function LandingNavbar() {
         }`}
       >
         <div className="flex items-center justify-between gap-4">
-          <div className="flex min-w-0 items-center">
+          <div className="flex min-w-0 items-center gap-3">
             <img
               src="/logacsolo.png"
               alt="Agenda Clínica"
-              className="h-9 w-9 object-contain sm:h-11 sm:w-11 lg:h-12 lg:w-12"
+              className="h-11 w-11 object-contain sm:h-14 sm:w-14 lg:h-16 lg:w-16"
             />
+            <p className="text-[1.05rem] font-semibold tracking-[-0.04em] text-[#1a2348] sm:text-[1.3rem] lg:text-[1.6rem]">
+              AgendaClinica
+            </p>
           </div>
 
           <nav className="hidden items-center gap-6 lg:flex">

@@ -3,7 +3,6 @@ import LandingNavbar from "@/components/landing/LandingNavbar";
 import BenefitsSection from "@/components/landing/BenefitsSection";
 import ProcessSection from "@/components/landing/ProcessSection";
 import ModulesSection from "@/components/landing/ModulesSection";
-import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PricingSection from "@/components/landing/PricingSection";
 import FAQSection from "@/components/landing/FAQSection";
 import ContactSection from "@/components/landing/ContactSection";
@@ -120,7 +119,6 @@ export default function Home() {
         <BenefitsSection />
         <ProcessSection />
         <ModulesSection />
-        <TestimonialsSection />
         <PricingSection />
         <FAQSection />
         <ContactSection />
