@@ -118,7 +118,9 @@ export default function HeroSection() {
                 <ArrowRight className="h-5 w-5" strokeWidth={2.2} />
               </a>
               <a
-                href="#funciones"
+                href="https://demo.angendaclinica.space"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center gap-3 rounded-[22px] border-2 border-blue-500 bg-white px-7 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-blue-600 shadow-sm transition-colors hover:bg-blue-50"
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-blue-500">
