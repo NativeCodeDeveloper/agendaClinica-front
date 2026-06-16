@@ -5,7 +5,7 @@ export default function manifest() {
     name: "AgendaClinica",
     short_name: "AgendaClinica",
     description:
-      "Agenda clínica online con fichas clínicas, odontogramas, recordatorios y gestión de pacientes.",
+      "Agenda clínica online para reservas de pacientes, fichas clínicas digitales, odontogramas, recordatorios automáticos y gestión clínica.",
     start_url: siteUrl,
     display: "standalone",
     background_color: "#fbfdff",

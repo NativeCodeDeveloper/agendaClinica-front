@@ -1,14 +1,21 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   CheckCircle2,
+  Minus,
   MessageCircle,
   Mail,
+  Plus,
+  UsersRound,
 } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
+const BASE_PRICE = 14990;
+const ODONTOLOGY_BASE_PRICE = 19990;
+const ADDITIONAL_USER_PRICE = 4990;
+const WHATSAPP_NUMBER = "56966091038";
 
 const WA_LINK =
   "https://wa.me/56966091038?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20hora%20para%20que%20me%20muestren%20la%20plataforma%20de%20Agenda%20Cl%C3%ADnica.";
@@ -26,62 +33,89 @@ const fadeUp = {
 
 const plans = [
   {
-    name: "Plan independiente",
-    subtitle: "Para consultas unipersonales",
-    price: "$14.990 mensual",
+    name: "Plan Profesional Salud",
+    subtitle: "Para profesionales y consultas de salud",
+    basePrice: BASE_PRICE,
+    badge: "Plan único",
+    icon: "users",
+    pricePeriod: "/ mes",
+    priceNote: "Incluye 1 usuario profesional",
+    additionalUsers: "+ $4.990 mensuales por cada usuario adicional",
+    ctaNote: "Puedes agregar más usuarios cuando lo necesites.",
     features: [
-      "Agenda online con recordatorios automáticos por WhatsApp y correo",
+      "Agenda online profesional",
+      "Recordatorios automáticos por WhatsApp y correo ilimitados",
       "Página web de agendamiento para pacientes",
-      "Confirmación y cancelación de citas desde WhatsApp y correo",
-      "Fichas clínicas totalmente personalizables",
-      "Historial completo de pacientes",
-      "Emisión de recetas, órdenes de examen y presupuestos con el logo de tu consulta",
-      "Gestión organizada de pacientes y citas",
-      "Acceso desde computador o celular",
-      "Odontogramas para clínicas dentales",
+      "Confirmación y cancelación automática de citas desde WhatsApp y correo",
+      "Fichas clínicas personalizables",
+      "Historial clínico completo de pacientes",
+      "Acceso desde computador y celular",
+      "Vinculación opcional con Mercado Pago",
     ],
-    highlight: false,
   },
   {
-    name: "Multiple hasta 10 usuarios",
-    subtitle: "Para centros en crecimiento",
-    price: "$39.990 mensual",
-    annualPrice: "$295.500 anual",
-    features: [
-      "Pasarela de pago integrada",
-      "Registro de convenios y medios de pago",
-      "Envío activo de recordatorios",
-      "Imágenes adjuntas en fichas clínicas",
-      "Adjuntar documentos PDF y consentimientos informados",
-      "Hasta 3 personalizaciones en la plataforma web",
-      "1 sucursal máxima",
-      "Hasta 10 usuarios",
-      "Atención y acompañamiento preferente",
+    name: "Plan Odontológico",
+    subtitle: "Para consultas dentales que necesitan gestión clínica completa",
+    basePrice: ODONTOLOGY_BASE_PRICE,
+    badge: "Dental",
+    icon: "tooth",
+    pricePeriod: "/ mes",
+    priceNote: "Incluye 1 usuario profesional",
+    additionalUsers: "+ $4.990 mensuales por cada usuario adicional",
+    ctaNote: "Puedes agregar más usuarios cuando lo necesites.",
+    highlightedFeatures: [
+      "Odontograma",
+      "Recetas",
+      "Historial de recetas",
+      "Generación de presupuestos",
+      "Solicitud de órdenes de exámenes",
+      "Subida de archivos, imágenes, radiografías y documentos",
     ],
-    highlight: true,
-  },
-  {
-    name: "Plan Advantage",
-    subtitle: "Dirigido a centros de salud multisucursal",
-    price: "$69.990 mensual",
-    annualPrice: "$599.990 anual",
     features: [
-      "Página personalizada",
-      "Portal de pacientes",
-      "Seguimiento activo",
-      "Intranet de pacientes multitask",
-      "Solicitud de exámenes",
-      "Emisión de recetas",
-      "Recetas de lentes",
-      "Odontogramas",
-      "Presupuestos",
-      "Recordatorios por WhatsApp personalizados",
-      "Correos personalizados de recordatorio",
-      "Hasta 50 usuarios",
+      "Agenda online profesional",
+      "Recordatorios automáticos por WhatsApp y correo sin límite",
+      "Página web de agendamiento para pacientes",
+      "Confirmación y cancelación automática de citas desde WhatsApp y correo",
+      "Fichas clínicas personalizables",
+      "Historial clínico completo de pacientes",
+      "Acceso desde computador y celular",
+      "Vinculación opcional con Mercado Pago",
     ],
-    highlight: false,
   },
 ];
+
+function formatCLP(value) {
+  return new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function buildPlanWhatsAppLink(planName, additionalUsers, totalPrice) {
+  const totalUsers = additionalUsers + 1;
+  const message = `Hola, quiero contratar el ${planName} de Agenda Clínica con ${totalUsers} usuario${totalUsers === 1 ? "" : "s"} en total (${additionalUsers} adicional${additionalUsers === 1 ? "" : "es"}). Total estimado: ${formatCLP(totalPrice)} + IVA / mes.`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function ToothIcon({ className, strokeWidth = 2 }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M8.5 3.5c1.25 0 2.12.72 3.5.72s2.25-.72 3.5-.72c2.25 0 4 1.82 4 4.25 0 1.5-.6 2.8-1.25 4.15-.52 1.1-.86 2.28-1.1 3.5l-.52 2.7c-.24 1.24-1.24 2.15-2.38 2.15-.8 0-1.5-.5-1.78-1.28l-.88-2.45c-.12-.36-.34-.52-.59-.52s-.47.16-.59.52l-.88 2.45c-.28.78-.98 1.28-1.78 1.28-1.14 0-2.14-.91-2.38-2.15l-.52-2.7c-.24-1.22-.58-2.4-1.1-3.5C3.1 10.55 2.5 9.25 2.5 7.75c0-2.43 1.75-4.25 4-4.25Z" />
+      <path d="M9.5 6.5c.72.32 1.5.5 2.5.5s1.78-.18 2.5-.5" />
+    </svg>
+  );
+}
 
 const professionalSlides = [
   { title: "Tecnólogo médico", subtitle: "Oftalmología", image: "/profesionales/2.png" },
@@ -97,6 +131,16 @@ const professionalSlides = [
 function PlanCard({ plan, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [additionalUsers, setAdditionalUsers] = useState(0);
+  const totalUsers = additionalUsers + 1;
+  const totalPrice = plan.basePrice + additionalUsers * ADDITIONAL_USER_PRICE;
+  const planLink = buildPlanWhatsAppLink(plan.name, additionalUsers, totalPrice);
+  const PlanIcon = plan.icon === "tooth" ? ToothIcon : UsersRound;
+
+  const updateAdditionalUsers = (value) => {
+    const parsedValue = Number.parseInt(value, 10);
+    setAdditionalUsers(Number.isNaN(parsedValue) || parsedValue < 0 ? 0 : parsedValue);
+  };
 
   return (
     <motion.div
@@ -105,101 +149,137 @@ function PlanCard({ plan, index }) {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index * 0.12}
-      className={`relative h-full ${plan.highlight ? "z-10" : ""}`}
+      className="relative h-full"
     >
-      {plan.highlight && (
-        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
-          <span className="inline-block rounded-full bg-blue-900 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
-            Más popular
-          </span>
-        </div>
-      )}
-
       <motion.div
-        whileHover={{ scale: 1.02, y: -4 }}
+        whileHover={{ y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className={`relative flex h-full flex-col overflow-hidden rounded-[28px] border transition-all duration-300 ${
-          plan.highlight
-            ? "border-blue-800 bg-linear-to-b from-blue-950 via-blue-900 to-blue-900 shadow-2xl shadow-blue-900/20"
-            : "border-slate-200/80 bg-white shadow-sm hover:border-blue-100 hover:shadow-xl hover:shadow-slate-200/50"
-        }`}
+        className="relative flex h-full min-h-[680px] flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-blue-300 hover:shadow-[0_30px_80px_rgba(30,64,175,0.12)]"
       >
-        <div className={`absolute inset-x-0 top-0 h-32 ${plan.highlight ? "bg-white/5" : "bg-linear-to-b from-blue-50/80 to-transparent"} pointer-events-none`} />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-2 bg-blue-950" />
+        <div className="pointer-events-none absolute right-0 top-0 h-44 w-44 translate-x-16 -translate-y-16 rounded-full bg-blue-50 blur-3xl" />
 
-        <div className={`relative border-b px-7 pb-6 pt-7 ${plan.highlight ? "border-white/10" : "border-slate-100"}`}>
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <span
-                className={`inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] ${
-                  plan.highlight
-                    ? "bg-white/10 text-blue-100"
-                    : "border border-blue-100 bg-blue-50 text-blue-900"
-                }`}
-              >
-                {plan.highlight ? "Escalable" : "Plan"}
+        <div className="relative px-7 pb-7 pt-10 sm:px-10">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
+            <div className="flex items-start gap-3">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-950 ring-1 ring-blue-100">
+                <PlanIcon className="h-5 w-5" strokeWidth={2} />
               </span>
-              <h3
-                className={`mt-4 text-xl font-bold leading-tight ${plan.highlight ? "text-white" : "text-slate-900"}`}
-              >
+              <h3 className="text-3xl font-bold leading-tight tracking-[-0.03em] text-slate-950">
                 {plan.name}
               </h3>
-              <p className={`mt-2 text-sm leading-6 ${plan.highlight ? "text-blue-200" : "text-slate-500"}`}>
-                {plan.subtitle}
-              </p>
+            </div>
+            <span className="shrink-0 rounded-full bg-blue-950 px-3 py-1.5 text-[11px] font-bold text-white shadow-lg shadow-blue-950/15">
+              {plan.badge}
+            </span>
+          </div>
+
+          <p className="mt-7 max-w-sm text-[1.05rem] leading-8 text-slate-500">
+            {plan.subtitle}
+          </p>
+
+          <div className="mt-10">
+            <p className="text-5xl font-bold tracking-[-0.04em] text-slate-950 sm:text-6xl">
+              {formatCLP(totalPrice)}
+            </p>
+            <p className="mt-2 text-lg font-medium text-slate-500">
+              CLP/mes + IVA
+            </p>
+          </div>
+
+          <div className="mt-7 rounded-[24px] border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50">
+            <div className="flex items-center justify-between gap-2">
+              <button
+                type="button"
+                aria-label="Quitar usuario adicional"
+                onClick={() => setAdditionalUsers((current) => Math.max(0, current - 1))}
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-[18px] text-slate-500 transition-colors hover:bg-white hover:text-blue-950"
+              >
+                <Minus className="h-4 w-4" strokeWidth={2} />
+              </button>
+              <div className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-[18px] bg-white px-3 py-2 ring-1 ring-slate-200">
+                <input
+                  type="number"
+                  min="1"
+                  value={totalUsers}
+                  onChange={(event) => updateAdditionalUsers(Number.parseInt(event.target.value, 10) - 1)}
+                  className="h-9 w-12 bg-transparent text-center text-lg font-bold text-slate-950 outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  aria-label="Cantidad total de profesionales"
+                />
+                <span className="truncate text-sm font-semibold text-slate-600">
+                  {totalUsers === 1 ? "profesional" : "profesionales"}
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label="Agregar usuario adicional"
+                onClick={() => setAdditionalUsers((current) => current + 1)}
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-[18px] bg-blue-950 text-white transition-colors hover:bg-blue-900"
+              >
+                <Plus className="h-4 w-4" strokeWidth={2} />
+              </button>
             </div>
           </div>
 
-          {plan.price && (
-            <div className="mt-6">
-              <p className={`text-3xl font-bold tracking-tight ${plan.highlight ? "text-white" : "text-blue-950"}`}>
-                {plan.price}
-              </p>
-              {plan.annualPrice ? (
-                <p className={`mt-1 text-sm font-medium ${plan.highlight ? "text-blue-200" : "text-slate-500"}`}>
-                  {plan.annualPrice}
-                </p>
-              ) : (
-                <p className={`mt-1 text-sm ${plan.highlight ? "text-blue-300" : "text-slate-400"}`}>
-                  Facturacion mensual
-                </p>
-              )}
-            </div>
-          )}
+          <div className="mt-5 flex items-start gap-2 rounded-2xl bg-blue-50 px-4 py-3 text-sm leading-6 text-blue-950">
+            <UsersRound className="mt-1 h-4 w-4 shrink-0" strokeWidth={2} />
+            <p>
+              {plan.priceNote}. {plan.additionalUsers}.
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-1 flex-col px-7 pb-7 pt-6">
-          <p className={`mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] ${plan.highlight ? "text-blue-200" : "text-slate-400"}`}>
+        <div className="flex flex-1 flex-col border-t border-slate-100 px-7 pb-8 pt-7 sm:px-10">
+          {plan.highlightedFeatures?.length ? (
+            <div className="mb-7 rounded-3xl border border-blue-100 bg-blue-50/70 p-4">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-900">
+                Especial odontología
+              </p>
+              <ul className="space-y-3">
+                {plan.highlightedFeatures.map((feat) => (
+                  <li key={feat} className="flex items-start gap-2.5">
+                    <CheckCircle2
+                      className="mt-0.5 h-4 w-4 shrink-0 text-blue-900"
+                      strokeWidth={2}
+                    />
+                    <span className="text-sm font-semibold leading-6 text-blue-950">
+                      {feat}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
             Incluye
           </p>
 
           <ul className="flex-1 space-y-3">
-          {plan.features.map((feat) => (
-            <li key={feat} className="flex items-start gap-2.5">
-              <CheckCircle2
-                className={`w-4 h-4 mt-0.5 shrink-0 ${plan.highlight ? "text-blue-200" : "text-blue-800"}`}
-                strokeWidth={2}
-              />
-              <span
-                className={`text-sm ${plan.highlight ? "text-blue-100" : "text-slate-600"}`}
-              >
-                {feat}
-              </span>
-            </li>
-          ))}
+            {plan.features.map((feat) => (
+              <li key={feat} className="flex items-start gap-2.5">
+                <CheckCircle2
+                  className="mt-0.5 h-4 w-4 shrink-0 text-blue-800"
+                  strokeWidth={2}
+                />
+                <span className="text-sm leading-6 text-slate-600">
+                  {feat}
+                </span>
+              </li>
+            ))}
           </ul>
 
           <a
-            href={WA_LINK}
+            href={planLink}
             target="_blank"
             rel="noreferrer"
-            className={`mt-8 w-full rounded-2xl py-3.5 text-center text-sm font-semibold transition-colors duration-200 ${
-              plan.highlight
-                ? "bg-white text-blue-900 hover:bg-blue-50"
-                : "border border-blue-100 bg-blue-50 text-blue-900 hover:bg-blue-100"
-            }`}
+            className="mt-8 w-full rounded-[22px] bg-blue-950 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-blue-950/15 transition-colors duration-200 hover:bg-blue-900"
           >
             Quiero este plan
           </a>
+          <p className="mt-3 text-center text-xs leading-5 text-slate-500">
+            {plan.ctaNote}
+          </p>
         </div>
       </motion.div>
     </motion.div>
@@ -307,13 +387,13 @@ export default function PricingSection() {
             custom={0.2}
             className="mt-5 text-lg text-slate-500 leading-relaxed"
           >
-            Elige según el tamaño de tu consulta, la cantidad de usuarios y el nivel de automatización que necesitas.{" "}
-            <span className="font-semibold text-slate-700">Te ayudamos a escoger sin presión.</span>
+            Agenda, automatiza recordatorios y gestiona pacientes desde una plataforma pensada para profesionales de salud.{" "}
+            <span className="font-semibold text-slate-700">Puedes crecer agregando usuarios cuando lo necesites.</span>
           </motion.p>
         </div>
 
         {/* Cards */}
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-fr">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
           {plans.map((plan, idx) => (
             <PlanCard key={plan.name} plan={plan} index={idx} />
           ))}

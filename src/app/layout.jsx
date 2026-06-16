@@ -9,22 +9,54 @@ const inter = Inter({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agendaclinica.space";
-const title = "AgendaClinica | Agenda clínica online, fichas clínicas, odontogramas y recordatorios";
+const title = "Agenda Clínica Online | Reservas de pacientes, fichas clínicas y odontogramas";
 const description =
-  "AgendaClinica digitaliza consultas y centros de salud con agenda clínica online, fichas clínicas digitales, odontogramas, recordatorios automáticos, presupuestos, recetas y gestión de pacientes.";
+  "AgendaClinica es un software de agenda online para clínicas y profesionales de salud: reservas de pacientes, fichas clínicas digitales, odontogramas, recordatorios por WhatsApp y correo, pagos y gestión clínica.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title,
+  title: {
+    default: title,
+    template: "%s | AgendaClinica",
+  },
   description,
   applicationName: "AgendaClinica",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   keywords: [
+    "agenda online",
+    "agenda online pacientes",
+    "agenda online para clinicas",
+    "agenda online para clínicas",
     "agenda clinica",
     "agenda clínica",
+    "agenda clinica online",
+    "agenda clínica online",
+    "reserva de pacientes",
+    "reservas de pacientes",
+    "sistema de reservas para pacientes",
     "fichas clinicas",
     "fichas clínicas",
+    "fichas clinicas digitales",
+    "fichas clínicas digitales",
+    "ficha clinica digital",
+    "ficha clínica digital",
+    "historial clinico pacientes",
+    "historial clínico pacientes",
+    "odontograma",
     "odontogramas",
+    "software odontologico",
+    "software odontológico",
+    "agenda odontologica",
+    "agenda odontológica",
     "recordatorios automáticos",
+    "recordatorios whatsapp pacientes",
+    "recordatorios por whatsapp",
     "agenda medica",
     "agenda médica",
     "software para clinicas",
@@ -37,6 +69,12 @@ export const metadata = {
     "agenda para psicólogos",
     "agenda para kinesiologos",
     "agenda para kinesiólogos",
+    "sistema de agendamiento medico",
+    "sistema de agendamiento médico",
+    "software medico chile",
+    "software médico Chile",
+    "software clinico chile",
+    "software clínico Chile",
   ],
   authors: [{ name: "NativeCode SpA" }],
   creator: "NativeCode SpA",
@@ -82,11 +120,20 @@ export const metadata = {
     images: ["/ac.png"],
   },
   category: "healthcare",
+  classification: "Healthcare software, appointment scheduling, patient management",
   icons: {
     icon: "/ac.png",
     shortcut: "/ac.png",
     apple: "/ac.png",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#1d2148",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }) {

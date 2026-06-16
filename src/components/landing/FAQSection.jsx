@@ -18,11 +18,23 @@ const fadeUp = {
 const faqs = [
   {
     q: "¿Sirve para mi tipo de consulta o centro?",
-    a: "Sí. Agenda Clínica está diseñado para profesionales y centros de salud que trabajan con reservas: medicina, odontología, kinesiología, psicología, nutrición, estética y otras especialidades.",
+    a: "Sí. Agenda Clínica está diseñado para médicos, dentistas, kinesiólogos, psicólogos, nutricionistas, centros de estética y otras consultas de salud que trabajan con reservas de pacientes.",
+  },
+  {
+    q: "¿Puedo usar una agenda online para que mis pacientes reserven horas?",
+    a: "Sí. La plataforma incluye una página web de agendamiento para pacientes, disponibilidad por profesional, servicios configurables y confirmación automática de citas.",
+  },
+  {
+    q: "¿Incluye fichas clínicas digitales e historial clínico?",
+    a: "Sí. Puedes trabajar con fichas clínicas personalizables, historial clínico completo de pacientes y datos relevantes centralizados para cada atención.",
+  },
+  {
+    q: "¿El plan odontológico incluye odontograma?",
+    a: "Sí. El Plan Odontológico incluye odontograma, recetas, historial de recetas, generación de presupuestos, solicitudes de órdenes de exámenes y subida de archivos, imágenes, radiografías y documentos.",
   },
   {
     q: "¿Cómo cobran mis pacientes?",
-    a: "Puedes integrar pagos para que tus pacientes paguen al momento de reservar. Tú defines si cobras el total, un abono o solo usas la reserva como confirmación.",
+    a: "Puedes activar la vinculación opcional con Mercado Pago para cobrar al momento de agendar, solicitar abonos o confirmar reservas según el flujo de tu consulta.",
   },
   {
     q: "¿Cuánto tiempo tarda en estar operativo?",
