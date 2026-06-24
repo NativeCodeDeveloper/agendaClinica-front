@@ -154,18 +154,16 @@ function PlanCard({ plan, index }) {
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className="relative flex h-full min-h-[680px] flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-blue-300 hover:shadow-[0_30px_80px_rgba(30,64,175,0.12)]"
+        className="relative flex h-full flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-blue-300 hover:shadow-[0_30px_80px_rgba(30,64,175,0.12)]"
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-2 bg-blue-950" />
-        <div className="pointer-events-none absolute right-0 top-0 h-44 w-44 translate-x-16 -translate-y-16 rounded-full bg-blue-50 blur-3xl" />
 
-        <div className="relative px-7 pb-7 pt-10 sm:px-10">
+        <div className="relative px-5 pb-5 pt-7 sm:px-8">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
             <div className="flex items-start gap-3">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-950 ring-1 ring-blue-100">
                 <PlanIcon className="h-5 w-5" strokeWidth={2} />
               </span>
-              <h3 className="text-3xl font-bold leading-tight tracking-[-0.03em] text-slate-950">
+              <h3 className="text-xl font-bold leading-tight tracking-[-0.03em] text-slate-950">
                 {plan.name}
               </h3>
             </div>
@@ -174,12 +172,12 @@ function PlanCard({ plan, index }) {
             </span>
           </div>
 
-          <p className="mt-7 max-w-sm text-[1.05rem] leading-8 text-slate-500">
+          <p className="mt-4 max-w-sm text-sm leading-6 text-slate-500">
             {plan.subtitle}
           </p>
 
-          <div className="mt-10">
-            <p className="text-5xl font-bold tracking-[-0.04em] text-slate-950 sm:text-6xl">
+          <div className="mt-5">
+            <p className="text-4xl font-bold tracking-[-0.04em] text-slate-950 sm:text-5xl">
               {formatCLP(totalPrice)}
             </p>
             <p className="mt-2 text-lg font-medium text-slate-500">
@@ -187,7 +185,7 @@ function PlanCard({ plan, index }) {
             </p>
           </div>
 
-          <div className="mt-7 rounded-[24px] border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50">
+          <div className="mt-4 rounded-[24px] border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50">
             <div className="flex items-center justify-between gap-2">
               <button
                 type="button"
@@ -221,7 +219,7 @@ function PlanCard({ plan, index }) {
             </div>
           </div>
 
-          <div className="mt-5 flex items-start gap-2 rounded-2xl bg-blue-50 px-4 py-3 text-sm leading-6 text-blue-950">
+          <div className="mt-3 flex items-start gap-2 rounded-2xl bg-blue-50 px-4 py-2.5 text-sm leading-6 text-blue-950">
             <UsersRound className="mt-1 h-4 w-4 shrink-0" strokeWidth={2} />
             <p>
               {plan.priceNote}. {plan.additionalUsers}.
@@ -229,9 +227,9 @@ function PlanCard({ plan, index }) {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border-t border-slate-100 px-7 pb-8 pt-7 sm:px-10">
+        <div className="flex flex-1 flex-col border-t border-slate-100 px-5 pb-6 pt-5 sm:px-8">
           {plan.highlightedFeatures?.length ? (
-            <div className="mb-7 rounded-3xl border border-blue-100 bg-blue-50/70 p-4">
+            <div className="mb-5 rounded-3xl border border-blue-100 bg-blue-50/70 p-4">
               <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-900">
                 Especial odontología
               </p>
@@ -251,7 +249,7 @@ function PlanCard({ plan, index }) {
             </div>
           ) : null}
 
-          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
             Incluye
           </p>
 
@@ -273,7 +271,7 @@ function PlanCard({ plan, index }) {
             href={planLink}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 w-full rounded-[22px] bg-blue-950 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-blue-950/15 transition-colors duration-200 hover:bg-blue-900"
+            className="mt-6 w-full rounded-[22px] bg-blue-950 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-blue-950/15 transition-colors duration-200 hover:bg-blue-900"
           >
             Quiero este plan
           </a>
