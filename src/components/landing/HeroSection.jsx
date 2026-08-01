@@ -67,15 +67,18 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={0.6}
-              className="flex justify-start"
+              className="flex items-center justify-start gap-3 sm:gap-4"
             >
               <img
-                src="/logoac5.png"
-                alt="Agenda Clínica"
-                width={1431}
-                height={467}
-                className="h-auto w-[230px] object-contain sm:w-[300px] lg:w-[360px]"
+                src="/logos/acLogoTransparente.png"
+                alt="Isotipo de AgendaClinica"
+                width={1536}
+                height={1024}
+                className="h-24 w-24 object-cover object-center sm:h-28 sm:w-28 lg:h-32 lg:w-32"
               />
+              <p className="text-2xl font-semibold tracking-[-0.045em] text-[#1a2348] sm:text-3xl lg:text-4xl">
+                AgendaClinica
+              </p>
             </motion.div>
 
             <motion.h1
