@@ -7,6 +7,7 @@ import PricingSection from "@/components/landing/PricingSection";
 import FAQSection from "@/components/landing/FAQSection";
 import ContactSection from "@/components/landing/ContactSection";
 import StickyMobileCTA from "@/components/landing/StickyMobileCTA";
+import ReviewsSection from "@/components/landing/ReviewsSection";
 
 export default function Home() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agendaclinica.space";
@@ -237,6 +238,7 @@ export default function Home() {
         <ProcessSection />
         <ModulesSection />
         <PricingSection />
+        <ReviewsSection />
         <SeoContentSection />
         <FAQSection />
         <ContactSection />

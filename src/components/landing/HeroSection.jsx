@@ -95,14 +95,6 @@ export default function HeroSection() {
               </span>
             </motion.h1>
 
-            <motion.div
-              variants={fade}
-              initial="hidden"
-              animate="visible"
-              custom={1.3}
-              className="mt-8 h-1 w-56 rounded-full bg-linear-to-r from-sky-400 via-blue-500 to-violet-500"
-            />
-
             <motion.p
               variants={fade}
               initial="hidden"

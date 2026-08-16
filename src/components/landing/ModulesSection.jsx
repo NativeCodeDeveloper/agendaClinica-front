@@ -164,12 +164,6 @@ export default function ModulesSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div ref={headerRef} className="mb-14 max-w-2xl">
-          <motion.p
-            variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0}
-            className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-900 mb-4"
-          >
-            Funcionalidades
-          </motion.p>
           <motion.h2
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
             className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight"

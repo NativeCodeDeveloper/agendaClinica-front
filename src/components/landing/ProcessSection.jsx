@@ -90,9 +90,6 @@ function ProcessCarousel() {
   return (
     <div className="mb-14">
       <div className="mb-6 text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
-          Plataforma en acción
-        </p>
         <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
           Mira cómo se ordena una jornada clínica
         </h3>
@@ -172,14 +169,7 @@ function CortexVideoSection() {
             />
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-300/25 bg-blue-400/10 px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-200">
-            <Sparkles className="h-3.5 w-3.5" strokeWidth={2} />
-            Inteligencia artificial clínica
-          </div>
 
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-blue-300">
-            Cortex en acción
-          </p>
           <h3 id="cortex-video-title" className="mt-3 text-3xl font-bold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
             Completa fichas clínicas en menos tiempo y fortalece tu análisis diagnóstico
           </h3>
@@ -308,17 +298,6 @@ export default function ProcessSection() {
 
         {/* Header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate={headerInView ? "visible" : "hidden"}
-            custom={0}
-          >
-            <span className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-900 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full">
-              <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} />
-              Implementación acompañada
-            </span>
-          </motion.div>
 
           <motion.h2
             variants={fadeUp}

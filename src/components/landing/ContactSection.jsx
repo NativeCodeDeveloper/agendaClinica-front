@@ -42,18 +42,6 @@ export default function ContactSection() {
 
       <div ref={ref} className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-        {/* Badge */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          custom={0}
-        >
-          <span className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-900/50 text-blue-200 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-300 animate-pulse" />
-            Agenda una conversación
-          </span>
-        </motion.div>
 
         {/* Heading */}
         <motion.h2

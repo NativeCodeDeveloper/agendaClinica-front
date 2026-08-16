@@ -125,15 +125,6 @@ export default function BenefitsSection() {
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent pointer-events-none" />
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="mx-auto mb-16 max-w-3xl text-center">
-          <motion.span
-            variants={fadeUp}
-            initial="hidden"
-            animate={visible ? "visible" : "hidden"}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-900"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-800" />
-            Orden visible desde el primer día
-          </motion.span>
 
           <motion.h2
             variants={fadeUp}
