@@ -169,15 +169,15 @@ export default function HeroSection() {
               {heroCards.map((card, index) => {
                 const Icon = card.icon;
                 const positions = [
-                  "right-0 top-[20%]",
-                  "right-[-12px] top-[41%]",
-                  "right-4 top-[62%]",
+                  "right-[-40px] top-[20%]",
+                  "right-[-70px] top-[41%]",
+                  "right-[-36px] top-[62%]",
                 ];
 
                 return (
                   <div
                     key={card.label}
-                    className={`absolute ${positions[index]} hidden min-w-[196px] items-center gap-3.5 rounded-2xl border border-slate-100 bg-white/95 py-4 pl-4 pr-5 shadow-[0_16px_32px_rgba(16,42,115,0.10)] backdrop-blur lg:flex`}
+                    className={`absolute z-20 ${positions[index]} hidden min-w-[196px] items-center gap-3.5 rounded-2xl border border-slate-100 bg-white/95 py-4 pl-4 pr-5 shadow-[0_16px_32px_rgba(16,42,115,0.10)] backdrop-blur lg:flex`}
                   >
                     <span className="h-8 w-px shrink-0 rounded-full bg-[#102a73]/25" aria-hidden="true" />
                     <Icon className="h-4 w-4 shrink-0 text-[#102a73]" strokeWidth={1.8} />
