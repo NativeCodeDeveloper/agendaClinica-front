@@ -124,8 +124,7 @@ export default function FAQSection() {
             className="mt-5 text-3xl sm:text-3xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Respuestas claras antes de{" "}
-            <span className="text-blue-900">agendar una demo</span>
+            Respuestas claras antes de agendar una demo
           </motion.h2>
         </div>
 

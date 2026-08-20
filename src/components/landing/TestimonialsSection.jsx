@@ -114,16 +114,11 @@ function ClientLogos() {
     >
       {/* Bloque de confianza */}
       <div className="text-center mb-10">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-700 mb-3">
-          Clínicas y profesionales reales
-        </p>
-
         <h3
           className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Equipos de salud que ya{" "}
-          <span className="text-blue-900">ordenaron su agenda</span>
+          Equipos de salud que ya ordenaron su agenda
         </h3>
 
         <p className="mt-3 text-slate-400 text-sm max-w-md mx-auto leading-relaxed">
@@ -157,28 +152,15 @@ export default function TestimonialsSection() {
 
         {/* Header */}
         <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-14">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate={headerInView ? "visible" : "hidden"}
-            custom={0}
-          >
-            <span className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-900 text-[11px] font-semibold uppercase tracking-[0.18em] px-4 py-1.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-700" />
-              Prueba social
-            </span>
-          </motion.div>
-
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
-            custom={0.1}
-            className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
+            custom={0}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Cuando la agenda se ordena,{" "}
-            <span className="text-blue-900">el equipo lo nota</span>
+            Cuando la agenda se ordena, el equipo lo nota
           </motion.h2>
         </div>
 

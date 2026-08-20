@@ -170,7 +170,7 @@ export default function ModulesSection() {
             style={{ letterSpacing: "-0.025em" }}
           >
             La operación completa,<br />
-            <span className="text-blue-900">con menos esfuerzo.</span>
+            con menos esfuerzo.
           </motion.h2>
           <motion.p
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}

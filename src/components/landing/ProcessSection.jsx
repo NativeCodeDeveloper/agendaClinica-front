@@ -10,9 +10,8 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  FileText,
-  Sparkles,
 } from "lucide-react";
+import CortexSection from "./CortexSection";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -152,82 +151,6 @@ function ProcessCarousel() {
   );
 }
 
-function CortexVideoSection() {
-  return (
-    <div id="cortex" className="relative mb-20 scroll-mt-24 overflow-hidden rounded-[32px] border border-blue-200/70 bg-slate-950 px-4 py-7 shadow-[0_28px_80px_rgba(15,23,42,0.16)] sm:px-7 sm:py-9 lg:-mx-10 lg:px-10 lg:py-12 xl:-mx-16">
-      <div className="pointer-events-none absolute -left-28 -top-28 h-72 w-72 rounded-full bg-blue-600/25 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/[0.07] via-transparent to-blue-400/[0.06]" />
-
-      <div className="relative">
-        <div className="mx-auto max-w-5xl text-center text-white">
-          <div className="mx-auto mb-7 h-40 w-full max-w-[360px] overflow-hidden rounded-2xl border border-white/15 bg-white/95 shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:h-44 sm:rounded-3xl">
-            <img
-              src="/logos/77777777.png"
-              alt="Cortex A.I."
-              className="h-full w-full scale-110 object-cover object-center"
-            />
-          </div>
-
-
-          <h3 id="cortex-video-title" className="mt-3 text-3xl font-bold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
-            Completa fichas clínicas en menos tiempo y fortalece tu análisis diagnóstico
-          </h3>
-          <p className="mx-auto mt-5 max-w-3xl text-[15px] leading-7 text-slate-300 sm:text-base">
-            Cortex organiza la información de la atención, redacta automáticamente la ficha clínica y analiza los antecedentes registrados para entregar sugerencias que apoyen el diagnóstico del profesional.
-          </p>
-
-          <div className="mt-8 grid gap-3 text-left sm:grid-cols-2 sm:gap-4">
-            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm leading-6 text-slate-200 backdrop-blur-sm sm:p-5">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" strokeWidth={2} />
-              <span>Fichas clínicas completas, claras y estructuradas</span>
-            </div>
-            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm leading-6 text-slate-200 backdrop-blur-sm sm:p-5">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" strokeWidth={2} />
-              <span>Sugerencias diagnósticas basadas en los antecedentes de la atención</span>
-            </div>
-          </div>
-
-          <p className="mx-auto mt-8 max-w-3xl text-base font-medium leading-7 text-blue-100 sm:text-lg">
-            Mira cómo Cortex transforma los datos de una atención en una ficha clínica estructurada y entrega apoyo diagnóstico en segundos.
-          </p>
-        </div>
-
-        <div className="mt-9 overflow-hidden rounded-[24px] border border-white/15 bg-white/[0.07] p-2.5 shadow-2xl shadow-black/30 backdrop-blur-sm sm:mt-10 sm:p-3.5">
-          <div className="mb-2.5 flex items-center justify-between px-2 py-1">
-            <div className="flex items-center gap-1.5" aria-hidden="true">
-              <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-amber-300/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
-            </div>
-            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-300">
-              <FileText className="h-3.5 w-3.5 text-blue-300" strokeWidth={2} />
-              Ficha clínica asistida
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-[17px] bg-black ring-1 ring-white/10">
-            <video
-              className="aspect-video w-full bg-black object-contain"
-              src="/fichaClinicaClip.mp4"
-              controls
-              playsInline
-              preload="metadata"
-              aria-label="Demostración del llenado de fichas clínicas asistido por Cortex"
-            >
-              Tu navegador no puede reproducir este video.
-            </video>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-6 max-w-3xl border-t border-white/10 pt-6 text-center text-xs leading-5 text-slate-400 sm:text-sm sm:leading-6">
-          Cortex funciona como asistente clínico. Sus sugerencias no reemplazan el criterio, la evaluación ni la decisión final del profesional.
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function StepCard({ step, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
@@ -294,7 +217,7 @@ export default function ProcessSection() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ProcessCarousel />
-        <CortexVideoSection />
+        <CortexSection />
 
         {/* Header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
@@ -307,8 +230,7 @@ export default function ProcessSection() {
             className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            De agenda dispersa a operación{" "}
-            <span className="text-blue-900">controlada.</span>
+            De agenda dispersa a operación controlada.
           </motion.h2>
 
           <motion.p

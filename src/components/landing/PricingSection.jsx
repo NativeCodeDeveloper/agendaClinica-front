@@ -290,10 +290,7 @@ function ProfessionalCarousel() {
   return (
     <div className="mx-auto mt-10 max-w-5xl">
       <div className="mb-7 text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700">
-          Profesionales
-        </p>
-        <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+        <h3 className="text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
           Una agenda flexible para distintas especialidades
         </h3>
         <p className="mt-3 text-sm leading-7 text-slate-500 sm:text-base">
@@ -364,8 +361,7 @@ export default function PricingSection() {
             className="mt-5 text-3xl sm:text-4xl lg:text-4xl font-bold text-blue-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Planes claros para{" "}
-            <span className="text-blue-900">operar con orden</span>
+            Planes claros para operar con orden
           </motion.h2>
 
           <motion.p

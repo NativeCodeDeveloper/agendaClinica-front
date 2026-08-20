@@ -292,12 +292,9 @@ function SeoContentSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-900">
-              Software para salud
-            </p>
             <h2
               id="seo-agenda-clinica-title"
-              className="mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-slate-950 sm:text-4xl"
+              className="text-3xl font-bold leading-tight tracking-[-0.025em] text-slate-950 sm:text-4xl"
             >
               Agenda online para clínicas, consultas de salud y reservas de pacientes
             </h2>

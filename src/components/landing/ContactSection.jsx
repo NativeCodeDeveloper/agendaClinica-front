@@ -54,7 +54,7 @@ export default function ContactSection() {
         >
           Ordenemos tu agenda
           <br />
-          <span className="text-blue-200">sin agregar más carga.</span>
+          sin agregar más carga.
         </motion.h2>
 
         {/* Subtitle */}

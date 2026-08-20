@@ -133,10 +133,7 @@ export default function BenefitsSection() {
             custom={1}
             className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            Menos coordinación manual,{" "}
-            <span className="text-blue-950">
-              más foco en atender.
-            </span>
+            Menos coordinación manual, más foco en atender.
           </motion.h2>
 
           <motion.p

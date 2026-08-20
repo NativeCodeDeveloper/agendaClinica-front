@@ -58,30 +58,30 @@ function ReviewCard({ review }) {
 
   return (
     <article
-      className="flex h-full min-h-[290px] flex-col rounded-3xl border border-white/10 bg-[#0b1220]/90 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur transition-all hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-cyan-950/30"
+      className="flex h-full min-h-[290px] flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-blue-100 hover:shadow-lg hover:shadow-slate-200/60"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-300/30 bg-cyan-300/10 text-sm font-bold text-cyan-200">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-900 text-sm font-bold text-white">
             {initials || "AC"}
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white">
+            <h3 className="text-sm font-semibold text-slate-900">
               {displayName}
             </h3>
-            <p className="mt-0.5 text-xs text-slate-400">{displayDescription}</p>
+            <p className="mt-0.5 text-xs text-slate-500">{displayDescription}</p>
           </div>
         </div>
         <RatingStars rating={rating} />
       </div>
 
-      <MessageSquareQuote className="mt-7 h-7 w-7 text-cyan-300/70" strokeWidth={1.6} />
-      <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-slate-300">
+      <MessageSquareQuote className="mt-7 h-7 w-7 text-blue-900/25" strokeWidth={1.6} />
+      <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-slate-600">
         “{review.comentario}”
       </blockquote>
 
-      <div className="mt-6 border-t border-white/10 pt-4">
-        <p className="text-sm font-semibold text-cyan-100">{review.titulo}</p>
+      <div className="mt-6 border-t border-slate-100 pt-4">
+        <p className="text-sm font-semibold text-blue-900">{review.titulo}</p>
       </div>
     </article>
   );
@@ -200,12 +200,12 @@ export default function ReviewsSection() {
   }
 
   return (
-    <section id="resenas" className="relative overflow-hidden bg-[white] py-24 text-white sm:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(14,165,233,0.16),transparent_32%),radial-gradient(circle_at_85%_80%,rgba(37,99,235,0.18),transparent_35%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
+    <section id="resenas" className="relative overflow-hidden bg-white py-24 sm:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(30,58,138,0.05),transparent_32%),radial-gradient(circle_at_85%_80%,rgba(30,58,138,0.06),transparent_35%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="mt-5 text-4xl font-bold tracking-tight text-black sm:text-3xl">
+          <h2 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             Profesionales que ya ordenaron su agenda
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-500 sm:text-3lg">
@@ -213,9 +213,9 @@ export default function ReviewsSection() {
           </p>
 
           {summary?.totalResenas > 0 && (
-            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 shadow-sm backdrop-blur">
+            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50 px-4 py-2.5 shadow-sm">
               <RatingStars rating={Math.round(Number(summary.promedio) || 0)} />
-              <span className="text-sm font-semibold text-slate-400">
+              <span className="text-sm font-semibold text-slate-600">
                 {summary.promedio} de 5 · {summary.totalResenas} reseña{summary.totalResenas === 1 ? "" : "s"}
               </span>
             </div>
@@ -228,7 +228,7 @@ export default function ReviewsSection() {
                 setFeedback(null);
                 setIsFormOpen(true);
               }}
-              className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-black px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-950/20 transition hover:border-cyan-200/70 hover:bg-black focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-350"
+              className="inline-flex items-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
             >
               <Plus className="h-4 w-4" strokeWidth={2.4} />
               Añadir reseña
@@ -242,7 +242,7 @@ export default function ReviewsSection() {
               <button
                 type="button"
                 onClick={() => scrollCarousel(-1)}
-                className="rounded-full border border-white/15 bg-white/5 p-2.5 text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+                className="rounded-full border border-slate-200 bg-white p-2.5 text-slate-500 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
                 aria-label="Reseña anterior"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -250,7 +250,7 @@ export default function ReviewsSection() {
               <button
                 type="button"
                 onClick={() => scrollCarousel(1)}
-                className="rounded-full border border-white/15 bg-white/5 p-2.5 text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"
+                className="rounded-full border border-slate-200 bg-white p-2.5 text-slate-500 shadow-sm transition hover:border-blue-200 hover:text-blue-700"
                 aria-label="Siguiente reseña"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -258,15 +258,20 @@ export default function ReviewsSection() {
             </div>
           )}
 
+          {/* -mx-1 + px-1 (y py) a propósito: el contenedor necesita overflow-x
+              para el scroll horizontal, pero eso fuerza overflow-y a "auto"
+              aunque no se declare (regla del spec CSS) — sin este padding, el
+              -translate-y-1 y la sombra del hover de ReviewCard quedaban
+              cortados arriba/abajo por ese overflow-y implícito. */}
           <div
             ref={carouselRef}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="-mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
           {isLoading
             ? Array.from({ length: 3 }, (_, index) => (
                 <div
                   key={index}
-                  className="h-72 min-w-full animate-pulse snap-start rounded-3xl border border-white/10 bg-white sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc(33.333%-0.833rem)]"
+                  className="h-72 min-w-full animate-pulse snap-start rounded-3xl border border-slate-200 bg-slate-50 sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc(33.333%-0.833rem)]"
                 />
               ))
             : reviews.map((review) => (
@@ -280,14 +285,14 @@ export default function ReviewsSection() {
 
       {isFormOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-slate-950/75 p-4 pt-24 backdrop-blur-md sm:items-center sm:pt-8"
+          className="fixed inset-0 z-[400] flex items-center justify-center bg-slate-950/75 p-4 backdrop-blur-md"
           onClick={() => setIsFormOpen(false)}
         >
           <div
             role="dialog"
             aria-modal="true"
             aria-labelledby="review-form-title"
-            className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
+            className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-5">
@@ -414,7 +419,7 @@ export default function ReviewsSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-950/15 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Send className="h-4 w-4" strokeWidth={2.2} />
                 {isSubmitting ? "Enviando reseña..." : "Publicar reseña"}

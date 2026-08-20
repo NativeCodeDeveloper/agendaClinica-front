@@ -91,22 +91,16 @@ export default function LeadFilterSection() {
 
         {/* Header */}
         <div ref={headerRef} className="mb-16">
-          <motion.p
-            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0}
-            className="text-[11px] font-bold uppercase tracking-[0.22em] text-blue-900 mb-4"
-          >
-            Claridad desde el inicio
-          </motion.p>
           <motion.h2
-            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
+            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.04] max-w-xl"
             style={{ letterSpacing: "-0.03em" }}
           >
             Honestidad<br />
-            <span className="text-blue-900">primero.</span>
+            primero.
           </motion.h2>
           <motion.p
-            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}
+            variants={fade} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
             className="mt-5 text-lg text-slate-400 max-w-lg leading-relaxed"
           >
             No vendemos para todos. Queremos que tomes la mejor decisión para tu centro.

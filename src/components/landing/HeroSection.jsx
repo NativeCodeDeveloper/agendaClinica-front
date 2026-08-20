@@ -25,9 +25,9 @@ const fade = {
 };
 
 const heroCards = [
-  { icon: CalendarCheck2, title: "+ Reservas", subtitle: "- mensajes" },
-  { icon: Users, title: "Pacientes", subtitle: "ordenados" },
-  { icon: BarChart3, title: "Control", subtitle: "del dia" },
+  { icon: CalendarCheck2, label: "Reservas sin mensajes perdidos" },
+  { icon: Users, label: "Pacientes siempre ordenados" },
+  { icon: BarChart3, label: "Control total del día" },
 ];
 
 const features = [
@@ -86,13 +86,11 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={1}
-              className="mt-5 text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.045em] text-[#11255a] sm:text-[4rem] lg:text-[4.8rem]"
+              className="mt-5 text-[2.75rem] font-bold leading-[0.95] tracking-[-0.05em] text-[#11255a] sm:text-[4rem] lg:text-[4.8rem]"
             >
-              Tu agenda clínica,
+              Agenda clínica
               <br />
-              <span className="bg-linear-to-r from-sky-500 via-blue-700 to-slate-950 bg-clip-text text-transparent">
-                sin desorden.
-              </span>
+              Sin desorden
             </motion.h1>
 
             <motion.p
@@ -153,9 +151,13 @@ export default function HeroSection() {
             className="relative mx-auto hidden w-full max-w-[740px] justify-center lg:flex"
           >
             <div className="relative h-[520px] w-[520px] sm:h-[620px] sm:w-[620px]">
-              <div className="absolute inset-0 rounded-full bg-linear-to-br from-sky-400 via-blue-500 to-violet-600 p-5 shadow-[0_40px_80px_rgba(59,130,246,0.18)]">
-                <div className="relative h-full w-full overflow-hidden rounded-full bg-white/80 backdrop-blur-sm">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.18),transparent_35%),radial-gradient(circle_at_70%_55%,rgba(99,102,241,0.18),transparent_35%)]" />
+              {/* Resplandor de fondo — reemplaza el aro degradado de 3 colores por
+                  algo más sobrio: un glow difuso de un solo tono detrás de un aro fino. */}
+              <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(16,42,115,0.14),transparent_68%)] blur-2xl" />
+
+              <div className="absolute inset-0 rounded-full border border-[#102a73]/12 bg-white p-2 shadow-[0_40px_90px_rgba(16,42,115,0.14)]">
+                <div className="relative h-full w-full overflow-hidden rounded-full">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,42,115,0.08),transparent_40%)]" />
                   <img
                     src="/img1.jpg"
                     alt="Vista agenda semanal Agenda Clinica"
@@ -163,8 +165,6 @@ export default function HeroSection() {
                   />
                 </div>
               </div>
-
-              <div className="absolute -left-10 bottom-12 h-40 w-72 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.9)_1.5px,transparent_1.5px)] [background-size:16px_16px] opacity-70 blur-[1px]" />
 
               {heroCards.map((card, index) => {
                 const Icon = card.icon;
@@ -176,16 +176,12 @@ export default function HeroSection() {
 
                 return (
                   <div
-                    key={card.title}
-                    className={`absolute ${positions[index]} hidden min-w-[210px] items-center gap-4 rounded-[24px] border border-white/80 bg-white/92 px-6 py-5 shadow-[0_18px_36px_rgba(15,23,42,0.10)] backdrop-blur lg:flex`}
+                    key={card.label}
+                    className={`absolute ${positions[index]} hidden min-w-[196px] items-center gap-3.5 rounded-2xl border border-slate-100 bg-white/95 py-4 pl-4 pr-5 shadow-[0_16px_32px_rgba(16,42,115,0.10)] backdrop-blur lg:flex`}
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
-                      <Icon className="h-7 w-7" strokeWidth={1.8} />
-                    </div>
-                    <div className="text-[#163579]">
-                      <p className="text-[1.05rem] font-medium leading-none">{card.title}</p>
-                      <p className="mt-1 text-[1.05rem] font-medium leading-none">{card.subtitle}</p>
-                    </div>
+                    <span className="h-8 w-px shrink-0 rounded-full bg-[#102a73]/25" aria-hidden="true" />
+                    <Icon className="h-4 w-4 shrink-0 text-[#102a73]" strokeWidth={1.8} />
+                    <p className="text-[0.9rem] font-medium leading-snug text-[#163579]">{card.label}</p>
                   </div>
                 );
               })}
