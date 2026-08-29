@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SITE_URL, SEO_METADATA } from "./constants/seo";
 
@@ -7,6 +8,8 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "G-P1GGMQ9KM5";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -52,28 +55,14 @@ export const metadata = {
     siteName: "AgendaClinica",
     title: SEO_METADATA.title,
     description: SEO_METADATA.description,
-    images: [
-      {
-        url: "/ac.png",
-        width: 1200,
-        height: 1200,
-        alt: "AgendaClinica",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SEO_METADATA.title,
     description: SEO_METADATA.description,
-    images: ["/ac.png"],
   },
   category: "healthcare",
   classification: "Healthcare software, appointment scheduling, patient management",
-  icons: {
-    icon: "/ac.png",
-    shortcut: "/ac.png",
-    apple: "/ac.png",
-  },
 };
 
 export const viewport = {
@@ -89,6 +78,15 @@ export default function RootLayout({ children }) {
     <html lang="es-CL">
       <body className={`${inter.variable} antialiased`}>
         {children}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

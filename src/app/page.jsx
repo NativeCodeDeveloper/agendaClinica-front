@@ -8,12 +8,69 @@ import FAQSection from "@/components/landing/FAQSection";
 import ContactSection from "@/components/landing/ContactSection";
 import StickyMobileCTA from "@/components/landing/StickyMobileCTA";
 import ReviewsSection from "@/components/landing/ReviewsSection";
+import SeoContentSection from "@/components/landing/SeoContentSection";
+import LegalSection from "@/components/landing/LegalSection";
 
-export default function Home() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agendaclinica.space";
+const RESENAS_API_URL =
+  process.env.NEXT_PUBLIC_RESENAS_API_URL || "https://api-resenas.agendaclinicas.cl";
+
+async function getReviewsForSchema() {
+  try {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+      next: { revalidate: 3600 },
+    };
+
+    const [summaryRes, listRes] = await Promise.all([
+      fetch(`${RESENAS_API_URL}/resena/puntuacionGeneral`, requestOptions),
+      fetch(`${RESENAS_API_URL}/resena/listar`, requestOptions),
+    ]);
+
+    if (!summaryRes.ok || !listRes.ok) return null;
+
+    const summary = await summaryRes.json();
+    const list = await listRes.json();
+
+    const totalResenas = Number(summary?.totalResenas) || 0;
+    const promedio = Number(summary?.promedio) || 0;
+    if (totalResenas <= 0 || promedio <= 0) return null;
+
+    const reviews = Array.isArray(list?.resenas) ? list.resenas.slice(0, 5) : [];
+
+    return {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: promedio.toFixed(1),
+        reviewCount: totalResenas,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      review: reviews.map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.nombre_autor || r.nombre_consulta || "Usuario de AgendaClínica" },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: String(r.calificacion || 5),
+          bestRating: "5",
+          worstRating: "1",
+        },
+        reviewBody: r.comentario || r.titulo || "",
+        datePublished: r.creado_en ? r.creado_en.slice(0, 10) : undefined,
+      })),
+    };
+  } catch {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.agendaclinicas.cl";
   const pageTitle = "Agenda clínica online para reservas de pacientes, fichas clínicas y odontogramas";
   const pageDescription =
     "AgendaClinica permite gestionar reservas de pacientes, agenda online, fichas clínicas digitales, odontogramas, recordatorios automáticos por WhatsApp y correo, pagos y administración clínica desde computador o celular.";
+  const reviewsSchema = await getReviewsForSchema();
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -47,7 +104,7 @@ export default function Home() {
         },
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: `${siteUrl}/ac.png`,
+          url: `${siteUrl}/opengraph-image`,
         },
         inLanguage: "es-CL",
       },
@@ -57,7 +114,7 @@ export default function Home() {
         name: "AgendaClinica",
         legalName: "NativeCode SpA",
         url: siteUrl,
-        logo: `${siteUrl}/ac.png`,
+        logo: `${siteUrl}/apple-icon`,
         email: "ingenieria.software@nativecode.cl",
         contactPoint: [
           {
@@ -77,7 +134,7 @@ export default function Home() {
         applicationSubCategory: "Healthcare Practice Management Software",
         operatingSystem: "Web",
         url: siteUrl,
-        image: `${siteUrl}/ac.png`,
+        image: `${siteUrl}/opengraph-image`,
         description: pageDescription,
         offers: [
           {
@@ -120,6 +177,9 @@ export default function Home() {
           "Pagos con Mercado Pago",
           "Acceso desde computador y celular",
         ],
+        ...(reviewsSchema
+          ? { aggregateRating: reviewsSchema.aggregateRating, review: reviewsSchema.review }
+          : {}),
       },
       {
         "@type": "Service",
@@ -249,7 +309,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img src="/logacsolo.png" alt="AgendaClinica logo" className="h-7 w-7 object-contain opacity-70" />
+                <img src="/logo-mark.png" alt="AgendaClinica logo" className="h-7 w-7 object-contain opacity-70 brightness-0" />
                 <div>
                   <p className="text-[12px] font-semibold text-slate-600 leading-none">AgendaClinica</p>
                   <p className="text-[10px] text-slate-400 mt-0.5">by NativeCode SpA</p>
@@ -269,63 +329,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            <LegalSection />
           </div>
         </footer>
       </main>
-  );
-}
-
-function SeoContentSection() {
-  const useCases = [
-    "agenda online para reservas de pacientes",
-    "fichas clínicas digitales personalizables",
-    "odontogramas para consultas dentales",
-    "recordatorios automáticos por WhatsApp y correo",
-    "historial clínico completo de pacientes",
-    "confirmación y cancelación automática de citas",
-    "página web de agendamiento para pacientes",
-    "pagos opcionales con Mercado Pago",
-  ];
-
-  return (
-    <section className="bg-white py-24" aria-labelledby="seo-agenda-clinica-title">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div>
-            <h2
-              id="seo-agenda-clinica-title"
-              className="text-3xl font-bold leading-tight tracking-[-0.025em] text-slate-950 sm:text-4xl"
-            >
-              Agenda online para clínicas, consultas de salud y reservas de pacientes
-            </h2>
-          </div>
-
-          <div className="space-y-5 text-base leading-8 text-slate-600">
-            <p>
-              AgendaClinica ayuda a profesionales y centros de salud a centralizar la agenda
-              clínica online, las reservas de pacientes, las fichas clínicas digitales y el
-              historial clínico en una plataforma web simple de usar desde computador o celular.
-            </p>
-            <p>
-              Para consultas dentales, el plan odontológico suma odontograma, recetas, historial
-              de recetas, presupuestos, solicitudes de órdenes de exámenes y subida de archivos,
-              imágenes, radiografías y documentos. Para otras especialidades, permite ordenar
-              horarios, servicios, pacientes, recordatorios y confirmaciones automáticas sin
-              depender de planillas o mensajes dispersos.
-            </p>
-            <div className="grid gap-3 pt-2 sm:grid-cols-2">
-              {useCases.map((item) => (
-                <div key={item} className="flex items-start gap-2.5">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-900" />
-                  <span className="text-sm font-medium leading-6 text-slate-700">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const WA_LINK =
   "https://wa.me/56966091038?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20hora%20para%20que%20me%20muestren%20la%20plataforma%20de%20Agenda%20Cl%C3%ADnica.";
@@ -17,39 +18,49 @@ export default function LandingNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    // El hero ocupa la pantalla completa (fondo oscuro) — el nav se mantiene
+    // oscuro/transparente mientras sigas ahí, y recién pasa a claro cuando
+    // avanzas hacia el resto de la página (fondo claro).
+    const onScroll = () => setIsScrolled(window.scrollY > window.innerHeight - 140);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
-    <header className="fixed left-1/2 top-2 z-[300] w-[calc(100%-1rem)] max-w-7xl -translate-x-1/2 px-1.5 transition-all duration-300 sm:top-3 sm:w-[calc(100%-1.5rem)] sm:px-2 lg:top-5">
-      <div
-        className={`rounded-[1.4rem] border px-3 py-2.5 transition-all duration-300 sm:rounded-[2rem] sm:px-4 sm:py-3 ${
-          isScrolled
-            ? "border-white/30 bg-white/58 shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl"
-            : "border-slate-200/80 bg-white/92 shadow-[0_16px_34px_rgba(15,23,42,0.10)] backdrop-blur-md"
-        }`}
-      >
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-3">
-            <img
-              src="/logos/acLogoTransparente.png"
-              alt="Isotipo de AgendaClinica"
-              className="h-11 w-11 object-cover object-center sm:h-14 sm:w-14 lg:h-16 lg:w-16"
-            />
-            <p className="text-[1.05rem] font-semibold tracking-[-0.04em] text-[#1a2348] sm:text-[1.3rem] lg:text-[1.6rem]">
-              AgendaClinica
-            </p>
-          </div>
+    <header className="fixed inset-x-0 top-0 z-[300] px-4 pt-4 sm:pt-5 lg:pt-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        {/* Logo suelto, sin caja */}
+        <a href="#inicio" className="flex min-w-0 shrink-0 items-center">
+          <img
+            src="/logo-full.png"
+            alt="AgendaClinica"
+            className={`h-9 w-auto object-contain transition-all duration-300 sm:h-11 ${
+              isScrolled ? "brightness-0" : ""
+            }`}
+          />
+        </a>
 
-          <nav className="hidden items-center gap-6 lg:flex">
+        {/* Links + CTA — dos piezas separadas */}
+        <div className="hidden items-center gap-2 lg:flex">
+          <nav
+            className={`flex items-center gap-1 rounded-full border px-1.5 py-1.5 backdrop-blur-xl transition-all duration-300 ${
+              isScrolled ? "border-slate-200/80 bg-white/70" : "border-white/10 bg-black/30"
+            }`}
+          >
             {navItems.map(([label, href]) => (
               <a
                 key={label}
                 href={href}
-                className="text-sm font-medium text-[#24315f] transition-colors hover:text-blue-600"
+                className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300 ${
+                  isScrolled
+                    ? "text-[#24315f] hover:bg-slate-100 hover:text-blue-600"
+                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                }`}
               >
                 {label}
               </a>
@@ -60,30 +71,51 @@ export default function LandingNavbar() {
             href={WA_LINK}
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 rounded-full bg-[#1d2148] px-3.5 py-2 text-[10px] font-semibold text-white shadow-lg shadow-slate-900/10 transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-[11px] lg:px-7 lg:py-3 lg:text-sm"
+            onClick={() => trackEvent("whatsapp_click", { location: "navbar_desktop" })}
+            className={`shrink-0 rounded-full px-5 py-3 text-sm font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
+              isScrolled ? "bg-[#1d2148] text-white shadow-slate-900/10" : "bg-white text-[#102a73] shadow-black/25"
+            }`}
           >
             Agendar demo
           </a>
         </div>
 
-        <nav className="mt-3 overflow-x-auto pb-0.5 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex min-w-max items-center gap-2">
-            {navItems.map(([label, href], index) => (
-              <a
-                key={label}
-                href={href}
-                className={`rounded-full px-3 py-1.5 text-[10px] font-medium ${
-                  index === 0
+        {/* Mobile: solo el CTA junto al logo */}
+        <a
+          href={WA_LINK}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => trackEvent("whatsapp_click", { location: "navbar_mobile" })}
+          className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold shadow-lg transition-all duration-300 lg:hidden ${
+            isScrolled ? "bg-[#1d2148] text-white shadow-slate-900/10" : "bg-white text-[#102a73] shadow-black/25"
+          }`}
+        >
+          Agendar demo
+        </a>
+      </div>
+
+      {/* Mobile: chips de navegación, scroll horizontal */}
+      <nav className="mx-auto mt-3 max-w-7xl overflow-x-auto pb-1 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex min-w-max items-center gap-2">
+          {navItems.map(([label, href], index) => (
+            <a
+              key={label}
+              href={href}
+              className={`rounded-full px-3 py-1.5 text-[10px] font-medium transition-colors duration-300 ${
+                isScrolled
+                  ? index === 0
                     ? "bg-blue-50 text-blue-600 ring-1 ring-blue-100"
                     : "bg-white/70 text-[#24315f] ring-1 ring-slate-200/80"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </nav>
-      </div>
+                  : index === 0
+                    ? "bg-white/90 text-[#102a73] ring-1 ring-white/20"
+                    : "bg-white/10 text-white/85 ring-1 ring-white/15"
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </nav>
     </header>
   );
 }

@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agendaclinica.space";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.agendaclinicas.cl";
 
 export default function robots() {
   return {

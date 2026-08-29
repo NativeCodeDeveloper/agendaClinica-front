@@ -1,4 +1,4 @@
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://agendaclinica.space";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.agendaclinicas.cl";
 
 export const SEO_METADATA = {
   title: "Agenda Clínica Online | Reservas de pacientes, fichas clínicas y odontogramas",

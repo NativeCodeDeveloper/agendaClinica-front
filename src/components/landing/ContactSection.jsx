@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MessageCircle, Mail, Shield, Clock, CheckCircle2 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -49,12 +50,10 @@ export default function ContactSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           custom={0.1}
-          className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight"
+          className="mt-6 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Ordenemos tu agenda
-          <br />
-          sin agregar más carga.
+          Tu próxima cita puede agendarse sola, empecemos hoy
         </motion.h2>
 
         {/* Subtitle */}
@@ -65,7 +64,7 @@ export default function ContactSection() {
           custom={0.2}
           className="mt-5 text-lg text-blue-200 leading-relaxed max-w-xl mx-auto"
         >
-          Cuéntanos cómo atiendes hoy: cantidad de profesionales, tipo de agenda y principales dolores. Te mostraremos si Agenda Clínica calza con tu operación.
+          Cuéntanos cómo atiendes hoy: cantidad de profesionales, tipo de agenda y tus principales dolores. Te mostramos si Agenda Clínica calza contigo.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -80,6 +79,7 @@ export default function ContactSection() {
             href={WA_LINK}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent("whatsapp_click", { location: "contact_section" })}
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease }}
@@ -91,6 +91,7 @@ export default function ContactSection() {
 
           <motion.a
             href={MAIL_LINK}
+            onClick={() => trackEvent("email_click", { location: "contact_section" })}
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -10,6 +11,18 @@ import {
   Star,
   X,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
+
+const ease = [0.22, 1, 0.36, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.6, ease },
+  }),
+};
 
 const API_URL =
   process.env.NEXT_PUBLIC_RESENAS_API_URL ||
@@ -87,6 +100,24 @@ function ReviewCard({ review }) {
   );
 }
 
+function AnimatedReviewCard({ review, index }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={fadeUp}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      custom={index}
+      className="min-w-full snap-start sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc(33.333%-0.833rem)]"
+    >
+      <ReviewCard review={review} />
+    </motion.div>
+  );
+}
+
 export default function ReviewsSection() {
   const [reviews, setReviews] = useState([]);
   const [summary, setSummary] = useState(null);
@@ -97,6 +128,8 @@ export default function ReviewsSection() {
   const [feedback, setFeedback] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
   const carouselRef = useRef(null);
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
 
   function scrollCarousel(direction) {
     carouselRef.current?.scrollBy({ left: direction * 390, behavior: "smooth" });
@@ -185,6 +218,7 @@ export default function ReviewsSection() {
       setForm(INITIAL_FORM);
       setFeedback({ type: "success", message: "¡Gracias! Tu reseña fue enviada correctamente." });
       setReloadKey((current) => current + 1);
+      trackEvent("review_submitted", { rating: Number(form.calificacion) });
     } catch (error) {
       setFeedback({
         type: "error",
@@ -204,24 +238,48 @@ export default function ReviewsSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(30,58,138,0.05),transparent_32%),radial-gradient(circle_at_85%_80%,rgba(30,58,138,0.06),transparent_35%)]" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+        <div ref={headerRef} className="relative mx-auto max-w-2xl text-center">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            animate={headerInView ? "visible" : "hidden"}
+            custom={0}
+            className="mt-5 text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+          >
             Profesionales que ya ordenaron su agenda
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-500 sm:text-3lg">
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate={headerInView ? "visible" : "hidden"}
+            custom={1}
+            className="mt-4 text-base leading-relaxed text-slate-500 sm:text-3lg"
+          >
             Conoce la experiencia de quienes usan AgendaClínica para gestionar su operación diaria
-          </p>
+          </motion.p>
 
           {summary?.totalResenas > 0 && (
-            <div className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50 px-4 py-2.5 shadow-sm">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate={headerInView ? "visible" : "hidden"}
+              custom={2}
+              className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50 px-4 py-2.5 shadow-sm"
+            >
               <RatingStars rating={Math.round(Number(summary.promedio) || 0)} />
               <span className="text-sm font-semibold text-slate-600">
                 {summary.promedio} de 5 · {summary.totalResenas} reseña{summary.totalResenas === 1 ? "" : "s"}
               </span>
-            </div>
+            </motion.div>
           )}
 
-          <div className="mt-7">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate={headerInView ? "visible" : "hidden"}
+            custom={3}
+            className="mt-7"
+          >
             <button
               type="button"
               onClick={() => {
@@ -233,7 +291,7 @@ export default function ReviewsSection() {
               <Plus className="h-4 w-4" strokeWidth={2.4} />
               Añadir reseña
             </button>
-          </div>
+          </motion.div>
         </div>
 
         <div className="relative mt-12">
@@ -274,10 +332,8 @@ export default function ReviewsSection() {
                   className="h-72 min-w-full animate-pulse snap-start rounded-3xl border border-slate-200 bg-slate-50 sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc(33.333%-0.833rem)]"
                 />
               ))
-            : reviews.map((review) => (
-                <div key={review.id} className="min-w-full snap-start sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc(33.333%-0.833rem)]">
-                  <ReviewCard review={review} />
-                </div>
+            : reviews.map((review, index) => (
+                <AnimatedReviewCard key={review.id} review={review} index={index} />
               ))}
           </div>
         </div>

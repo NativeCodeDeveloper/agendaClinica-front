@@ -10,6 +10,7 @@ import {
   Plus,
   UsersRound,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const ease = [0.22, 1, 0.36, 1];
 const BASE_PRICE = 14990;
@@ -271,6 +272,7 @@ function PlanCard({ plan, index }) {
             href={planLink}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent("plan_select", { location: "pricing_card", plan_name: plan.name, users: totalUsers, price: totalPrice })}
             className="mt-6 w-full rounded-[22px] bg-blue-950 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-blue-950/15 transition-colors duration-200 hover:bg-blue-900"
           >
             Quiero este plan
@@ -331,7 +333,7 @@ function ProfessionalCarousel() {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-slate-500">
-            Diseñado para consultas que necesitan orden, continuidad y una experiencia simple para sus pacientes.
+            Diseñado para cualquier especialidad, con continuidad y una experiencia simple para tus pacientes.
           </p>
         </div>
       </div>
@@ -358,10 +360,10 @@ export default function PricingSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-3xl sm:text-4xl lg:text-4xl font-bold text-blue-900 leading-tight"
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-4xl font-bold text-blue-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Planes claros para operar con orden
+            Cuesta menos que el paciente que perdiste la semana pasada
           </motion.h2>
 
           <motion.p
@@ -371,8 +373,8 @@ export default function PricingSection() {
             custom={0.2}
             className="mt-5 text-lg text-slate-500 leading-relaxed"
           >
-            Agenda, automatiza recordatorios y gestiona pacientes desde una plataforma pensada para profesionales de salud.{" "}
-            <span className="font-semibold text-slate-700">Puedes crecer agregando usuarios cuando lo necesites.</span>
+            Sin letra chica ni contratos forzosos.{" "}
+            <span className="font-semibold text-slate-700">Pagas por lo que tu consulta necesita, y agregas usuarios cuando crezcas.</span>
           </motion.p>
         </div>
 
@@ -413,6 +415,7 @@ function PricingContact() {
           href={WA_LINK}
           target="_blank"
           rel="noreferrer"
+          onClick={() => trackEvent("whatsapp_click", { location: "pricing_section" })}
           className="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-xl text-sm shadow-sm hover:shadow-md transition-shadow"
         >
           <MessageCircle className="w-4 h-4" strokeWidth={2} />
@@ -420,6 +423,7 @@ function PricingContact() {
         </a>
         <a
           href={MAIL_LINK}
+          onClick={() => trackEvent("email_click", { location: "pricing_section" })}
           className="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm hover:border-slate-300 transition-colors"
         >
           <Mail className="w-4 h-4 text-blue-800" strokeWidth={2} />

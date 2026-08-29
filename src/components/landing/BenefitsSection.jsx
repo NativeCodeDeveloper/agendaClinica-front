@@ -131,9 +131,9 @@ export default function BenefitsSection() {
             initial="hidden"
             animate={visible ? "visible" : "hidden"}
             custom={1}
-            className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl"
+            className="mt-5 text-balance text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl"
           >
-            Menos coordinación manual, más foco en atender.
+            El paciente que faltó, y nadie te avisó.
           </motion.h2>
 
           <motion.p
@@ -143,9 +143,9 @@ export default function BenefitsSection() {
             custom={2}
             className="mt-5 text-lg leading-8 text-slate-600"
           >
-            Agenda Clínica reemplaza el ida y vuelta de mensajes, planillas y
-            recordatorios manuales por un flujo claro para pacientes,
-            recepción y profesionales.
+            Cada mensaje sin responder, cada abono sin cobrar y cada ficha
+            perdida entre carpetas le cuesta tiempo y plata a tu consulta.
+            Agenda Clínica se encarga de que eso no vuelva a pasar.
           </motion.p>
         </div>
 

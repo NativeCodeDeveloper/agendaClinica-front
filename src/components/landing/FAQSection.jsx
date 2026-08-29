@@ -121,10 +121,10 @@ export default function FAQSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-3xl sm:text-3xl font-bold text-slate-900 leading-tight"
+            className="mt-5 text-balance text-3xl sm:text-3xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Respuestas claras antes de agendar una demo
+            Lo que todo profesional pregunta antes de dejar el cuaderno
           </motion.h2>
         </div>
 

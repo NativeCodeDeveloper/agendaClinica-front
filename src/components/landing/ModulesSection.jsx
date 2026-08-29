@@ -163,14 +163,13 @@ export default function ModulesSection() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div ref={headerRef} className="mb-14 max-w-2xl">
+        <div ref={headerRef} className="mb-14 max-w-4xl">
           <motion.h2
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
-            className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight"
+            className="text-balance text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.025em" }}
           >
-            La operación completa,<br />
-            con menos esfuerzo.
+            WhatsApp para confirmar, Excel para cobrar, papel para la ficha: aquí es una sola pantalla.
           </motion.h2>
           <motion.p
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}

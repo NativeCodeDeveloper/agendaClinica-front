@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://agendaclinica.space";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.agendaclinicas.cl";
 
 export default function manifest() {
   return {
@@ -13,8 +13,8 @@ export default function manifest() {
     lang: "es-CL",
     icons: [
       {
-        src: "/ac.png",
-        sizes: "512x512",
+        src: "/apple-icon",
+        sizes: "180x180",
         type: "image/png",
       },
     ],

@@ -90,7 +90,7 @@ function ProcessCarousel() {
     <div className="mb-14">
       <div className="mb-6 text-center">
         <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
-          Mira cómo se ordena una jornada clínica
+          Así se ve un día real en Agenda Clínica
         </h3>
       </div>
 
@@ -227,10 +227,10 @@ export default function ProcessSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            De agenda dispersa a operación controlada.
+            Cero curva de aprendizaje, agendando desde el día uno
           </motion.h2>
 
           <motion.p
@@ -242,7 +242,7 @@ export default function ProcessSection() {
           >
             Sin instalaciones ni procesos eternos.{" "}
             <span className="font-semibold text-slate-700">
-              Te ayudamos a dejar listo el sistema para que el cambio se sienta ordenado, no pesado.
+              Dejamos todo listo y a tu equipo capacitado para que el cambio no se sienta como aprender un programa nuevo.
             </span>
           </motion.p>
         </div>
