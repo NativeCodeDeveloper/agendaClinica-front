@@ -17,7 +17,6 @@ const fade = {
 };
 
 export function ResponsiveHeroBanner({
-  backgroundImageUrl = "/hero-glow.png",
   badgeLabel = "Nuevo",
   badgeText = "Sin curva de aprendizaje",
   title = "Tu consulta,",
@@ -31,7 +30,7 @@ export function ResponsiveHeroBanner({
   return (
     <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#05070f]">
       <Image
-        src={backgroundImageUrl}
+        src="/hero-glow.png"
         alt=""
         fill
         priority
@@ -90,7 +89,7 @@ export function ResponsiveHeroBanner({
               target="_blank"
               rel="noreferrer"
               onClick={() => trackEvent("whatsapp_click", { location: "hero_primary" })}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#102a73] shadow-[0_18px_45px_rgba(4,8,24,0.35)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#1d2148] shadow-[0_18px_45px_rgba(4,8,24,0.35)] transition-transform hover:-translate-y-0.5"
             >
               {primaryButtonText}
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
@@ -113,7 +112,7 @@ export function ResponsiveHeroBanner({
           </motion.div>
         </div>
 
-        <ScreenshotDeck className="hidden shrink-0 xl:block" />
+        <ScreenshotDeck className="shrink-0" />
       </div>
     </section>
   );

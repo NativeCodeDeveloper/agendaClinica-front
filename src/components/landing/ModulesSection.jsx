@@ -113,9 +113,9 @@ function FeaturedCard({ mod, index }) {
       <motion.div
         whileHover={{ scale: 1.015, y: -4 }}
         transition={{ duration: 0.22, ease }}
-        className="h-full bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 hover:border-blue-100 transition-all duration-300"
+        className="h-full bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 hover:border-indigo-100 transition-all duration-300"
       >
-        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-900 mb-6">
+        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-600 mb-6">
           <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
         </div>
         <h3 className="text-[17px] font-bold text-slate-900 mb-3 leading-snug">{mod.title}</h3>
@@ -139,8 +139,8 @@ function CompactRow({ mod, index }) {
       custom={index * 0.05}
       className="flex items-start gap-3 py-3.5 border-b border-slate-100 last:border-0 group"
     >
-      <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-blue-100 transition-colors">
-        <Icon className="w-3.5 h-3.5 text-blue-900" strokeWidth={2} />
+      <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-indigo-100 transition-colors">
+        <Icon className="w-3.5 h-3.5 text-indigo-700" strokeWidth={2} />
       </div>
       <div>
         <p className="text-[14px] font-semibold text-slate-800 leading-snug">{mod.title}</p>

@@ -61,17 +61,17 @@ function FAQItem({ item, index, isOpen, onToggle }) {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       custom={index * 0.08}
-      className="border border-slate-200/80 rounded-xl overflow-hidden bg-white hover:border-blue-100 transition-colors duration-200"
+      className="border border-slate-200/80 rounded-xl overflow-hidden bg-white hover:border-indigo-100 transition-colors duration-200"
     >
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 px-6 py-4.5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="font-semibold text-slate-800 text-[15px] leading-snug group-hover:text-blue-900 transition-colors duration-200">
+        <span className="font-semibold text-slate-800 text-[15px] leading-snug group-hover:text-indigo-700 transition-colors duration-200">
           {item.q}
         </span>
-        <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? "bg-blue-900 border-blue-900 text-white" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
+        <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? "bg-indigo-600 border-indigo-600 text-white" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
           {isOpen ? (
             <Minus className="w-3.5 h-3.5" strokeWidth={2.5} />
           ) : (

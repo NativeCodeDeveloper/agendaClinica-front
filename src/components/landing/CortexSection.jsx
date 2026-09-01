@@ -27,12 +27,12 @@ export default function CortexSection() {
     >
       <StarsBackground
         className="absolute inset-0"
-        starColor="#a78bfa"
+        starColor="#818cf8"
         speed={90}
         factor={0.01}
         pointerEvents={false}
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(139,92,246,0.16),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(99,102,241,0.16),transparent_55%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black to-transparent" />
 
       <div className="relative px-5 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
@@ -66,8 +66,8 @@ export default function CortexSection() {
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 sm:px-5">
             <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-violet-400" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo-400" />
               </span>
               Demostración en vivo
             </div>

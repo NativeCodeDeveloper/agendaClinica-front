@@ -335,7 +335,7 @@ export function InteractiveNebulaOrb({ className = "", pixelRatio = 3, isThinkin
       style={{
         maskImage: "radial-gradient(circle, black 52%, transparent 72%)",
         WebkitMaskImage: "radial-gradient(circle, black 52%, transparent 72%)",
-        boxShadow: "0 0 18px rgba(139,92,246,0.28)",
+        boxShadow: "0 0 18px rgba(99,102,241,0.28)",
       }}
       role="img"
       aria-label={isThinking ? "CORTEX A.I está pensando" : "Orbe animado de CORTEX A.I"}

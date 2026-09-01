@@ -140,7 +140,7 @@ function ProcessCarousel() {
               type="button"
               onClick={() => setCurrentIndex(index)}
               className={`h-2.5 rounded-full transition-all ${
-                index === currentIndex ? "w-8 bg-blue-700" : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                index === currentIndex ? "w-8 bg-indigo-600" : "w-2.5 bg-slate-300 hover:bg-slate-400"
               }`}
               aria-label={`Ir a imagen ${index + 1}`}
             />
@@ -173,23 +173,23 @@ function StepCard({ step, index }) {
       <motion.div
         whileHover={{ scale: 1.02, y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className="relative h-full bg-white rounded-2xl p-7 border border-slate-200/70 shadow-sm hover:shadow-lg hover:shadow-slate-200/50 hover:border-blue-100 transition-colors duration-300 overflow-hidden"
+        className="relative h-full bg-white rounded-2xl p-7 border border-slate-200/70 shadow-sm hover:shadow-lg hover:shadow-slate-200/50 hover:border-indigo-100 transition-colors duration-300 overflow-hidden"
       >
         {/* Número decorativo de fondo */}
         <div
-          className="absolute -top-4 -right-3 text-8xl font-black text-slate-50 select-none group-hover:text-blue-50 transition-colors duration-300"
+          className="absolute -top-4 -right-3 text-8xl font-black text-slate-50 select-none group-hover:text-indigo-50 transition-colors duration-300"
           aria-hidden
         >
           {step.number}
         </div>
 
         {/* Ícono */}
-        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-xl bg-blue-900 mb-5 group-hover:scale-105 transition-transform duration-300">
+        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-600 mb-5 group-hover:scale-105 transition-transform duration-300">
           <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
         </div>
 
         {/* Paso badge */}
-        <span className="relative z-10 inline-block text-[10px] font-bold uppercase tracking-widest text-blue-800 mb-3">
+        <span className="relative z-10 inline-block text-[10px] font-bold uppercase tracking-widest text-indigo-700 mb-3">
           Paso {step.number}
         </span>
 
@@ -277,7 +277,7 @@ export default function ProcessSection() {
               {["Soporte continuo", "Sin costos ocultos", "Capacitación incluida"].map(
                 (item) => (
                   <div key={item} className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-700" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
                     <span>{item}</span>
                   </div>
                 )

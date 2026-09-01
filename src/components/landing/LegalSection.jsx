@@ -244,7 +244,7 @@ function Block({ block }) {
         <ul className={`space-y-2 ${block.text ? "mt-3" : ""}`}>
           {block.items.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-[15px] leading-7 text-slate-600">
-              <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-900" />
+              <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
               <span>{item}</span>
             </li>
           ))}
@@ -260,7 +260,7 @@ function Block({ block }) {
                 <ul className="space-y-2">
                   {sub.items.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-[15px] leading-7 text-slate-600">
-                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-900" />
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -295,7 +295,7 @@ export default function LegalSection() {
             key={tab.id}
             type="button"
             onClick={() => setOpenId(tab.id)}
-            className="hover:text-blue-900 transition-colors"
+            className="hover:text-indigo-700 transition-colors"
           >
             {tab.label}
           </button>
@@ -326,7 +326,7 @@ export default function LegalSection() {
                       aria-pressed={isActive}
                       className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200 ${
                         isActive
-                          ? "bg-blue-950 text-white shadow-sm"
+                          ? "bg-indigo-700 text-white shadow-sm"
                           : "bg-slate-50 text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100"
                       }`}
                     >

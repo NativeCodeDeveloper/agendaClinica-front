@@ -49,7 +49,7 @@ export default function LandingNavbar() {
         <div className="hidden items-center gap-2 lg:flex">
           <nav
             className={`flex items-center gap-1 rounded-full border px-1.5 py-1.5 backdrop-blur-xl transition-all duration-300 ${
-              isScrolled ? "border-slate-200/80 bg-white/70" : "border-white/10 bg-black/30"
+              isScrolled ? "border-zinc-200 bg-white/70" : "border-white/10 bg-black/30"
             }`}
           >
             {navItems.map(([label, href]) => (
@@ -58,7 +58,7 @@ export default function LandingNavbar() {
                 href={href}
                 className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300 ${
                   isScrolled
-                    ? "text-[#24315f] hover:bg-slate-100 hover:text-blue-600"
+                    ? "text-zinc-600 hover:bg-zinc-100 hover:text-indigo-600"
                     : "text-white/80 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -73,7 +73,7 @@ export default function LandingNavbar() {
             rel="noreferrer"
             onClick={() => trackEvent("whatsapp_click", { location: "navbar_desktop" })}
             className={`shrink-0 rounded-full px-5 py-3 text-sm font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
-              isScrolled ? "bg-[#1d2148] text-white shadow-slate-900/10" : "bg-white text-[#102a73] shadow-black/25"
+              isScrolled ? "bg-indigo-600 text-white shadow-indigo-600/20 hover:bg-indigo-700" : "bg-white text-[#1d2148] shadow-black/25"
             }`}
           >
             Agendar demo
@@ -87,7 +87,7 @@ export default function LandingNavbar() {
           rel="noreferrer"
           onClick={() => trackEvent("whatsapp_click", { location: "navbar_mobile" })}
           className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold shadow-lg transition-all duration-300 lg:hidden ${
-            isScrolled ? "bg-[#1d2148] text-white shadow-slate-900/10" : "bg-white text-[#102a73] shadow-black/25"
+            isScrolled ? "bg-indigo-600 text-white shadow-indigo-600/20" : "bg-white text-[#1d2148] shadow-black/25"
           }`}
         >
           Agendar demo
@@ -104,10 +104,10 @@ export default function LandingNavbar() {
               className={`rounded-full px-3 py-1.5 text-[10px] font-medium transition-colors duration-300 ${
                 isScrolled
                   ? index === 0
-                    ? "bg-blue-50 text-blue-600 ring-1 ring-blue-100"
-                    : "bg-white/70 text-[#24315f] ring-1 ring-slate-200/80"
+                    ? "bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100"
+                    : "bg-white/70 text-zinc-600 ring-1 ring-zinc-200"
                   : index === 0
-                    ? "bg-white/90 text-[#102a73] ring-1 ring-white/20"
+                    ? "bg-white/90 text-[#1d2148] ring-1 ring-white/20"
                     : "bg-white/10 text-white/85 ring-1 ring-white/15"
               }`}
             >

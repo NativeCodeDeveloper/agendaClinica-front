@@ -79,7 +79,7 @@ export default function SeoContentSection() {
             >
               {useCases.map((item) => (
                 <div key={item} className="flex items-start gap-2.5">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-900" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
                   <span className="text-sm font-medium leading-6 text-slate-700">
                     {item}
                   </span>

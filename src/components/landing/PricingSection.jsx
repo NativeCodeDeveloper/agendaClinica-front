@@ -129,6 +129,39 @@ const professionalSlides = [
   { title: "Podologia clinica", subtitle: "Cuidado especializado", image: "/profesionales/9.png" },
 ];
 
+// Cada plan alterna un acento sólido distinto (negro / azul) en vez de un
+// único color de marca, para diferenciarlos visualmente entre sí.
+const PLAN_ACCENTS = [
+  {
+    solid: "bg-black",
+    solidHover: "hover:bg-zinc-800",
+    solidShadow: "shadow-black/15",
+    soft: "bg-zinc-100",
+    softFaded: "bg-zinc-100/70",
+    softText: "text-zinc-900",
+    softRing: "ring-zinc-200",
+    text: "text-zinc-900",
+    hoverText: "hover:text-zinc-900",
+    border: "border-zinc-200",
+    hoverBorder: "hover:border-zinc-300",
+    hoverShadow: "hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]",
+  },
+  {
+    solid: "bg-blue-600",
+    solidHover: "hover:bg-blue-700",
+    solidShadow: "shadow-blue-600/15",
+    soft: "bg-blue-50",
+    softFaded: "bg-blue-50/70",
+    softText: "text-blue-900",
+    softRing: "ring-blue-100",
+    text: "text-blue-700",
+    hoverText: "hover:text-blue-700",
+    border: "border-blue-100",
+    hoverBorder: "hover:border-blue-300",
+    hoverShadow: "hover:shadow-[0_30px_80px_rgba(37,99,235,0.15)]",
+  },
+];
+
 function PlanCard({ plan, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
@@ -137,6 +170,7 @@ function PlanCard({ plan, index }) {
   const totalPrice = plan.basePrice + additionalUsers * ADDITIONAL_USER_PRICE;
   const planLink = buildPlanWhatsAppLink(plan.name, additionalUsers, totalPrice);
   const PlanIcon = plan.icon === "tooth" ? ToothIcon : UsersRound;
+  const accent = PLAN_ACCENTS[index % PLAN_ACCENTS.length];
 
   const updateAdditionalUsers = (value) => {
     const parsedValue = Number.parseInt(value, 10);
@@ -155,25 +189,25 @@ function PlanCard({ plan, index }) {
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className="relative flex h-full flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:border-blue-300 hover:shadow-[0_30px_80px_rgba(30,64,175,0.12)]"
+        className={`relative flex h-full flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)] transition-all duration-300 ${accent.hoverBorder} ${accent.hoverShadow}`}
       >
 
         <div className="relative px-5 pb-5 pt-7 sm:px-8">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
             <div className="flex items-start gap-3">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-950 ring-1 ring-blue-100">
+              <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${accent.soft} ${accent.softText} ring-1 ${accent.softRing}`}>
                 <PlanIcon className="h-5 w-5" strokeWidth={2} />
               </span>
               <h3 className="text-xl font-bold leading-tight tracking-[-0.03em] text-slate-950">
                 {plan.name}
               </h3>
             </div>
-            <span className="shrink-0 rounded-full bg-blue-950 px-3 py-1.5 text-[11px] font-bold text-white shadow-lg shadow-blue-950/15">
+            <span className={`shrink-0 rounded-full ${accent.solid} px-3 py-1.5 text-[11px] font-bold text-white shadow-lg ${accent.solidShadow}`}>
               {plan.badge}
             </span>
           </div>
 
-          <p className="mt-4 max-w-sm text-sm leading-6 text-slate-500">
+          <p className="mt-4 max-w-sm min-h-12 text-sm leading-6 text-slate-500">
             {plan.subtitle}
           </p>
 
@@ -192,7 +226,7 @@ function PlanCard({ plan, index }) {
                 type="button"
                 aria-label="Quitar usuario adicional"
                 onClick={() => setAdditionalUsers((current) => Math.max(0, current - 1))}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-[18px] text-slate-500 transition-colors hover:bg-white hover:text-blue-950"
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-[18px] text-slate-500 transition-colors hover:bg-white ${accent.hoverText}`}
               >
                 <Minus className="h-4 w-4" strokeWidth={2} />
               </button>
@@ -213,14 +247,14 @@ function PlanCard({ plan, index }) {
                 type="button"
                 aria-label="Agregar usuario adicional"
                 onClick={() => setAdditionalUsers((current) => current + 1)}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-[18px] bg-blue-950 text-white transition-colors hover:bg-blue-900"
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-[18px] ${accent.solid} text-white transition-colors ${accent.solidHover}`}
               >
                 <Plus className="h-4 w-4" strokeWidth={2} />
               </button>
             </div>
           </div>
 
-          <div className="mt-3 flex items-start gap-2 rounded-2xl bg-blue-50 px-4 py-2.5 text-sm leading-6 text-blue-950">
+          <div className={`mt-3 flex items-start gap-2 rounded-2xl ${accent.soft} px-4 py-2.5 text-sm leading-6 ${accent.softText}`}>
             <UsersRound className="mt-1 h-4 w-4 shrink-0" strokeWidth={2} />
             <p>
               {plan.priceNote}. {plan.additionalUsers}.
@@ -229,36 +263,28 @@ function PlanCard({ plan, index }) {
         </div>
 
         <div className="flex flex-1 flex-col border-t border-slate-100 px-5 pb-6 pt-5 sm:px-8">
-          {plan.highlightedFeatures?.length ? (
-            <div className="mb-5 rounded-3xl border border-blue-100 bg-blue-50/70 p-4">
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-900">
-                Especial odontología
-              </p>
-              <ul className="space-y-3">
-                {plan.highlightedFeatures.map((feat) => (
-                  <li key={feat} className="flex items-start gap-2.5">
-                    <CheckCircle2
-                      className="mt-0.5 h-4 w-4 shrink-0 text-blue-900"
-                      strokeWidth={2}
-                    />
-                    <span className="text-sm font-semibold leading-6 text-blue-950">
-                      {feat}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
           <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
             Incluye
           </p>
 
+          {/* Un solo listado (destacadas + estándar) para que ambas tarjetas
+              arranquen "Incluye" y el botón final a la misma altura. */}
           <ul className="flex-1 space-y-3">
+            {(plan.highlightedFeatures ?? []).map((feat) => (
+              <li key={feat} className="flex items-start gap-2.5">
+                <CheckCircle2
+                  className={`mt-0.5 h-4 w-4 shrink-0 ${accent.text}`}
+                  strokeWidth={2}
+                />
+                <span className={`text-sm font-semibold leading-6 ${accent.softText}`}>
+                  {feat}
+                </span>
+              </li>
+            ))}
             {plan.features.map((feat) => (
               <li key={feat} className="flex items-start gap-2.5">
                 <CheckCircle2
-                  className="mt-0.5 h-4 w-4 shrink-0 text-blue-800"
+                  className={`mt-0.5 h-4 w-4 shrink-0 ${accent.text}`}
                   strokeWidth={2}
                 />
                 <span className="text-sm leading-6 text-slate-600">
@@ -273,7 +299,7 @@ function PlanCard({ plan, index }) {
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent("plan_select", { location: "pricing_card", plan_name: plan.name, users: totalUsers, price: totalPrice })}
-            className="mt-6 w-full rounded-[22px] bg-blue-950 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-blue-950/15 transition-colors duration-200 hover:bg-blue-900"
+            className={`mt-6 w-full rounded-full ${accent.solid} py-3 text-center text-sm font-semibold text-white shadow-lg ${accent.solidShadow} transition-colors duration-200 ${accent.solidHover}`}
           >
             Quiero este plan
           </a>
@@ -360,7 +386,7 @@ export default function PricingSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-4xl font-bold text-blue-900 leading-tight"
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-4xl font-bold text-indigo-900 leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
             Cuesta menos que el paciente que perdiste la semana pasada
@@ -426,7 +452,7 @@ function PricingContact() {
           onClick={() => trackEvent("email_click", { location: "pricing_section" })}
           className="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm hover:border-slate-300 transition-colors"
         >
-          <Mail className="w-4 h-4 text-blue-800" strokeWidth={2} />
+          <Mail className="w-4 h-4 text-indigo-600" strokeWidth={2} />
           Correo
         </a>
       </div>

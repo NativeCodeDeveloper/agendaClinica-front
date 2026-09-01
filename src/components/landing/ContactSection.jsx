@@ -3,7 +3,11 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MessageCircle, Mail, Shield, Clock, CheckCircle2 } from "lucide-react";
+import VelarisBackground from "@/components/ui/velaris-background";
 import { trackEvent } from "@/lib/analytics";
+
+// Mismos tonos índigo/violeta del fondo del hero.
+const CTA_BG_COLORS = ["#1e1b4b", "#312e81", "#4338ca", "#4f46e5"];
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -32,15 +36,15 @@ export default function ContactSection() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section
-      id="contacto"
-      className="relative py-28 bg-blue-900 overflow-hidden"
-    >
-      {/* Fondo decorativo */}
-      <div className="absolute inset-0 bg-linear-to-br from-blue-950 via-blue-900 to-blue-950 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-950/20 rounded-full blur-3xl pointer-events-none" />
-
+    <section id="contacto" className="relative bg-[#05070f]">
+      <VelarisBackground
+        bg="#05070f"
+        colors={CTA_BG_COLORS}
+        speed={0.35}
+        grain={0.2}
+        height="100%"
+        className="py-28"
+      >
       <div ref={ref} className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
 
@@ -62,7 +66,7 @@ export default function ContactSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           custom={0.2}
-          className="mt-5 text-lg text-blue-200 leading-relaxed max-w-xl mx-auto"
+          className="mt-5 text-lg text-white/70 leading-relaxed max-w-xl mx-auto"
         >
           Cuéntanos cómo atiendes hoy: cantidad de profesionales, tipo de agenda y tus principales dolores. Te mostramos si Agenda Clínica calza contigo.
         </motion.p>
@@ -83,7 +87,7 @@ export default function ContactSection() {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease }}
-            className="inline-flex items-center gap-2.5 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-green-900/30 text-[15px]"
+            className="inline-flex items-center gap-2.5 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-green-900/30 text-[15px]"
           >
             <MessageCircle className="h-5 w-5" strokeWidth={2} />
             Agendar por WhatsApp
@@ -95,9 +99,9 @@ export default function ContactSection() {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease }}
-            className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-2xl border border-white/20 text-[15px] backdrop-blur-sm transition-colors duration-200"
+            className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-full border border-white/20 text-[15px] backdrop-blur-sm transition-colors duration-200"
           >
-            <Mail className="h-5 w-5 text-blue-200" strokeWidth={2} />
+            <Mail className="h-5 w-5 text-white/80" strokeWidth={2} />
             Escribir por correo
           </motion.a>
         </motion.div>
@@ -111,13 +115,14 @@ export default function ContactSection() {
           className="mt-8 flex flex-wrap items-center justify-center gap-5"
         >
           {guarantees.map(({ icon: Icon, text }) => (
-            <div key={text} className="flex items-center gap-1.5 text-blue-300 text-xs">
-              <Icon className="h-3.5 w-3.5 text-blue-300" strokeWidth={2} />
+            <div key={text} className="flex items-center gap-1.5 text-white/60 text-xs">
+              <Icon className="h-3.5 w-3.5 text-white/60" strokeWidth={2} />
               <span>{text}</span>
             </div>
           ))}
         </motion.div>
       </div>
+      </VelarisBackground>
     </section>
   );
 }
