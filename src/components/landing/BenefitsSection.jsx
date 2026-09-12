@@ -25,28 +25,28 @@ const benefits = [
     title: "Menos pacientes ausentes",
     description:
       "Recordatorios automáticos antes de cada cita para proteger tus horas y evitar espacios perdidos.",
-    style: "bg-indigo-50 text-indigo-700 border-indigo-100",
+    style: "bg-indigo-50 text-indigo-800 border-indigo-100",
   },
   {
     icon: CreditCard,
     title: "Pagos con más control",
     description:
       "Solicita abonos o pagos al reservar y llega a cada atención con el compromiso confirmado.",
-    style: "bg-indigo-50 text-indigo-700 border-indigo-100",
+    style: "bg-indigo-50 text-indigo-800 border-indigo-100",
   },
   {
     icon: FileText,
     title: "Contexto clínico a mano",
     description:
       "Revisa datos, notas y antecedentes sin buscar entre papeles, chats o planillas sueltas.",
-    style: "bg-indigo-50 text-indigo-700 border-indigo-100",
+    style: "bg-indigo-50 text-indigo-800 border-indigo-100",
   },
   {
     icon: Users,
     title: "Equipos coordinados",
     description:
       "Cada profesional trabaja con su agenda, servicios y disponibilidad sin cruces internos.",
-    style: "bg-indigo-50 text-indigo-700 border-indigo-100",
+    style: "bg-indigo-50 text-indigo-800 border-indigo-100",
   },
 ];
 
@@ -67,7 +67,7 @@ function BenefitCard({ benefit, index }) {
       <motion.div
         whileHover={{ y: -6, scale: 1.015 }}
         transition={{ duration: 0.25 }}
-        className="h-full rounded-[28px] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-indigo-200 hover:shadow-xl"
+        className="h-full rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-indigo-100 hover:shadow-[0_16px_40px_rgba(15,23,42,0.12)]"
       >
         <div
           className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl border ${benefit.style}`}
@@ -107,7 +107,7 @@ function BenefitsBottom() {
     >
       {items.map((item) => (
         <div key={item} className="flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+          <div className="h-1.5 w-1.5 rounded-full bg-indigo-700" />
           <span className="font-medium text-slate-600">{item}</span>
         </div>
       ))}
@@ -131,7 +131,7 @@ export default function BenefitsSection() {
             initial="hidden"
             animate={visible ? "visible" : "hidden"}
             custom={1}
-            className="mt-5 text-balance text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl"
+            className="mt-5 text-balance text-3xl font-bold leading-tight tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-5xl"
           >
             El paciente que faltó, y nadie te avisó.
           </motion.h2>

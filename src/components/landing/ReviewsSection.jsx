@@ -71,11 +71,11 @@ function ReviewCard({ review }) {
 
   return (
     <article
-      className="flex h-full min-h-[290px] flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-100 hover:shadow-lg hover:shadow-slate-200/60"
+      className="flex h-full min-h-[290px] flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-100 hover:shadow-[0_16px_40px_rgba(15,23,42,0.12)]"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-indigo-700 text-sm font-bold text-white">
             {initials || "AC"}
           </div>
           <div>
@@ -88,13 +88,13 @@ function ReviewCard({ review }) {
         <RatingStars rating={rating} />
       </div>
 
-      <MessageSquareQuote className="mt-7 h-7 w-7 text-indigo-600/25" strokeWidth={1.6} />
+      <MessageSquareQuote className="mt-7 h-7 w-7 text-indigo-700/25" strokeWidth={1.6} />
       <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-slate-600">
         “{review.comentario}”
       </blockquote>
 
       <div className="mt-6 border-t border-slate-100 pt-4">
-        <p className="text-sm font-semibold text-indigo-700">{review.titulo}</p>
+        <p className="text-sm font-semibold text-indigo-800">{review.titulo}</p>
       </div>
     </article>
   );
@@ -242,7 +242,7 @@ export default function ReviewsSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0}
-            className="mt-5 text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-slate-950"
           >
             Profesionales que ya ordenaron su agenda
           </motion.h2>
@@ -251,7 +251,7 @@ export default function ReviewsSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={1}
-            className="mt-4 text-base leading-relaxed text-slate-500 sm:text-3lg"
+            className="mt-4 text-base leading-relaxed text-slate-500 sm:text-lg"
           >
             Conoce la experiencia de quienes usan AgendaClínica para gestionar su operación diaria
           </motion.p>
@@ -284,7 +284,7 @@ export default function ReviewsSection() {
                 setFeedback(null);
                 setIsFormOpen(true);
               }}
-              className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+              className="inline-flex items-center gap-2 rounded-full bg-indigo-700 px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"
             >
               <Plus className="h-4 w-4" strokeWidth={2.4} />
               Añadir reseña
@@ -298,7 +298,7 @@ export default function ReviewsSection() {
               <button
                 type="button"
                 onClick={() => scrollCarousel(-1)}
-                className="rounded-full border border-slate-200 bg-white p-2.5 text-slate-500 shadow-sm transition hover:border-indigo-200 hover:text-indigo-700"
+                className="rounded-full border border-slate-200 bg-white p-2.5 text-slate-500 shadow-sm transition hover:border-indigo-200 hover:text-indigo-800"
                 aria-label="Reseña anterior"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -306,7 +306,7 @@ export default function ReviewsSection() {
               <button
                 type="button"
                 onClick={() => scrollCarousel(1)}
-                className="rounded-full border border-slate-200 bg-white p-2.5 text-slate-500 shadow-sm transition hover:border-indigo-200 hover:text-indigo-700"
+                className="rounded-full border border-slate-200 bg-white p-2.5 text-slate-500 shadow-sm transition hover:border-indigo-200 hover:text-indigo-800"
                 aria-label="Siguiente reseña"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -346,12 +346,12 @@ export default function ReviewsSection() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="review-form-title"
-            className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
+            className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-[0_24px_60px_rgba(15,23,42,0.2)] sm:p-8"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-5">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-700">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-800">
                   Comparte tu experiencia
                 </p>
                 <h3 id="review-form-title" className="mt-2 text-2xl font-bold tracking-tight text-slate-950">
@@ -361,7 +361,7 @@ export default function ReviewsSection() {
               <button
                 type="button"
                 onClick={() => setIsFormOpen(false)}
-                className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-800"
                 aria-label="Cerrar formulario"
               >
                 <X className="h-5 w-5" />
@@ -377,7 +377,7 @@ export default function ReviewsSection() {
                   maxLength="120"
                   value={form.nombre_autor}
                   onChange={updateForm}
-                  className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100"
+                  className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-700 focus:ring-2 focus:ring-indigo-100"
                   placeholder="Ej.: Dra. Ana Pérez"
                 />
               </label>
@@ -390,7 +390,7 @@ export default function ReviewsSection() {
                   maxLength="150"
                   value={form.nombre_consulta}
                   onChange={updateForm}
-                  className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100"
+                  className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-700 focus:ring-2 focus:ring-indigo-100"
                   placeholder="Ej.: Consulta Salud Integral"
                 />
               </label>
@@ -404,7 +404,7 @@ export default function ReviewsSection() {
                   maxLength="120"
                   value={form.titulo}
                   onChange={updateForm}
-                  className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100"
+                  className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-700 focus:ring-2 focus:ring-indigo-100"
                   placeholder="Resume tu experiencia"
                 />
               </label>
@@ -424,7 +424,7 @@ export default function ReviewsSection() {
                         aria-checked={value === Number(form.calificacion)}
                         aria-label={`${value} estrella${value === 1 ? "" : "s"}`}
                         onClick={() => setForm((current) => ({ ...current, calificacion: String(value) }))}
-                        className="rounded-md p-1 transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                        className="rounded-md p-1 transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-700"
                       >
                         <Star
                           className={`h-8 w-8 ${
@@ -452,7 +452,7 @@ export default function ReviewsSection() {
                   maxLength="1000"
                   value={form.comentario}
                   onChange={updateForm}
-                  className="mt-1.5 w-full resize-y rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100"
+                  className="mt-1.5 w-full resize-y rounded-xl border border-slate-200 px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-700 focus:ring-2 focus:ring-indigo-100"
                   placeholder="Cuéntanos cómo AgendaClínica te ha ayudado en tu día a día."
                 />
               </label>
@@ -473,7 +473,7 @@ export default function ReviewsSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-black px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-indigo-700 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition hover:bg-indigo-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Send className="h-4 w-4" strokeWidth={2.2} />
                 {isSubmitting ? "Enviando reseña..." : "Publicar reseña"}

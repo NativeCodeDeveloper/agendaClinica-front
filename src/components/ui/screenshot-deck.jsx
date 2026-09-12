@@ -1,67 +1,95 @@
 "use client";
 
-// Tarjetas en abanico con inclinación 3D real (rotate-x/rotate-y/rotate-z)
-// y flotado continuo. Tailwind v4 implementa rotate/scale/translate como
-// propiedades CSS independientes (no el shorthand `transform`), así que la
-// inclinación estática, el hover (que la endereza) y el flotado (que anima
-// `translate` vía keyframes) conviven sin pisarse entre sí. La perspectiva
-// vive en el contenedor, nunca junto a un `scale` en el mismo elemento —esa
-// combinación fue la que antes rompía la proyección 3D.
-// Oculto en mobile/tablet a propósito (el pedido fue que desaparezca ahí);
-// aparece recién en el mismo breakpoint en que el hero pasa a layout de fila
-// (lg), y las posiciones están corridas un poco hacia abajo para que el
-// conjunto quede centrado con el bloque de texto en vez de pegado arriba.
-const CARD_SIZE = "w-[47%] h-[143px] lg:h-[177px] xl:h-[205px]";
+import { motion } from "framer-motion";
+
+// Abanico de tarjetas superpuestas inspirado en el patrón "ImageFan" de
+// Hero10 (21st.dev), adaptado a framer-motion (ya instalado en el proyecto,
+// no se usa "motion/react") y a nuestras 3 capturas de pantalla, que son
+// horizontales (dashboards) — por eso el aspecto es 16:10 y no el 4:5
+// vertical del ejemplo original, para no recortar el contenido de cada
+// captura. Oculto en mobile/tablet, aparece en el mismo breakpoint en que
+// el hero pasa a layout de fila (lg).
+const ease = [0.22, 1, 0.36, 1];
+// Las 3 capturas son ~2880x1695px reales (aspecto ~1.70:1) — se usa ese
+// mismo aspecto en la card para que "object-cover" no tenga que recortar
+// nada a los costados.
+const CARD_ASPECT = "aspect-[17/10]";
+
 const cards = [
   {
     src: "/deck-finanzas.png",
     alt: "Resumen financiero de AgendaClinica",
-    position: "left-0 top-[8%]",
-    rotate: "rotate-x-[10deg] rotate-y-[-16deg] -rotate-z-4",
-    floatDelay: 0,
-    floatDuration: 6,
+    width: "w-[34%]",
+    overlap: "-mr-6",
+    rotate: -8,
+    y: 26,
+    z: 10,
   },
   {
     src: "/deck-calendario.png",
     alt: "Calendario semanal de AgendaClinica",
-    position: "left-[28%] top-[33%]",
-    rotate: "rotate-x-[-8deg] rotate-y-[12deg] rotate-z-3",
-    floatDelay: 0.6,
-    floatDuration: 7,
+    width: "w-[38%]",
+    overlap: "",
+    rotate: 0,
+    y: 0,
+    z: 20,
   },
   {
     src: "/deck-paciente.png",
     alt: "Carpeta clínica del paciente en AgendaClinica",
-    position: "left-[53%] top-[58%]",
-    rotate: "rotate-x-[12deg] rotate-y-[-10deg] -rotate-z-2",
-    floatDelay: 1.1,
-    floatDuration: 6.5,
+    width: "w-[34%]",
+    overlap: "-ml-6",
+    rotate: 8,
+    y: 26,
+    z: 10,
   },
 ];
 
+const fanContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.35 },
+  },
+};
+
+function fanCard(rotate, restY) {
+  return {
+    hidden: { opacity: 0, y: restY + 40, rotate: 0, filter: "blur(8px)" },
+    visible: {
+      opacity: 1,
+      y: restY,
+      rotate,
+      filter: "blur(0px)",
+      transition: { duration: 0.7, ease },
+    },
+  };
+}
+
 export function ScreenshotDeck({ className = "" }) {
   return (
-    <div
-      className={`relative hidden lg:block lg:w-[620px] lg:h-[465px] xl:w-[720px] xl:h-[540px] perspective-[1400px] ${className}`}
+    <motion.div
+      className={`hidden lg:flex w-full lg:max-w-2xl xl:max-w-3xl items-start justify-center ${className}`}
+      variants={fanContainer}
+      initial="hidden"
+      animate="visible"
     >
-      {cards.map((card, i) => (
-        <img
+      {cards.map((card) => (
+        <motion.div
           key={card.src}
-          src={card.src}
-          alt={card.alt}
-          style={{
-            zIndex: i,
-            animationName: "reveal-up, deck-float",
-            animationDuration: `0.7s, ${card.floatDuration}s`,
-            animationTimingFunction: "ease-out, ease-in-out",
-            animationDelay: `${0.2 + i * 0.15}s, ${0.9 + card.floatDelay}s`,
-            animationFillMode: "both, none",
-            animationIterationCount: "1, infinite",
-          }}
-          className={`absolute rounded-xl border border-zinc-200 object-cover shadow-[0_20px_45px_rgba(24,24,27,0.18)] transition-transform duration-500 ease-out hover:z-10 hover:scale-105 hover:rotate-x-0 hover:rotate-y-0 hover:rotate-z-0 hover:shadow-[0_28px_58px_rgba(24,24,27,0.28)] ${card.position} ${card.rotate} ${CARD_SIZE}`}
-        />
+          variants={fanCard(card.rotate, card.y)}
+          whileHover={{ rotate: 0, y: 0, scale: 1.06, zIndex: 30 }}
+          transition={{ duration: 0.35, ease }}
+          style={{ zIndex: card.z }}
+          className={`relative shrink-0 overflow-hidden rounded-2xl border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.45)] ${CARD_ASPECT} ${card.width} ${card.overlap}`}
+        >
+          <img
+            src={card.src}
+            alt={card.alt}
+            className="h-full w-full object-cover"
+          />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
 

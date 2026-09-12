@@ -41,7 +41,7 @@ export default function SeoContentSection() {
           >
             <h2
               id="seo-agenda-clinica-title"
-              className="text-balance text-3xl font-bold leading-tight tracking-[-0.025em] text-slate-950 sm:text-4xl"
+              className="text-balance text-3xl font-bold leading-tight tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-5xl"
             >
               Agenda online para clínicas, consultas de salud y reservas de pacientes
             </h2>
@@ -79,7 +79,7 @@ export default function SeoContentSection() {
             >
               {useCases.map((item) => (
                 <div key={item} className="flex items-start gap-2.5">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-700" />
                   <span className="text-sm font-medium leading-6 text-slate-700">
                     {item}
                   </span>

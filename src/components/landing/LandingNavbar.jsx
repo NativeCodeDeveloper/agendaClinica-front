@@ -58,7 +58,7 @@ export default function LandingNavbar() {
                 href={href}
                 className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300 ${
                   isScrolled
-                    ? "text-zinc-600 hover:bg-zinc-100 hover:text-indigo-600"
+                    ? "text-zinc-600 hover:bg-zinc-100 hover:text-indigo-700"
                     : "text-white/80 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -72,8 +72,8 @@ export default function LandingNavbar() {
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent("whatsapp_click", { location: "navbar_desktop" })}
-            className={`shrink-0 rounded-full px-5 py-3 text-sm font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
-              isScrolled ? "bg-indigo-600 text-white shadow-indigo-600/20 hover:bg-indigo-700" : "bg-white text-[#1d2148] shadow-black/25"
+            className={`shrink-0 rounded-full px-5 py-3 text-sm font-semibold shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-0.5 ${
+              isScrolled ? "bg-indigo-700 text-white hover:bg-indigo-800" : "bg-white text-indigo-950"
             }`}
           >
             Agendar demo
@@ -86,8 +86,8 @@ export default function LandingNavbar() {
           target="_blank"
           rel="noreferrer"
           onClick={() => trackEvent("whatsapp_click", { location: "navbar_mobile" })}
-          className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold shadow-lg transition-all duration-300 lg:hidden ${
-            isScrolled ? "bg-indigo-600 text-white shadow-indigo-600/20" : "bg-white text-[#1d2148] shadow-black/25"
+          className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-all duration-300 lg:hidden ${
+            isScrolled ? "bg-indigo-700 text-white" : "bg-white text-indigo-950"
           }`}
         >
           Agendar demo
@@ -104,10 +104,10 @@ export default function LandingNavbar() {
               className={`rounded-full px-3 py-1.5 text-[10px] font-medium transition-colors duration-300 ${
                 isScrolled
                   ? index === 0
-                    ? "bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100"
+                    ? "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-100"
                     : "bg-white/70 text-zinc-600 ring-1 ring-zinc-200"
                   : index === 0
-                    ? "bg-white/90 text-[#1d2148] ring-1 ring-white/20"
+                    ? "bg-white/90 text-indigo-950 ring-1 ring-white/20"
                     : "bg-white/10 text-white/85 ring-1 ring-white/15"
               }`}
             >

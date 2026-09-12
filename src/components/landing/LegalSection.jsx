@@ -244,7 +244,7 @@ function Block({ block }) {
         <ul className={`space-y-2 ${block.text ? "mt-3" : ""}`}>
           {block.items.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-[15px] leading-7 text-slate-600">
-              <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+              <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-700" />
               <span>{item}</span>
             </li>
           ))}
@@ -260,7 +260,7 @@ function Block({ block }) {
                 <ul className="space-y-2">
                   {sub.items.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-[15px] leading-7 text-slate-600">
-                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-700" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -295,7 +295,7 @@ export default function LegalSection() {
             key={tab.id}
             type="button"
             onClick={() => setOpenId(tab.id)}
-            className="hover:text-indigo-700 transition-colors"
+            className="hover:text-indigo-800 transition-colors"
           >
             {tab.label}
           </button>
@@ -310,7 +310,7 @@ export default function LegalSection() {
           <div
             role="dialog"
             aria-modal="true"
-            className="flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl"
+            className="flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-4 border-b border-slate-100 px-6 py-4 sm:px-8">
@@ -326,7 +326,7 @@ export default function LegalSection() {
                       aria-pressed={isActive}
                       className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-colors duration-200 ${
                         isActive
-                          ? "bg-indigo-700 text-white shadow-sm"
+                          ? "bg-indigo-800 text-white shadow-sm"
                           : "bg-slate-50 text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100"
                       }`}
                     >

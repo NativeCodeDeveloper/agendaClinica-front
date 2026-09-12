@@ -68,10 +68,10 @@ function FAQItem({ item, index, isOpen, onToggle }) {
         className="w-full flex items-center justify-between gap-4 px-6 py-4.5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="font-semibold text-slate-800 text-[15px] leading-snug group-hover:text-indigo-700 transition-colors duration-200">
+        <span className="font-semibold text-slate-800 text-[15px] leading-snug group-hover:text-indigo-800 transition-colors duration-200">
           {item.q}
         </span>
-        <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? "bg-indigo-600 border-indigo-600 text-white" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
+        <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? "bg-indigo-700 border-indigo-700 text-white" : "bg-slate-50 border-slate-200 text-slate-400"}`}>
           {isOpen ? (
             <Minus className="w-3.5 h-3.5" strokeWidth={2.5} />
           ) : (
@@ -121,8 +121,7 @@ export default function FAQSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-balance text-3xl sm:text-3xl font-bold text-slate-900 leading-tight"
-            style={{ letterSpacing: "-0.02em" }}
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-slate-950 leading-tight"
           >
             Lo que todo profesional pregunta antes de dejar el cuaderno
           </motion.h2>

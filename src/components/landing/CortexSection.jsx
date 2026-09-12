@@ -23,7 +23,7 @@ export default function CortexSection() {
   return (
     <div
       id="cortex"
-      className="relative mb-20 scroll-mt-24 overflow-hidden rounded-[32px] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.45)] lg:-mx-10 xl:-mx-16"
+      className="relative mb-20 scroll-mt-24 overflow-hidden rounded-[32px] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.35)] lg:-mx-10 xl:-mx-16"
     >
       <StarsBackground
         className="absolute inset-0"
@@ -37,7 +37,7 @@ export default function CortexSection() {
 
       <div className="relative px-5 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <h3 className="flex items-center justify-center gap-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h3 className="flex items-center justify-center gap-4 font-sans text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Cortex A.I.
             <InteractiveNebulaOrb className="size-12 shrink-0 sm:size-14 lg:size-16" />
           </h3>

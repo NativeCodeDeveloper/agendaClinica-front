@@ -87,7 +87,7 @@ export default function ContactSection() {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2, ease }}
-            className="inline-flex items-center gap-2.5 bg-[#25D366] text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-green-900/30 text-[15px]"
+            className="inline-flex items-center gap-2.5 bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-green-500/30 text-[15px] transition-colors"
           >
             <MessageCircle className="h-5 w-5" strokeWidth={2} />
             Agendar por WhatsApp

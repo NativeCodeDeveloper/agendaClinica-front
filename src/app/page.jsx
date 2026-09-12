@@ -324,7 +324,7 @@ export default async function Home() {
                   <span>SSL Secured</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-700" />
                   <span>Datos encriptados</span>
                 </div>
               </div>

@@ -129,36 +129,32 @@ const professionalSlides = [
   { title: "Podologia clinica", subtitle: "Cuidado especializado", image: "/profesionales/9.png" },
 ];
 
-// Cada plan alterna un acento sólido distinto (negro / azul) en vez de un
-// único color de marca, para diferenciarlos visualmente entre sí.
+// Cada plan alterna un acento sólido distinto (neutro oscuro / marca) en vez
+// de un único color, para diferenciarlos visualmente entre sí.
 const PLAN_ACCENTS = [
   {
-    solid: "bg-black",
-    solidHover: "hover:bg-zinc-800",
-    solidShadow: "shadow-black/15",
-    soft: "bg-zinc-100",
-    softFaded: "bg-zinc-100/70",
-    softText: "text-zinc-900",
-    softRing: "ring-zinc-200",
-    text: "text-zinc-900",
-    hoverText: "hover:text-zinc-900",
-    border: "border-zinc-200",
-    hoverBorder: "hover:border-zinc-300",
-    hoverShadow: "hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]",
+    solid: "bg-slate-900",
+    solidHover: "hover:bg-slate-800",
+    soft: "bg-slate-100",
+    softFaded: "bg-slate-100/70",
+    softText: "text-slate-900",
+    softRing: "ring-slate-200",
+    text: "text-slate-900",
+    hoverText: "hover:text-slate-900",
+    border: "border-slate-200",
+    hoverBorder: "hover:border-slate-300",
   },
   {
-    solid: "bg-blue-600",
-    solidHover: "hover:bg-blue-700",
-    solidShadow: "shadow-blue-600/15",
-    soft: "bg-blue-50",
-    softFaded: "bg-blue-50/70",
-    softText: "text-blue-900",
-    softRing: "ring-blue-100",
-    text: "text-blue-700",
-    hoverText: "hover:text-blue-700",
-    border: "border-blue-100",
-    hoverBorder: "hover:border-blue-300",
-    hoverShadow: "hover:shadow-[0_30px_80px_rgba(37,99,235,0.15)]",
+    solid: "bg-indigo-700",
+    solidHover: "hover:bg-indigo-800",
+    soft: "bg-indigo-50",
+    softFaded: "bg-indigo-50/70",
+    softText: "text-indigo-950",
+    softRing: "ring-indigo-100",
+    text: "text-indigo-800",
+    hoverText: "hover:text-indigo-800",
+    border: "border-indigo-100",
+    hoverBorder: "hover:border-indigo-300",
   },
 ];
 
@@ -189,7 +185,7 @@ function PlanCard({ plan, index }) {
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className={`relative flex h-full flex-col overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_22px_60px_rgba(15,23,42,0.08)] transition-all duration-300 ${accent.hoverBorder} ${accent.hoverShadow}`}
+        className={`relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.2)] ${accent.hoverBorder}`}
       >
 
         <div className="relative px-5 pb-5 pt-7 sm:px-8">
@@ -202,7 +198,7 @@ function PlanCard({ plan, index }) {
                 {plan.name}
               </h3>
             </div>
-            <span className={`shrink-0 rounded-full ${accent.solid} px-3 py-1.5 text-[11px] font-bold text-white shadow-lg ${accent.solidShadow}`}>
+            <span className={`shrink-0 rounded-full ${accent.solid} px-3 py-1.5 text-[11px] font-bold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)]`}>
               {plan.badge}
             </span>
           </div>
@@ -220,17 +216,17 @@ function PlanCard({ plan, index }) {
             </p>
           </div>
 
-          <div className="mt-4 rounded-[24px] border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50">
+          <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50">
             <div className="flex items-center justify-between gap-2">
               <button
                 type="button"
                 aria-label="Quitar usuario adicional"
                 onClick={() => setAdditionalUsers((current) => Math.max(0, current - 1))}
-                className={`grid h-11 w-11 shrink-0 place-items-center rounded-[18px] text-slate-500 transition-colors hover:bg-white ${accent.hoverText}`}
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl text-slate-500 transition-colors hover:bg-white ${accent.hoverText}`}
               >
                 <Minus className="h-4 w-4" strokeWidth={2} />
               </button>
-              <div className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-[18px] bg-white px-3 py-2 ring-1 ring-slate-200">
+              <div className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-white px-3 py-2 ring-1 ring-slate-200">
                 <input
                   type="number"
                   min="1"
@@ -247,7 +243,7 @@ function PlanCard({ plan, index }) {
                 type="button"
                 aria-label="Agregar usuario adicional"
                 onClick={() => setAdditionalUsers((current) => current + 1)}
-                className={`grid h-11 w-11 shrink-0 place-items-center rounded-[18px] ${accent.solid} text-white transition-colors ${accent.solidHover}`}
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${accent.solid} text-white transition-colors ${accent.solidHover}`}
               >
                 <Plus className="h-4 w-4" strokeWidth={2} />
               </button>
@@ -299,7 +295,7 @@ function PlanCard({ plan, index }) {
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent("plan_select", { location: "pricing_card", plan_name: plan.name, users: totalUsers, price: totalPrice })}
-            className={`mt-6 w-full rounded-full ${accent.solid} py-3 text-center text-sm font-semibold text-white shadow-lg ${accent.solidShadow} transition-colors duration-200 ${accent.solidHover}`}
+            className={`mt-6 w-full rounded-full ${accent.solid} py-3 text-center text-sm font-semibold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-colors duration-200 ${accent.solidHover}`}
           >
             Quiero este plan
           </a>
@@ -318,7 +314,7 @@ function ProfessionalCarousel() {
   return (
     <div className="mx-auto mt-10 max-w-5xl">
       <div className="mb-7 text-center">
-        <h3 className="text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+        <h3 className="text-3xl font-bold tracking-[-0.03em] text-slate-950 sm:text-4xl">
           Una agenda flexible para distintas especialidades
         </h3>
         <p className="mt-3 text-sm leading-7 text-slate-500 sm:text-base">
@@ -336,7 +332,7 @@ function ProfessionalCarousel() {
             {marqueeSlides.map((slide, index) => (
               <div
                 key={`${slide.image}-${index}`}
-                className="group relative min-h-[540px] w-[85vw] max-w-[380px] shrink-0 overflow-hidden rounded-[28px] bg-slate-200 text-left shadow-[0_20px_50px_rgba(15,23,42,0.16)]"
+                className="group relative min-h-[540px] w-[85vw] max-w-[380px] shrink-0 overflow-hidden rounded-3xl bg-slate-200 text-left shadow-[0_16px_40px_rgba(15,23,42,0.12)]"
               >
                 <img
                   src={slide.image}
@@ -386,8 +382,7 @@ export default function PricingSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-4xl font-bold text-indigo-900 leading-tight"
-            style={{ letterSpacing: "-0.02em" }}
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-slate-950 leading-tight"
           >
             Cuesta menos que el paciente que perdiste la semana pasada
           </motion.h2>
@@ -442,7 +437,7 @@ function PricingContact() {
           target="_blank"
           rel="noreferrer"
           onClick={() => trackEvent("whatsapp_click", { location: "pricing_section" })}
-          className="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-xl text-sm shadow-sm hover:shadow-md transition-shadow"
+          className="inline-flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-colors"
         >
           <MessageCircle className="w-4 h-4" strokeWidth={2} />
           WhatsApp
@@ -450,9 +445,9 @@ function PricingContact() {
         <a
           href={MAIL_LINK}
           onClick={() => trackEvent("email_click", { location: "pricing_section" })}
-          className="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-xl text-sm hover:border-slate-300 transition-colors"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300"
         >
-          <Mail className="w-4 h-4 text-indigo-600" strokeWidth={2} />
+          <Mail className="w-4 h-4 text-indigo-700" strokeWidth={2} />
           Correo
         </a>
       </div>

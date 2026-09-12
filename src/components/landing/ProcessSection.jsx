@@ -89,15 +89,15 @@ function ProcessCarousel() {
   return (
     <div className="mb-14">
       <div className="mb-6 text-center">
-        <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-900 sm:text-4xl">
+        <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-950 sm:text-4xl">
           Así se ve un día real en Agenda Clínica
         </h3>
       </div>
 
-      <div className="relative overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-3 shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+      <div className="relative overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-3 shadow-[0_22px_60px_rgba(15,23,42,0.1)]">
         <div className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-sky-50/70 to-transparent pointer-events-none" />
 
-        <div className="relative aspect-[16/8.8] overflow-hidden rounded-[24px] bg-slate-100">
+        <div className="relative aspect-[16/8.8] overflow-hidden rounded-3xl bg-slate-100">
           {carouselImages.map((src, index) => (
             <img
               key={src}
@@ -140,7 +140,7 @@ function ProcessCarousel() {
               type="button"
               onClick={() => setCurrentIndex(index)}
               className={`h-2.5 rounded-full transition-all ${
-                index === currentIndex ? "w-8 bg-indigo-600" : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                index === currentIndex ? "w-8 bg-indigo-700" : "w-2.5 bg-slate-300 hover:bg-slate-400"
               }`}
               aria-label={`Ir a imagen ${index + 1}`}
             />
@@ -173,7 +173,7 @@ function StepCard({ step, index }) {
       <motion.div
         whileHover={{ scale: 1.02, y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className="relative h-full bg-white rounded-2xl p-7 border border-slate-200/70 shadow-sm hover:shadow-lg hover:shadow-slate-200/50 hover:border-indigo-100 transition-colors duration-300 overflow-hidden"
+        className="relative h-full bg-white rounded-3xl p-7 border border-slate-200/70 shadow-sm hover:shadow-[0_16px_40px_rgba(15,23,42,0.12)] hover:border-indigo-100 transition-colors duration-300 overflow-hidden"
       >
         {/* Número decorativo de fondo */}
         <div
@@ -184,12 +184,12 @@ function StepCard({ step, index }) {
         </div>
 
         {/* Ícono */}
-        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-600 mb-5 group-hover:scale-105 transition-transform duration-300">
+        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-700 mb-5 group-hover:scale-105 transition-transform duration-300">
           <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
         </div>
 
         {/* Paso badge */}
-        <span className="relative z-10 inline-block text-[10px] font-bold uppercase tracking-widest text-indigo-700 mb-3">
+        <span className="relative z-10 inline-block text-[10px] font-bold uppercase tracking-widest text-indigo-800 mb-3">
           Paso {step.number}
         </span>
 
@@ -227,8 +227,7 @@ export default function ProcessSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight"
-            style={{ letterSpacing: "-0.02em" }}
+            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-slate-950 leading-tight"
           >
             Cero curva de aprendizaje, agendando desde el día uno
           </motion.h2>
@@ -277,7 +276,7 @@ export default function ProcessSection() {
               {["Soporte continuo", "Sin costos ocultos", "Capacitación incluida"].map(
                 (item) => (
                   <div key={item} className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-700" />
                     <span>{item}</span>
                   </div>
                 )
