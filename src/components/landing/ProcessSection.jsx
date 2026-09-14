@@ -52,19 +52,23 @@ const steps = [
 ];
 
 const carouselImages = [
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.33.09.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.33.31.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.33.55.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.34.12.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.35.27.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.35.46.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.36.40.png",
-  "/carrusel/Captura%20de%20pantalla%202026-05-19%20a%20la(s)%2009.38.08.png",
-  "/carrusel/IMG_0153.jpg",
-  "/carrusel/IMG_0154.jpg",
-  "/carrusel/IMG_0150%202.jpg",
-  "/carrusel/IMG_0164.jpg",
-  "/carrusel/IMG_0167.jpg",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2023.09.58.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.24.01.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.27.52.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.28.14.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.28.33.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.30.26.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.30.36.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.31.27.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.31.42.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.31.53.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.32.04.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.32.24.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.32.33.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.32.53.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.33.38.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.57.41.png",
+  "/nuevasFotosAc/Captura%20de%20pantalla%202026-09-13%20a%20la(s)%2022.57.57.png",
 ];
 
 function ProcessCarousel() {

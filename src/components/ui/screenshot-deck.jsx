@@ -68,7 +68,7 @@ function fanCard(rotate, restY) {
 export function ScreenshotDeck({ className = "" }) {
   return (
     <motion.div
-      className={`hidden lg:flex w-full lg:max-w-2xl xl:max-w-3xl items-start justify-center ${className}`}
+      className={`hidden lg:flex w-full lg:max-w-5xl xl:max-w-6xl items-start justify-center ${className}`}
       variants={fanContainer}
       initial="hidden"
       animate="visible"

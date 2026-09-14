@@ -1,6 +1,6 @@
 import HeroSection from "@/components/landing/HeroSection";
 import LandingNavbar from "@/components/landing/LandingNavbar";
-import BenefitsSection from "@/components/landing/BenefitsSection";
+import PasosPacientesSection from "@/components/landing/PasosPacientesSection";
 import ProcessSection from "@/components/landing/ProcessSection";
 import ModulesSection from "@/components/landing/ModulesSection";
 import PricingSection from "@/components/landing/PricingSection";
@@ -292,9 +292,10 @@ export default async function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LandingNavbar />
-        <HeroSection />
-        <BenefitsSection />
+      <LandingNavbar />
+      <HeroSection />
+      <PasosPacientesSection />
+
         <ProcessSection />
         <ModulesSection />
         <PricingSection />

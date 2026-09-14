@@ -17,8 +17,6 @@ const fade = {
 };
 
 export function ResponsiveHeroBanner({
-  badgeLabel = "Nuevo",
-  badgeText = "Sin curva de aprendizaje",
   title = "Tu consulta,",
   titleLine2 = "sin desorden",
   description = "Se acabó el cuaderno rayado y el Excel que solo tú entiendes. Ponle piloto automático a tu consulta: agenda, cobra y avisa por ti.",
@@ -40,20 +38,7 @@ export function ResponsiveHeroBanner({
       />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,7,15,0.55)_0%,rgba(5,7,15,0.15)_35%,rgba(5,7,15,0.1)_60%,rgba(5,7,15,0.75)_100%)]" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-8 px-6 pb-16 pt-28 text-center sm:pt-32">
-        <motion.div
-          variants={fade}
-          initial="hidden"
-          animate="visible"
-          custom={0}
-          className="inline-flex items-center gap-3 rounded-full bg-white/[0.06] px-2.5 py-2 ring-1 ring-white/10 backdrop-blur"
-        >
-          <span className="inline-flex items-center rounded-full bg-white/12 px-2 py-0.5 text-xs font-semibold text-white/90">
-            {badgeLabel}
-          </span>
-          <span className="text-sm font-medium text-white/70">{badgeText}</span>
-        </motion.div>
-
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-8 px-6 pb-16 pt-28 text-center sm:pt-32">
         <motion.h1
           variants={fade}
           initial="hidden"

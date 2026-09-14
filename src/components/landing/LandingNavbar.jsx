@@ -39,7 +39,7 @@ export default function LandingNavbar() {
           <img
             src="/logo-full.png"
             alt="AgendaClinica"
-            className={`h-9 w-auto object-contain transition-all duration-300 sm:h-11 ${
+            className={`h-10 cw-auto object-contain transition-all duration-300 sm:h-16 lg:h-18 ${
               isScrolled ? "brightness-0" : ""
             }`}
           />
