@@ -34,7 +34,12 @@ export default function LandingNavbar() {
     <header className="fixed inset-x-0 top-0 z-[300] hidden px-4 pt-4 lg:block lg:pt-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         {/* Logo suelto, sin caja */}
-        <a href="#inicio" className="flex min-w-0 shrink-0 items-center">
+        <a
+          href="#inicio"
+          className={`flex min-w-0 shrink-0 items-center transition-opacity duration-300 ${
+            isScrolled ? "invisible pointer-events-none opacity-0" : "visible opacity-100"
+          }`}
+        >
           <img
             src="/logo-full.png"
             alt="AgendaClinica"

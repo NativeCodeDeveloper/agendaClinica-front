@@ -15,6 +15,15 @@ import {
   ShieldCheck,
   ArrowRight,
   Check,
+  Eye,
+  Baby,
+  Activity,
+  HandHeart,
+  Brain,
+  Apple,
+  Footprints,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
@@ -125,14 +134,14 @@ function ToothIcon({ className, strokeWidth = 2 }) {
 }
 
 const professionalSlides = [
-  { title: "Tecnólogo médico", subtitle: "Oftalmología", image: "/profesionales/2.png" },
-  { title: "Matrona", subtitle: "Salud integral femenina", image: "/profesionales/3.png" },
-  { title: "Odontólogos", subtitle: "Clínica dental", image: "/profesionales/4.png" },
-  { title: "Kinesiólogos", subtitle: "Rehabilitación y movimiento", image: "/profesionales/5.png" },
-  { title: "Terapeuta ocupacional", subtitle: "Intervención funcional", image: "/profesionales/6.png" },
-  { title: "Psicología", subtitle: "Atención emocional", image: "/profesionales/7.png" },
-  { title: "Nutricionistas", subtitle: "Plan alimentario", image: "/profesionales/8.png" },
-  { title: "Podologia clinica", subtitle: "Cuidado especializado", image: "/profesionales/9.png" },
+  { title: "Tecnólogo médico", subtitle: "Oftalmología", image: "/profesionales/2.png", icono: <Eye className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Matrona", subtitle: "Salud integral femenina", image: "/profesionales/3.png", icono: <Baby className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Odontólogos", subtitle: "Clínica dental", image: "/profesionales/4.png", icono: <ToothIcon className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Kinesiólogos", subtitle: "Rehabilitación y movimiento", image: "/profesionales/5.png", icono: <Activity className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Terapeuta ocupacional", subtitle: "Intervención funcional", image: "/profesionales/6.png", icono: <HandHeart className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Psicología", subtitle: "Atención emocional", image: "/profesionales/7.png", icono: <Brain className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Nutricionistas", subtitle: "Plan alimentario", image: "/profesionales/8.png", icono: <Apple className="size-7 sm:size-8" strokeWidth={1.6} /> },
+  { title: "Podología clínica", subtitle: "Cuidado especializado", image: "/profesionales/9.png", icono: <Footprints className="size-7 sm:size-8" strokeWidth={1.6} /> },
 ];
 
 // Cada plan alterna un acento sólido distinto (neutro oscuro / marca) en vez
@@ -327,39 +336,47 @@ function ProfessionalCarousel() {
   const marqueeSlides = [...professionalSlides, ...professionalSlides];
 
   return (
-    <div className="mx-auto mt-10 max-w-5xl">
-      <div className="mb-7 text-center">
-        <h3 className="text-3xl font-bold tracking-[-0.03em] text-slate-950 sm:text-4xl">
-          Una agenda flexible para distintas especialidades
+    <div id="especialidades" className="relative isolate bg-[#fcfcff] py-12 sm:py-16">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-105 -top-145 h-200 w-250 -rotate-35 rounded-[50%] border-65 border-violet-100/30" />
+        <div className="absolute -bottom-155 -right-110 h-240 w-280 -rotate-45 rounded-[50%] border-70 border-violet-100/30" />
+      </div>
+      <div className="mx-auto max-w-450 px-5 sm:px-8 lg:px-20">
+      <div className="mx-auto mb-8 max-w-360 text-center sm:mb-10">
+        <h3 className="text-balance text-[32px] leading-[1.1]! font-bold tracking-[-0.05em] text-[#09091c] sm:text-[40px] xl:text-[48px] min-[1700px]:text-[52px]">
+          Una agenda flexible para <span className="text-violet-700">distintas especialidades</span>
         </h3>
-        <p className="mt-3 text-sm leading-7 text-slate-500 sm:text-base">
+        <p className="mx-auto mt-4 max-w-6xl text-pretty text-base leading-[1.45] text-[#6b77a0] sm:text-xl xl:text-[22px]">
           Desde atención individual hasta centros con equipos especializados. Cada flujo puede adaptarse a servicios, duración de citas y necesidades clínicas distintas.
         </p>
       </div>
 
-      <div className="rounded-[36px] bg-slate-50/70 p-4 sm:p-5">
-        <div className="overflow-hidden">
+      <div className="relative">
+        <span aria-hidden="true" className="pointer-events-none absolute -left-16 top-1/2 z-10 hidden size-12 -translate-y-1/2 items-center justify-center rounded-full border border-violet-50 bg-white text-violet-600 shadow-[0_4px_16px_#312e8110] lg:flex"><ChevronLeft className="size-6" strokeWidth={2} /></span>
+        <span aria-hidden="true" className="pointer-events-none absolute -right-16 top-1/2 z-10 hidden size-12 -translate-y-1/2 items-center justify-center rounded-full border border-violet-50 bg-white text-violet-600 shadow-[0_4px_16px_#312e8110] lg:flex"><ChevronRight className="size-6" strokeWidth={2} /></span>
+        <div className="overflow-hidden rounded-3xl shadow-[0_22px_40px_-22px_#7c3aed35]">
           <motion.div
-            className="flex gap-4"
+            className="flex w-full items-start gap-4"
             animate={{ x: ["0%", "-50%"] }}
             transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
           >
             {marqueeSlides.map((slide, index) => (
               <div
                 key={`${slide.image}-${index}`}
-                className="group relative min-h-[540px] w-[85vw] max-w-[380px] shrink-0 overflow-hidden rounded-3xl bg-slate-200 text-left shadow-[0_16px_40px_rgba(15,23,42,0.12)]"
+                className="group relative h-[420px] w-[88%] shrink-0 overflow-hidden rounded-3xl bg-slate-200 text-left sm:h-[440px] sm:w-[calc(50%_-_0.5rem)] lg:h-[clamp(360px,30vw,540px)] lg:w-[calc(33.333333%_-_0.666667rem)]"
               >
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="block h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                  <h4 className="text-[2rem] font-bold tracking-[-0.03em] text-white sm:text-[2.2rem]">
+                <div className="absolute inset-0 bg-linear-to-t from-[#050610]/95 via-[#050610]/10 via-45% to-transparent to-70%" />
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 xl:p-8">
+                  <span aria-hidden="true" className="mb-3 flex size-13 items-center justify-center rounded-2xl border border-white/10 bg-linear-to-br from-violet-500 to-indigo-500 text-white shadow-lg shadow-indigo-950/15 sm:size-15">{slide.icono}</span>
+                  <h4 className="text-[26px] leading-tight! font-bold tracking-[-0.04em] text-white xl:text-[32px] min-[1700px]:text-[36px]">
                     {slide.title}
                   </h4>
-                  <p className="mt-2 text-[1.05rem] text-white/90 sm:text-[1.15rem]">
+                  <p className="mt-1.5 text-base leading-snug text-slate-200 xl:text-xl">
                     {slide.subtitle}
                   </p>
                 </div>
@@ -368,8 +385,10 @@ function ProfessionalCarousel() {
           </motion.div>
         </div>
 
+      </div>
+        <div aria-hidden="true" className="mt-6 flex items-center justify-center gap-2.5"><span className="h-2.5 w-5 rounded-full bg-linear-to-r from-violet-600 to-indigo-500" /><span className="size-2.5 rounded-full bg-slate-300" /><span className="size-2.5 rounded-full bg-slate-300" /></div>
         <div className="mt-6 text-center">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm leading-relaxed text-[#7883a2] sm:text-base">
             Diseñado para cualquier especialidad, con continuidad y una experiencia simple para tus pacientes.
           </p>
         </div>
@@ -471,11 +490,12 @@ export default function PricingSection() {
         </div>
         </div>
 
-        <div className="lg:mt-24">
+      </div>
+        <div className="relative z-10 mt-16 lg:mt-24">
         <ProfessionalCarousel />
         </div>
 
-        {/* Contact note */}
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <PricingContact />
       </div>
     </section>
