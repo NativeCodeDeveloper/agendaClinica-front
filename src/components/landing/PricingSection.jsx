@@ -9,6 +9,12 @@ import {
   Mail,
   Plus,
   UsersRound,
+  CalendarDays,
+  FileText,
+  ChartNoAxesColumnIncreasing,
+  ShieldCheck,
+  ArrowRight,
+  Check,
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
@@ -185,25 +191,25 @@ function PlanCard({ plan, index }) {
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className={`relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.2)] ${accent.hoverBorder}`}
+        className={`relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-all duration-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.2)] lg:rounded-[36px] lg:border-white lg:shadow-[0_32px_90px_-30px_rgba(64,49,157,0.35)] ${accent.hoverBorder}`}
       >
 
         <div className="relative px-5 pb-5 pt-7 sm:px-8">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
-            <div className="flex items-start gap-3">
-              <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${accent.soft} ${accent.softText} ring-1 ${accent.softRing}`}>
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row lg:relative">
+            <div className="flex items-start gap-3 lg:flex-col lg:gap-5">
+              <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl lg:size-12 lg:bg-violet-100 lg:text-violet-600 lg:ring-0 ${accent.soft} ${accent.softText} ring-1 ${accent.softRing}`}>
                 <PlanIcon className="h-5 w-5" strokeWidth={2} />
               </span>
               <h3 className="text-xl font-bold leading-tight tracking-[-0.03em] text-slate-950">
                 {plan.name}
               </h3>
             </div>
-            <span className={`shrink-0 rounded-full ${accent.solid} px-3 py-1.5 text-[11px] font-bold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)]`}>
+            <span className={`shrink-0 rounded-full ${accent.solid} px-3 py-1.5 text-[11px] font-bold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] lg:absolute lg:right-0 lg:top-0 lg:rounded-2xl lg:bg-linear-to-br lg:from-violet-500 lg:to-indigo-600 lg:px-4 lg:py-2 lg:text-sm lg:font-medium`}>
               {plan.badge}
             </span>
           </div>
 
-          <p className="mt-4 max-w-sm min-h-12 text-sm leading-6 text-slate-500">
+          <p className="mt-4 max-w-sm min-h-12 text-sm leading-6 text-slate-500 lg:mt-2 lg:min-h-0 lg:text-[#6a75a5]">
             {plan.subtitle}
           </p>
 
@@ -216,7 +222,7 @@ function PlanCard({ plan, index }) {
             </p>
           </div>
 
-          <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50">
+          <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-1.5 shadow-inner shadow-slate-200/50 lg:border-violet-100 lg:bg-violet-50/60 lg:shadow-none">
             <div className="flex items-center justify-between gap-2">
               <button
                 type="button"
@@ -243,14 +249,14 @@ function PlanCard({ plan, index }) {
                 type="button"
                 aria-label="Agregar usuario adicional"
                 onClick={() => setAdditionalUsers((current) => current + 1)}
-                className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${accent.solid} text-white transition-colors ${accent.solidHover}`}
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${accent.solid} text-white transition-colors ${accent.solidHover} lg:bg-indigo-600 lg:hover:bg-indigo-700`}
               >
                 <Plus className="h-4 w-4" strokeWidth={2} />
               </button>
             </div>
           </div>
 
-          <div className={`mt-3 flex items-start gap-2 rounded-2xl ${accent.soft} px-4 py-2.5 text-sm leading-6 ${accent.softText}`}>
+          <div className={`mt-3 flex items-start gap-2 rounded-2xl ${accent.soft} px-4 py-2.5 text-sm leading-6 ${accent.softText} lg:bg-transparent lg:px-0 lg:py-0 lg:text-xs lg:leading-5 lg:text-[#6a75a5]`}>
             <UsersRound className="mt-1 h-4 w-4 shrink-0" strokeWidth={2} />
             <p>
               {plan.priceNote}. {plan.additionalUsers}.
@@ -259,13 +265,13 @@ function PlanCard({ plan, index }) {
         </div>
 
         <div className="flex flex-1 flex-col border-t border-slate-100 px-5 pb-6 pt-5 sm:px-8">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 lg:hidden">
             Incluye
           </p>
 
           {/* Un solo listado (destacadas + estándar) para que ambas tarjetas
               arranquen "Incluye" y el botón final a la misma altura. */}
-          <ul className="flex-1 space-y-3">
+          <ul className="flex-1 space-y-3 lg:hidden">
             {(plan.highlightedFeatures ?? []).map((feat) => (
               <li key={feat} className="flex items-start gap-2.5">
                 <CheckCircle2
@@ -290,14 +296,23 @@ function PlanCard({ plan, index }) {
             ))}
           </ul>
 
+          <ul className="hidden flex-col gap-4 text-sm leading-5 text-[#6472a1] lg:flex">
+            <li className="flex items-center gap-3"><Check className="size-6 shrink-0 rounded-full bg-violet-100 p-1 text-indigo-600" />Agenda y reservas online</li>
+            <li className="flex items-center gap-3"><Check className="size-6 shrink-0 rounded-full bg-violet-100 p-1 text-indigo-600" />Recordatorios por WhatsApp y correo</li>
+            <li className="flex items-center gap-3"><Check className="size-6 shrink-0 rounded-full bg-violet-100 p-1 text-indigo-600" />Fichas clínicas e historial de pacientes</li>
+            <li className="flex items-center gap-3"><Check className="size-6 shrink-0 rounded-full bg-violet-100 p-1 text-indigo-600" />Página de agendamiento personalizada</li>
+            <li className="flex items-center gap-3"><Check className="size-6 shrink-0 rounded-full bg-violet-100 p-1 text-indigo-600" />Vinculación con Mercado Pago</li>
+          </ul>
+
           <a
             href={planLink}
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent("plan_select", { location: "pricing_card", plan_name: plan.name, users: totalUsers, price: totalPrice })}
-            className={`mt-6 w-full rounded-full ${accent.solid} py-3 text-center text-sm font-semibold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-colors duration-200 ${accent.solidHover}`}
+            className={`mt-6 w-full rounded-full ${accent.solid} py-3 text-center text-sm font-semibold text-white shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-colors duration-200 ${accent.solidHover} lg:rounded-2xl lg:bg-linear-to-br lg:from-violet-500 lg:to-indigo-600 lg:py-4 lg:text-base lg:shadow-indigo-200/50`}
           >
-            Quiero este plan
+            <span className="lg:hidden">Quiero este plan</span>
+            <span className="hidden items-center justify-center gap-3 lg:flex">Comenzar ahora <ArrowRight className="size-4" aria-hidden="true" /></span>
           </a>
           <p className="mt-3 text-center text-xs leading-5 text-slate-500">
             {plan.ctaNote}
@@ -368,13 +383,29 @@ export default function PricingSection() {
   const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
 
   return (
-    <section id="precios" className="relative py-28 bg-white overflow-hidden">
+    <section id="precios" className="relative py-28 bg-white overflow-hidden lg:scroll-mt-28 lg:pt-14">
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-slate-200 to-transparent" />
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 hidden h-[1100px] overflow-hidden bg-[radial-gradient(ellipse_at_95%_35%,#e2ddff_0%,#f6f5ff_35%,transparent_70%)] lg:block">
+        <div className="absolute -right-[380px] -top-[300px] size-[1000px] rounded-full bg-linear-to-br from-violet-100/80 to-indigo-200/40" />
+        <div className="absolute -right-40 bottom-20 h-96 w-[75%] -rotate-[24deg] rounded-[50%] bg-linear-to-r from-transparent to-violet-100/70" />
+      </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:max-w-[1440px] lg:px-12 xl:px-16">
+
+        <div className="mb-16 hidden items-center justify-between gap-8 lg:flex">
+          <div className="flex items-center gap-7">
+            <p className="border-l border-indigo-100 pl-7 text-sm leading-5 text-[#7783b5]">Tecnología para una salud<br />más cercana</p>
+          </div>
+          <span className="flex items-center gap-2 rounded-full bg-white/80 px-4 py-2.5 text-xs font-medium text-indigo-800 ring-1 ring-white/80">
+            <ShieldCheck className="size-6 fill-indigo-600 text-white" aria-hidden="true" />
+            Para profesionales de la salud
+          </span>
+        </div>
+
+        <div className="lg:grid lg:grid-cols-[1.08fr_1fr] lg:items-start lg:gap-10 xl:gap-16">
 
         {/* Header */}
-        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-16">
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-16 lg:relative lg:z-10 lg:mx-0 lg:mb-0 lg:pt-4 lg:text-left">
 
 
           <motion.h2
@@ -382,9 +413,10 @@ export default function PricingSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-slate-950 leading-tight"
+            className="mt-5 text-balance text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-slate-950 leading-tight lg:mt-0 lg:text-[clamp(3rem,4.6vw,4.3rem)] lg:leading-[1.05] lg:tracking-[-0.055em] lg:text-wrap"
           >
-            Cuesta menos que el paciente que perdiste la semana pasada
+            <span className="lg:hidden">Cuesta menos que el paciente que perdiste la semana pasada</span>
+            <span className="hidden lg:inline">Cuesta menos que<br />el paciente que<br /><span className="bg-linear-to-br from-indigo-500 via-violet-500 to-purple-400 bg-clip-text text-transparent">perdiste la semana pasada</span></span>
           </motion.h2>
 
           <motion.p
@@ -392,21 +424,56 @@ export default function PricingSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.2}
-            className="mt-5 text-lg text-slate-500 leading-relaxed"
+            className="mt-5 text-lg text-slate-500 leading-relaxed lg:mt-7 lg:max-w-lg lg:text-xl lg:leading-relaxed lg:text-[#6675a6]"
           >
             Sin letra chica ni contratos forzosos.{" "}
-            <span className="font-semibold text-slate-700">Pagas por lo que tu consulta necesita, y agregas usuarios cuando crezcas.</span>
+            <span className="font-semibold text-slate-700 lg:font-normal lg:text-[#6675a6] lg:before:block"><span className="lg:font-semibold lg:text-indigo-600">Pagas por lo que tu consulta necesita</span>, y agregas usuarios cuando crezcas.</span>
           </motion.p>
+
+          <div className="mt-9 hidden grid-cols-2 gap-x-5 gap-y-6 lg:grid">
+            <div className="flex items-center gap-4">
+              <span className="grid size-14 shrink-0 place-items-center rounded-[20px] bg-violet-100/80 text-indigo-600"><CalendarDays className="size-7" aria-hidden="true" /></span>
+              <p className="text-sm leading-6 text-slate-950"><span className="font-semibold">Agenda online</span><br /><span className="text-[#7582b0]">24/7</span></p>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="grid size-14 shrink-0 place-items-center rounded-[20px] bg-violet-100/80 text-indigo-600"><FileText className="size-7" aria-hidden="true" /></span>
+              <p className="text-sm leading-6 text-slate-950"><span className="font-semibold">Fichas y documentos</span><br /><span className="text-[#7582b0]">en un solo lugar</span></p>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="grid size-14 shrink-0 place-items-center rounded-[20px] bg-violet-100/80 text-indigo-600"><MessageCircle className="size-7" aria-hidden="true" /></span>
+              <p className="text-sm leading-6 text-slate-950"><span className="font-semibold">Recordatorios</span><br /><span className="text-[#7582b0]">por WhatsApp y correo</span></p>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="grid size-14 shrink-0 place-items-center rounded-[20px] bg-violet-100/80 text-indigo-600"><ChartNoAxesColumnIncreasing className="size-7" aria-hidden="true" /></span>
+              <p className="text-sm leading-6 text-slate-950"><span className="font-semibold">Crece sin</span><br /><span className="text-[#7582b0]">complicaciones</span></p>
+            </div>
+          </div>
+
+          <div className="mt-12 hidden flex-wrap items-center gap-x-5 gap-y-3 text-xs text-[#7a85b1] lg:flex">
+            <span className="flex items-center gap-2"><Check className="size-4 text-violet-600" aria-hidden="true" />Sin permanencia</span>
+            <span className="flex items-center gap-2"><Check className="size-4 text-violet-600" aria-hidden="true" />Soporte de expertos</span>
+            <span className="flex items-center gap-2"><Check className="size-4 text-violet-600" aria-hidden="true" />Implementación rápida</span>
+          </div>
         </div>
 
         {/* Cards */}
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-6 [&>div:nth-child(2)]:hidden">
+        <div className="relative lg:pb-16 lg:pt-4">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-[370px] -top-2 hidden h-[650px] w-[640px] -rotate-[6deg] overflow-hidden rounded-[32px] border-[10px] border-white/80 bg-white shadow-[0_30px_80px_-30px_rgba(72,58,155,0.3)] lg:block">
+            <img src="/deck-calendario.png" alt="" loading="lazy" className="h-full w-full object-cover object-left opacity-80" />
+            <div className="absolute inset-0 bg-linear-to-r from-white/30 to-indigo-50/10" />
+          </div>
+        <div className="relative mx-auto grid max-w-xl grid-cols-1 gap-6 lg:mx-0 lg:w-[min(100%,400px)] lg:-rotate-[4deg] xl:w-[420px] [&>div:nth-child(2)]:hidden">
           {plans.map((plan, idx) => (
             <PlanCard key={plan.name} plan={plan} index={idx} />
           ))}
         </div>
+          <p className="absolute -bottom-2 right-4 hidden -rotate-[8deg] border-b-2 border-violet-300 px-3 pb-2 font-serif text-2xl italic text-indigo-600 lg:block">Más foco en tus pacientes</p>
+        </div>
+        </div>
 
+        <div className="lg:mt-24">
         <ProfessionalCarousel />
+        </div>
 
         {/* Contact note */}
         <PricingContact />
