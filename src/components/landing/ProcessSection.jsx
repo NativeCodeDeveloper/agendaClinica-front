@@ -10,9 +10,11 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
+  Zap,
 } from "lucide-react";
 import CortexSection from "./CortexSection";
 import FoldText from "@/components/ui/FoldText";
+import { IlustracionOperacion, IlustracionConfiguracion, IlustracionCapacitacion, IlustracionInicio } from "./IlustracionesProceso";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -28,27 +30,31 @@ const fadeUp = {
 const steps = [
   {
     number: "01",
-    title: "Mapeo de tu operación",
-    desc: "Entendemos cómo reservas, confirmas, cobras y atiendes hoy para configurar el flujo correcto.",
+    title: "Conocemos tu operación",
+    desc: "Revisamos tus servicios, profesionales y necesidades.",
     icon: Search,
+    ilustracion: <IlustracionOperacion />,
   },
   {
     number: "02",
-    title: "Configuración guiada",
-    desc: "Cargamos servicios, profesionales, horarios, tarifas y reglas para que partas con una base ordenada.",
+    title: "Configuramos por ti",
+    desc: "Cargamos servicios, tarifas y reglas de agenda.",
     icon: Settings,
+    ilustracion: <IlustracionConfiguracion />,
   },
   {
     number: "03",
-    title: "Capacitación del equipo",
-    desc: "Recepción y profesionales aprenden el flujo real: reservar, reagendar, revisar fichas y dar seguimiento.",
+    title: "Capacitamos a tu equipo",
+    desc: "Te guiamos paso a paso hasta que estén listos.",
     icon: GraduationCap,
+    ilustracion: <IlustracionCapacitacion />,
   },
   {
     number: "04",
-    title: "Operación en vivo",
-    desc: "Empiezas a recibir reservas online, pagos y recordatorios con acompañamiento durante la puesta en marcha.",
+    title: "¡Empieza a agendar!",
+    desc: "Recibe reservas, pagos y recordatorios desde el primer día.",
     icon: Rocket,
+    ilustracion: <IlustracionInicio />,
   },
 ];
 
@@ -184,41 +190,32 @@ function StepCard({ step, index }) {
       custom={index * 0.12}
       className="group relative"
     >
-      {/* Connector line (desktop) */}
       {index < steps.length - 1 && (
-        <div className="hidden lg:block absolute top-8 left-[calc(100%+1px)] w-full h-px bg-linear-to-r from-slate-200 to-transparent z-0 pointer-events-none" />
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-0 -z-10 hidden w-[calc(100%+1.25rem)] border-t-2 border-dashed border-violet-200/60 xl:block" />
       )}
 
       <motion.div
         whileHover={{ scale: 1.02, y: -4 }}
         transition={{ duration: 0.25, ease }}
-        className="relative h-full bg-white rounded-3xl p-7 border border-slate-200/70 shadow-sm hover:shadow-[0_16px_40px_rgba(15,23,42,0.12)] hover:border-indigo-100 transition-colors duration-300 overflow-hidden"
+        className="relative flex h-full flex-col rounded-3xl border border-indigo-100/70 bg-white/90 px-6 pb-5 pt-11 shadow-[0_3px_6px_#312e8108,0_10px_26px_#312e8104] transition-colors duration-300 hover:border-violet-200 sm:px-7 min-[1440px]:px-8"
       >
-        {/* Número decorativo de fondo */}
-        <div
-          className="absolute -top-4 -right-3 text-8xl font-black text-slate-50 select-none group-hover:text-indigo-50 transition-colors duration-300"
-          aria-hidden
-        >
+        <span className="absolute -top-6 left-1/2 flex size-12 -translate-x-1/2 items-center justify-center rounded-full border border-violet-500/30 bg-linear-to-br from-violet-600 to-indigo-600 text-[22px] font-bold text-white ring-5 ring-[#fcfcff]">
+          <span className="sr-only">Paso </span>
           {step.number}
-        </div>
-
-        {/* Ícono */}
-        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-700 mb-5 group-hover:scale-105 transition-transform duration-300">
-          <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
-        </div>
-
-        {/* Paso badge */}
-        <span className="relative z-10 inline-block text-[10px] font-bold uppercase tracking-widest text-indigo-800 mb-3">
-          Paso {step.number}
         </span>
 
-        <h3 className="relative z-10 text-[17px] font-bold text-slate-900 mb-2.5 leading-snug">
+        <div className="mb-4 flex size-15 items-center justify-center rounded-2xl border border-white/80 bg-linear-to-br from-violet-50 to-violet-100 text-violet-600 shadow-[0_3px_8px_#7c3aed08]">
+          <Icon className="size-8" strokeWidth={2} aria-hidden="true" />
+        </div>
+
+        <h3 className="relative z-10 mb-2 text-[21px] leading-tight! font-bold tracking-[-0.045em] text-[#09091c] min-[1440px]:text-[23px]">
           {step.title}
         </h3>
 
-        <p className="relative z-10 text-slate-500 text-sm leading-relaxed">
+        <p className="relative z-10 min-h-14 max-w-70 text-[17px] leading-[1.4] text-[#6b77a0] min-[1440px]:text-[18px]">
           {step.desc}
         </p>
+        <div aria-hidden="true" className="pointer-events-none mt-auto pt-5">{step.ilustracion}</div>
       </motion.div>
     </motion.div>
   );
@@ -237,18 +234,26 @@ export default function ProcessSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ProcessCarousel />
         <CortexSection />
+      </div>
 
-        {/* Header */}
-        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
+      <div id="implementacion" className="relative isolate bg-[#fcfcff] pb-10 pt-12 sm:pt-16">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -left-100 -top-140 h-200 w-240 -rotate-35 rounded-[50%] border-65 border-violet-100/35" />
+          <div className="absolute -right-100 -top-135 h-200 w-300 -rotate-35 rounded-[50%] border-60 border-indigo-100/25" />
+        </div>
+        <div className="mx-auto max-w-420 px-5 sm:px-8 lg:px-12">
+        <div ref={headerRef} className="mx-auto mb-14 max-w-6xl text-center sm:mb-16">
+          <span className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-5 py-2 text-sm font-medium text-violet-700 sm:text-base"><Zap className="size-4 fill-violet-600 sm:size-5" aria-hidden="true" />En 4 simples pasos</span>
 
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-5 text-balance text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-slate-950 leading-tight"
+            className="mt-4 text-balance text-[34px] leading-[1.05]! font-bold tracking-[-0.055em] text-[#09091c] sm:text-5xl lg:text-[60px] min-[1440px]:text-[68px]"
           >
-            Cero curva de aprendizaje, agendando desde el día uno
+            Cero curva de aprendizaje,
+            <span className="mt-1 block text-violet-700">agendando desde el día uno</span>
           </motion.h2>
 
           <motion.p
@@ -256,17 +261,13 @@ export default function ProcessSection() {
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.2}
-            className="mt-5 text-lg text-slate-500 leading-relaxed"
+            className="mx-auto mt-5 max-w-4xl text-pretty text-base leading-[1.4] text-[#6b77a0] sm:text-xl lg:text-[22px]"
           >
-            Sin instalaciones ni procesos eternos.{" "}
-            <span className="font-semibold text-slate-700">
-              Dejamos todo listo y a tu equipo capacitado para que el cambio no se sienta como aprender un programa nuevo.
-            </span>
+            Sin instalaciones ni procesos eternos. Te acompañamos en cada paso para que tu equipo comience a usar la plataforma rápidamente.
           </motion.p>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 gap-x-5 gap-y-12 sm:grid-cols-2 xl:grid-cols-4">
           {steps.map((step, idx) => (
             <StepCard key={step.number} step={step} index={idx} />
           ))}
@@ -279,12 +280,12 @@ export default function ProcessSection() {
           initial="hidden"
           animate={ctaInView ? "visible" : "hidden"}
           custom={0}
-          className="mt-14 max-w-2xl mx-auto"
+          className="mx-auto mt-9 max-w-2xl"
         >
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7 text-center">
+          <div className="px-4 py-3 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <CheckCircle2 className="w-5 h-5 text-emerald-500" strokeWidth={2} />
-              <span className="font-semibold text-slate-900 text-[15px]">
+              <span className="text-[14px] font-semibold text-[#64709c]">
                 Acompañamiento real de implementación
               </span>
             </div>
@@ -303,6 +304,7 @@ export default function ProcessSection() {
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
     </section>
   );
