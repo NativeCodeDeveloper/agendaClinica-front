@@ -8,7 +8,6 @@ const WA_LINK =
 
 const navItems = [
   ["Inicio", "#inicio"],
-  ["Beneficios", "#beneficios"],
   ["Funciones", "#funciones"],
   ["Precios", "#precios"],
   ["Contacto", "#contacto"],
@@ -32,7 +31,7 @@ export default function LandingNavbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[300] px-4 pt-4 sm:pt-5 lg:pt-6">
+    <header className="fixed inset-x-0 top-0 z-[300] hidden px-4 pt-4 lg:block lg:pt-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         {/* Logo suelto, sin caja */}
         <a href="#inicio" className="flex min-w-0 shrink-0 items-center">
@@ -79,43 +78,7 @@ export default function LandingNavbar() {
             Agendar demo
           </a>
         </div>
-
-        {/* Mobile: solo el CTA junto al logo */}
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => trackEvent("whatsapp_click", { location: "navbar_mobile" })}
-          className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold shadow-[0_16px_40px_rgba(15,23,42,0.12)] transition-all duration-300 lg:hidden ${
-            isScrolled ? "bg-indigo-700 text-white" : "bg-white text-indigo-950"
-          }`}
-        >
-          Agendar demo
-        </a>
       </div>
-
-      {/* Mobile: chips de navegación, scroll horizontal */}
-      <nav className="mx-auto mt-3 max-w-7xl overflow-x-auto pb-1 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex min-w-max items-center gap-2">
-          {navItems.map(([label, href], index) => (
-            <a
-              key={label}
-              href={href}
-              className={`rounded-full px-3 py-1.5 text-[10px] font-medium transition-colors duration-300 ${
-                isScrolled
-                  ? index === 0
-                    ? "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-100"
-                    : "bg-white/70 text-zinc-600 ring-1 ring-zinc-200"
-                  : index === 0
-                    ? "bg-white/90 text-indigo-950 ring-1 ring-white/20"
-                    : "bg-white/10 text-white/85 ring-1 ring-white/15"
-              }`}
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      </nav>
     </header>
   );
 }

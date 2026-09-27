@@ -400,7 +400,7 @@ export default function PricingSection() {
         </div>
 
         {/* Cards */}
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-6 [&>div:nth-child(2)]:hidden">
           {plans.map((plan, idx) => (
             <PlanCard key={plan.name} plan={plan} index={idx} />
           ))}

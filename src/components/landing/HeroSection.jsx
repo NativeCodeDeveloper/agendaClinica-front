@@ -8,10 +8,7 @@ const WA_LINK =
 export default function HeroSection() {
   return (
     <section id="inicio">
-      <ResponsiveHeroBanner
-        primaryButtonHref={WA_LINK}
-        secondaryButtonHref="https://demo.angendaclinica.space"
-      />
+      <ResponsiveHeroBanner primaryButtonHref={WA_LINK} />
     </section>
   );
 }

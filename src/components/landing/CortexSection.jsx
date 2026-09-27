@@ -23,7 +23,7 @@ export default function CortexSection() {
   return (
     <div
       id="cortex"
-      className="relative mb-20 scroll-mt-24 overflow-hidden rounded-[32px] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.35)] lg:-mx-10 xl:-mx-16"
+      className="relative mb-20 hidden scroll-mt-24 overflow-hidden rounded-[32px] border border-white/10 bg-black shadow-[0_28px_80px_rgba(0,0,0,0.35)] lg:-mx-10 lg:block xl:-mx-16"
     >
       <StarsBackground
         className="absolute inset-0"
@@ -44,12 +44,6 @@ export default function CortexSection() {
 
           <p className="mt-6 text-lg leading-8 text-zinc-300 sm:text-xl">
             Inteligencia clínica que entiende tu trabajo.
-          </p>
-
-          <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-zinc-500">
-            Cortex organiza la información de la atención, redacta automáticamente la ficha clínica
-            y analiza los antecedentes registrados para entregar sugerencias que apoyen el
-            diagnóstico del profesional.
           </p>
         </div>
 
@@ -90,11 +84,6 @@ export default function CortexSection() {
             </video>
           </div>
         </div>
-
-        <p className="mx-auto mt-8 max-w-2xl border-t border-white/10 pt-6 text-center text-xs leading-5 text-zinc-600 sm:text-sm">
-          Cortex funciona como asistente clínico. Sus sugerencias no reemplazan el criterio, la
-          evaluación ni la decisión final del profesional.
-        </p>
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import CortexSection from "./CortexSection";
+import FoldText from "@/components/ui/FoldText";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -91,10 +92,24 @@ function ProcessCarousel() {
   };
 
   return (
-    <div className="mb-14">
+    <div className="mb-14 hidden lg:block">
       <div className="mb-6 text-center">
-        <h3 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-slate-950 sm:text-4xl">
-          Así se ve un día real en Agenda Clínica
+        <h3 className="mt-3 text-3xl sm:text-4xl">
+          <FoldText
+            className="fold-heading-premium"
+            text="¿Y cómo se ve la aplicación?"
+            splitBy="char"
+            hinge="top"
+            trigger="scroll"
+            duration={0.65}
+            stagger={0.045}
+            ease="power3.out"
+            perspective={700}
+            creaseShading={0.55}
+            fontSize="clamp(2.25rem, 5vw, 3.5rem)"
+            fontWeight={800}
+            color="#020617"
+          />
         </h3>
       </div>
 
