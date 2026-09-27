@@ -4,11 +4,9 @@ import PasosPacientesSection from "@/components/landing/PasosPacientesSection";
 import ProcessSection from "@/components/landing/ProcessSection";
 import ModulesSection from "@/components/landing/ModulesSection";
 import PricingSection from "@/components/landing/PricingSection";
-import FAQSection from "@/components/landing/FAQSection";
 import ContactSection from "@/components/landing/ContactSection";
 import StickyMobileCTA from "@/components/landing/StickyMobileCTA";
 import ReviewsSection from "@/components/landing/ReviewsSection";
-import SeoContentSection from "@/components/landing/SeoContentSection";
 import LegalSection from "@/components/landing/LegalSection";
 
 const RESENAS_API_URL =
@@ -206,60 +204,6 @@ export default async function Home() {
         },
       },
       {
-        "@type": "FAQPage",
-        "@id": `${siteUrl}/#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "¿Sirve para mi tipo de consulta o centro?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Sí. Agenda Clínica está diseñado para médicos, dentistas, kinesiólogos, psicólogos, nutricionistas, centros de estética y otras consultas de salud que trabajan con reservas de pacientes.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "¿Puedo usar una agenda online para que mis pacientes reserven horas?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Sí. La plataforma incluye una página web de agendamiento para pacientes, disponibilidad por profesional, servicios configurables y confirmación automática de citas.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "¿Incluye fichas clínicas digitales e historial clínico?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Sí. Puedes trabajar con fichas clínicas personalizables, historial clínico completo de pacientes y datos relevantes centralizados para cada atención.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "¿El plan odontológico incluye odontograma?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Sí. El Plan Odontológico incluye odontograma, recetas, historial de recetas, generación de presupuestos, solicitudes de órdenes de exámenes y subida de archivos, imágenes, radiografías y documentos.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "¿Cómo pagan mis pacientes?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Se puede activar la vinculación opcional con Mercado Pago para cobrar al momento de agendar, solicitar abonos o confirmar reservas según el flujo de tu consulta.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "¿Qué pasa con los datos de mis pacientes?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "La información clínica se resguarda con cifrado y respaldos, priorizando privacidad y seguridad de datos sensibles.",
-            },
-          },
-        ],
-      },
-      {
         "@type": "BreadcrumbList",
         "@id": `${siteUrl}/#breadcrumbs`,
         itemListElement: [
@@ -300,8 +244,6 @@ export default async function Home() {
         <ModulesSection />
         <PricingSection />
         <ReviewsSection />
-        <SeoContentSection />
-        <FAQSection />
         <ContactSection />
 
         <StickyMobileCTA />
