@@ -344,7 +344,7 @@ function ProfessionalCarousel() {
       <div className="mx-auto max-w-450 px-5 sm:px-8 lg:px-20">
       <div className="mx-auto mb-8 max-w-360 text-center sm:mb-10">
         <h3 className="text-balance text-[32px] leading-[1.1]! font-bold tracking-[-0.05em] text-[#09091c] sm:text-[40px] xl:text-[48px] min-[1700px]:text-[52px]">
-          Una agenda flexible para <span className="text-violet-700">distintas especialidades</span>
+          Una agenda flexible para distintas especialidades
         </h3>
         <p className="mx-auto mt-4 max-w-6xl text-pretty text-base leading-[1.45] text-[#6b77a0] sm:text-xl xl:text-[22px]">
           Desde atención individual hasta centros con equipos especializados. Cada flujo puede adaptarse a servicios, duración de citas y necesidades clínicas distintas.
@@ -434,8 +434,7 @@ export default function PricingSection() {
             custom={0.1}
             className="mt-5 text-balance text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-slate-950 leading-tight lg:mt-0 lg:text-[clamp(3rem,4.6vw,4.3rem)] lg:leading-[1.05] lg:tracking-[-0.055em] lg:text-wrap"
           >
-            <span className="lg:hidden">Cuesta menos que el paciente que perdiste la semana pasada</span>
-            <span className="hidden lg:inline">Cuesta menos que<br />el paciente que<br /><span className="bg-linear-to-br from-indigo-500 via-violet-500 to-purple-400 bg-clip-text text-transparent">perdiste la semana pasada</span></span>
+            Cuesta menos que el paciente que perdiste la semana pasada
           </motion.h2>
 
           <motion.p

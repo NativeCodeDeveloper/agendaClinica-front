@@ -3,14 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  Search,
-  Settings,
-  GraduationCap,
-  Rocket,
+  ClipboardList,
+  SlidersHorizontal,
+  Presentation,
+  CalendarCheck,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Zap,
 } from "lucide-react";
 import CortexSection from "./CortexSection";
 import FoldText from "@/components/ui/FoldText";
@@ -32,28 +31,28 @@ const steps = [
     number: "01",
     title: "Conocemos tu operación",
     desc: "Revisamos tus servicios, profesionales y necesidades.",
-    icon: Search,
+    icon: ClipboardList,
     ilustracion: <IlustracionOperacion />,
   },
   {
     number: "02",
     title: "Configuramos por ti",
     desc: "Cargamos servicios, tarifas y reglas de agenda.",
-    icon: Settings,
+    icon: SlidersHorizontal,
     ilustracion: <IlustracionConfiguracion />,
   },
   {
     number: "03",
     title: "Capacitamos a tu equipo",
     desc: "Te guiamos paso a paso hasta que estén listos.",
-    icon: GraduationCap,
+    icon: Presentation,
     ilustracion: <IlustracionCapacitacion />,
   },
   {
     number: "04",
     title: "¡Empieza a agendar!",
     desc: "Recibe reservas, pagos y recordatorios desde el primer día.",
-    icon: Rocket,
+    icon: CalendarCheck,
     ilustracion: <IlustracionInicio />,
   },
 ];
@@ -102,7 +101,6 @@ function ProcessCarousel() {
       <div className="mb-6 text-center">
         <h3 className="mt-3 text-3xl sm:text-4xl">
           <FoldText
-            className="fold-heading-premium"
             text="¿Y cómo se ve la aplicación?"
             splitBy="char"
             hinge="top"
@@ -243,17 +241,15 @@ export default function ProcessSection() {
         </div>
         <div className="mx-auto max-w-420 px-5 sm:px-8 lg:px-12">
         <div ref={headerRef} className="mx-auto mb-14 max-w-6xl text-center sm:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-5 py-2 text-sm font-medium text-violet-700 sm:text-base"><Zap className="size-4 fill-violet-600 sm:size-5" aria-hidden="true" />En 4 simples pasos</span>
-
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             animate={headerInView ? "visible" : "hidden"}
             custom={0.1}
-            className="mt-4 text-balance text-[34px] leading-[1.05]! font-bold tracking-[-0.055em] text-[#09091c] sm:text-5xl lg:text-[60px] min-[1440px]:text-[68px]"
+            className="text-balance text-[34px] leading-[1.05]! font-bold tracking-[-0.055em] text-[#09091c] sm:text-5xl lg:text-[60px] min-[1440px]:text-[68px]"
           >
             Cero curva de aprendizaje,
-            <span className="mt-1 block text-violet-700">agendando desde el día uno</span>
+            <span className="mt-1 block">agendando desde el día uno</span>
           </motion.h2>
 
           <motion.p

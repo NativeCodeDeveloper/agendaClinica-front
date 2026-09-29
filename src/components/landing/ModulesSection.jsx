@@ -12,7 +12,6 @@ import {
   Settings,
   Shield,
   Users,
-  Zap,
 } from "lucide-react";
 import {
   IlustracionAccesos,
@@ -200,17 +199,13 @@ export default function ModulesSection() {
 
       <div className="mx-auto max-w-380 px-5 sm:px-8 lg:px-12">
         <div ref={headerRef} className="mx-auto mb-9 max-w-6xl text-center sm:mb-11">
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-violet-100 px-4 py-2 text-xs font-medium text-violet-700 sm:px-5 sm:text-base">
-            <Zap className="size-4 fill-violet-600 sm:size-5" aria-hidden="true" />
-            Todo lo que necesitas en un solo lugar
-          </span>
           <motion.h2
             id="titulo-funciones"
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.1}
-            className="text-balance text-[34px] leading-[1.04]! font-bold tracking-[-0.055em] text-[#09091c] sm:text-5xl lg:text-[64px] min-[1440px]:text-[72px]"
+            className="text-balance text-[34px] leading-[1.04]! font-bold tracking-[-0.055em] text-violet-700 sm:text-5xl lg:text-[64px] min-[1440px]:text-[72px]"
           >
             Gestiona tu consulta
-            <span className="mt-1 block text-violet-700">de forma simple y eficiente</span>
+            <span className="mt-1 block">de forma simple y eficiente</span>
           </motion.h2>
           <motion.p
             variants={fadeUp} initial="hidden" animate={headerInView ? "visible" : "hidden"} custom={0.2}
